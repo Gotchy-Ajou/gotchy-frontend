@@ -1,0 +1,58 @@
+[
+    {
+      "location": "서울",
+      "hobby": "축구",
+      "gender": "남자",
+      "level": "비기너",
+      "recruit": "Yes",
+      "date": "2023-05-22"
+    },
+    {
+      "location": "서울",
+      "hobby": "축구",
+      "gender": "여자",
+      "level": "비기너",
+      "recruit": "No",
+      "date": "2023-05-23"
+    },
+    {
+      "location": "서울",
+      "hobby": "농구",
+      "gender": "남자",
+      "level": "아마추어",
+      "recruit": "Yes",
+      "date": "2023-05-22"
+    },
+    {
+      "location": "인천",
+      "hobby": "밴드",
+      "gender": "여자",
+      "level": "프로",
+      "recruit": "Yes",
+      "date": "2023-05-23"
+    },
+    {
+      "location": "경기",
+      "hobby": "오케스트라",
+      "gender": "남자",
+      "level": "비기너",
+      "recruit": "Yes",
+      "date": "2023-05-21"
+    },
+    {
+      "location": "제주",
+      "hobby": "보드게임",
+      "gender": "여자",
+      "level": "비기너",
+      "recruit": "No",
+      "date": "2023-05-22"
+    },
+    {
+      "location": "제주",
+      "hobby": "축구",
+      "gender": "남자",
+      "level": "비기너",
+      "recruit": "No",
+      "date": "2023-05-22"
+    }
+  ]
