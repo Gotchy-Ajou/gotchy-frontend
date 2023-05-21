@@ -4,6 +4,8 @@ import SideNavigation from "./components/Layout/SideNavigation";
 import { Col, Row } from "reactstrap";
 
 import { Filter } from "./pages/Filter";
+import { dummy } from "./pages/dummy";
+
 import { MainPage } from "./pages/MainPage";
 function App() {
   const styles = {
