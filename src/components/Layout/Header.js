@@ -15,7 +15,7 @@ const Header = () => {
         <NavbarBrand style={{"font-size": "40px", "font-weight": "bold", "color": "#BD68B5"}} href="/">GOTCHY</NavbarBrand>
         <Nav className="collapse navbar-collapse justify-content-end" navbar style={{"font-size": "20px"}}>
           <NavItem>
-            <NavLink href="/InquiryPage">가치 조회</NavLink>
+            <NavLink href="/Filter">가치 조회</NavLink>
           </NavItem>
           <NavItem>
             <NavLink href="/ApplyPage">가치 신청</NavLink>

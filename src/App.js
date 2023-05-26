@@ -3,10 +3,10 @@ import Header from "./components/Layout/Header";
 import SideNavigation from "./components/Layout/SideNavigation";
 import { Col, Row } from "reactstrap";
 
-import { Filter } from "./pages/Filter";
-import { dummy } from "./pages/dummy";
-
 import { MainPage } from "./pages/MainPage";
+import Filter from "./pages/Filter";
+
+
 function App() {
   const styles = {
     contentDiv: {
@@ -20,24 +20,23 @@ function App() {
   return (
     <div className="App">
       <BrowserRouter>
-      <Row>
-        <Col>
-          <Header></Header>
-        </Col>
-      </Row>
-      <div style={styles.contentDiv}>
-        <SideNavigation></SideNavigation>
-        <Routes>
-          <Route path="/MyInformationPage" exact element={MainPage} />
-          {/* <Route path="/members" component={Members} />
+        <Row>
+          <Col>
+            <Header></Header>
+          </Col>
+        </Row>
+        <div style={styles.contentDiv}>
+          <SideNavigation></SideNavigation>
+          <div style={styles.contentMargin}>
+          <Routes>
+            <Route path="/Filter" element={<Filter />} />
+            {/* <Route path="/members" component={Members} />
           <Route path="/cashes" component={Cashes} /> */}
-        </Routes>
-        <div style={styles.contentMargin}>
-          <h1 style={{ padding: "20%" }}>This is Content Area</h1>
+          </Routes>
+          </div>
         </div>
-        </div>
-        </BrowserRouter>
-    </div>
+      </BrowserRouter >
+    </div >
   );
 }
 export default App;

@@ -1,7 +1,7 @@
 import { useEffect, useState } from "react";
 import Dummy from "./dummy.json";
 
-function App() {
+function Filter() {
   const today = new Date();
 
   const [filter, setFilter] = useState({
@@ -158,7 +158,7 @@ function App() {
           <div style={{ width: "100px" }}>취미 </div>
           <div style={{ width: "100px" }}>성별 </div>
           <div style={{ width: "100px" }}>레벨 </div>
-          <div style={{ width: "120px" }}>개인 보집 여부 </div>
+          <div style={{ width: "120px" }}>개인 모집 여부 </div>
         </div>
         <br />
         {data.map((e) => {
@@ -178,4 +178,4 @@ function App() {
   );
 }
 
-export default App;
+export default Filter;
