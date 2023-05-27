@@ -4,6 +4,8 @@ import SideNavigation from "./components/Layout/SideNavigation";
 import { Col, Row } from "reactstrap";
 
 import { MainPage } from "./pages/MainPage";
+import Notice from "./pages/Notice/Notice";
+import FAQ from "./pages/FAQ/FAQ";
 import Filter from "./pages/Filter";
 
 
@@ -28,11 +30,14 @@ function App() {
         <div style={styles.contentDiv}>
           <SideNavigation></SideNavigation>
           <div style={styles.contentMargin}>
-          <Routes>
-            <Route path="/Filter" element={<Filter />} />
-            {/* <Route path="/members" component={Members} />
+            <Routes>
+              <Route path="/" element={<MainPage />} />
+              <Route path="/Filter" element={<Filter />} />
+              <Route path="/Notice" element={<Notice />} />
+              <Route path="/FAQ" element={<FAQ />} />
+              {/* <Route path="/members" component={Members} />
           <Route path="/cashes" component={Cashes} /> */}
-          </Routes>
+            </Routes>
           </div>
         </div>
       </BrowserRouter >

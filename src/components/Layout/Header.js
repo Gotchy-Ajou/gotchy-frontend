@@ -1,4 +1,5 @@
 import React from "react";
+import GotchyImg from "./Gotchy.png"
 import { AiOutlineUser } from "react-icons/ai";
 import {
   Nav,
@@ -11,9 +12,10 @@ import {
 const Header = () => {
   return (
     <div>
-      <Navbar style={{"height": "100px"}} color="white" light expand="md">
-        <NavbarBrand style={{"font-size": "40px", "font-weight": "bold", "color": "#BD68B5"}} href="/">GOTCHY</NavbarBrand>
-        <Nav className="collapse navbar-collapse justify-content-end" navbar style={{"font-size": "20px"}}>
+      <Navbar style={{ "height": "100px" }} color="white" light expand="md">
+        <NavbarBrand style={{ "font-size": "40px", "font-weight": "bold", "color": "#BD68B5" }} href="/">
+          <img src={GotchyImg} /></NavbarBrand>
+        <Nav className="collapse navbar-collapse justify-content-end" navbar style={{ "font-size": "20px" }}>
           <NavItem>
             <NavLink href="/Filter">가치 조회</NavLink>
           </NavItem>
