@@ -35,6 +35,7 @@ function App() {
           <div style={styles.contentMargin}>
           <Routes>
             <Route path="/Filter" element={<Filter />} />
+            <Route path="/ApplyPage" element={<ApplyPage />} />
             {/* <Route path="/members" component={Members} />
           <Route path="/cashes" component={Cashes} /> */}
           </Routes>
