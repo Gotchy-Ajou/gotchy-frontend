@@ -1,0 +1,278 @@
+/* 로그인 */
+.blur{
+    position: absolute;
+    top:0;
+    left:0;
+    height: 80%;
+    width:100%;
+    background-color: white;
+    opacity: 0.5;
+
+    z-index: 1;
+    overflow: hidden;
+}
+
+.login_page{
+    display: flex;
+    margin-top: 20px;
+    /* padding-bottom: -190px; */
+    flex-direction: row;
+    /* justify-content: space-around; */
+    width: 80%;
+    height: 80%;
+    box-shadow: 0 9px 10px rgba(158, 55, 163, 0.3); 
+}
+.login_form{
+    width: 80%;
+    height: 90%;
+}
+.login_title{
+    margin-bottom: 50px;
+    font-size: 20px;
+    text-align: center;
+    color: #555555;
+}
+.login_box{
+    margin:auto;
+    margin-bottom: 30px;
+    width: 80%;
+    color: #555555;
+}
+.login_box .login_name{
+    text-align: left;
+    font-size: 20px;
+    color: #555555;
+}
+.radioGroup{
+    display: flex;
+    flex-direction: row;
+    justify-content:space-around;
+    padding-left: 20px;
+    margin-top: -40px;
+    padding-right: 20px;
+    font-size: 18px;
+
+}
+.radioGroup input{
+    position:inherit;
+    vertical-align: middle;
+    appearance: none;
+    
+    border: max(2px, 0.1em) solid gray;
+    border-radius: 50%;
+    width: 1.25em;
+    transition: border 0.2s ease-in-out;
+
+    font-size: 10px;
+    height: 30px;
+    width: 30px;
+    margin: 0 10px;
+}
+.radioGroup input:checked{
+    border: 0.4em solid #a000c8;
+}
+.radioGroup input:focus-visible{
+    outline-offset: max(2px, 0.1em);
+    outline: max(2px, 0.1em) dotted #a000c8;
+}
+.radioGroup input:hover {
+    box-shadow: 0 0 0 max(4px, 0.2em) lightgray;
+    cursor: pointer;
+}
+.radioGroup label{
+    cursor: pointer;
+}
+
+.login_name{
+    margin-bottom: -15px;
+}
+
+.login_form input{
+    position:relative;
+    left: 0px;
+    top: 20px;
+    height: 60px;
+    width: 100%;
+    border: 0.5px solid gray;
+    border-radius: 15px;
+    font-size: 25px;
+}
+
+.login_title{
+    margin-top: 7px;
+    margin-bottom: 10px;
+    font-size: 22px;
+    color:#380140;
+}
+
+.login_subtitle{
+    margin-top: 7px;
+
+    font-size: 15px;
+    color:#555555;
+    text-align: center;
+}
+
+.login_button{
+    color: #a000c8;
+    height: 70px;
+    width: 100%;
+    text-align: center;
+    vertical-align: middle;
+
+    padding-top: 15px;
+    font-size: 30px;
+    background-color: white;
+    border-color: 2px black;
+    border-radius: 20px;
+    margin: 50px auto;
+    background-color: #FFFFFF;
+}
+.login_button:hover{
+    cursor: pointer;
+    background-color: #a000c8;
+    color: #FFFFFF;
+    transition: 0.3s ease-in-out;
+}
+.empty{
+    height: 140px;
+}
+
+.login_sid{
+    margin-top: 10px;
+}
+
+/* 회원가입 */
+.signupButton{
+    margin-top: 20px;
+    margin-bottom: 10px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+
+}
+.signup_button{
+    border: none;
+    font-size: 20px;
+    height: 40px;
+    padding-top: 10px;
+    padding-bottom: 0px;
+    text-align: center;
+    position: relative;
+    color: #a000c8;
+    width: 80px; 
+}
+.signupButton .signup_button:hover{
+    color: #a000c8;
+    cursor:pointer;
+
+}
+
+.signupClose{
+    position: absolute;
+    top: 14%;
+    left: 75%;
+    transform: translate(-50%, -50%);
+    font-size: 30px;
+    z-index: 3;
+    color: brown;
+}
+.signupClose:hover{
+    cursor: pointer;
+}
+
+.signup{
+    top: 70px;
+    width: 800px;
+    position: absolute;
+    margin-top: 10px;
+    padding-top: 35px;
+    z-index: 2;
+    border : 2px solid #fffafa;
+    border-radius: 20px;
+    background-color: #fcecf2;
+}
+
+.signup .title{
+    margin-top: 20px;
+    margin-bottom: 10px;
+    font-size: 35px;
+    text-align: center;
+}
+.signup .nav{
+    display: flex;
+}
+.signup .box{
+    margin-bottom: 5px;
+    margin-left: 100px;
+    padding-bottom: 20px;
+    width: 600px;
+    height: 100px;
+    border: none;
+    border-radius: 20px;
+}
+.signup .sidBox{
+    display: flex;
+    justify-content: space-between;
+}
+.signup .box.sid .sidBox div{
+    margin-top: 12px;
+    padding-top : 15px;
+    height: 40px;
+    width:120px;
+    border-radius: 7px;
+    color: white;
+    background-color: #666666;
+}
+.signup .box.nickname .sidBox div{
+    margin-top: 12px;
+    padding-top : 15px;
+    height: 40px;
+    width:120px;
+    border-radius: 7px;
+    color: white;
+    background-color: #666666;
+}
+.signup .box .name{
+    text-align: left;
+    font-size: 20px;
+    color: #460057;
+}
+.signup .box.last{
+  margin-bottom: 20px;
+}
+.signup .box input{
+    position:relative;
+    left: 0px;
+    top: 10px;
+    height: 50px;
+    width: 600px;
+    border: 2px solid #e8bcf0;
+    border-radius: 5px;
+    font-size: 20px;
+    border-radius: 12px;
+}
+.signup .loginButton{
+
+    height: 80px;
+    width: 600px;
+    text-align: center;
+    color: #a000c8;
+    padding-top: 15px;
+    font-size: 30px;
+    background-color: white;
+    border-radius: 12px;
+    margin: 0 auto;
+    margin-bottom: 50px;
+    margin-top: 20px;
+
+}
+.signup .loginButton:hover{
+    cursor: pointer;
+    background-color: #a000c8;
+    color:white;
+}
+.signup .button{
+    cursor: pointer;
+}

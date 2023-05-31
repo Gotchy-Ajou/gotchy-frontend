@@ -1,6 +1,8 @@
 import React, { useEffect, useState } from "react";
 import axios from "axios";
-import "./FAQ.css";
+import { Link, useNavigate } from "react-router-dom";
+
+import "../FAQ/FAQ.css";
 
 // 더미 데이터
 export const tempCategories = [
@@ -24,36 +26,42 @@ export const tempCategories = [
 
 const tempList = [
     {
+        id: 1,
         category: "category1",
         question: "what is that ? 1",
         answer: "this is react. 1",
         show: false
     },
     {
+        id: 2,
         category: "category2",
         question: "what is that ? 2",
         answer: "this is react. 2",
         show: false
     },
     {
+        id: 3,
         category: "category3",
         question: "what is that ? 3",
         answer: "this is react. 3",
         show: false
     },
     {
+        id: 4,
         category: "category1",
         question: "what is that ? 4",
         answer: "this is react. 4",
         show: false
     },
     {
+        id: 5,
         category: "category2",
         question: "what is that ? 5",
         answer: "this is react. 5",
         show: false
     },
     {
+        id: 6,
         category: "category3",
         question: "what is that ? 6",
         answer: "this is react. 6",
@@ -61,39 +69,52 @@ const tempList = [
     },
 ];
 
-const FAQ = () => {
-     // DB에 저장되어 있는 FAQ 및 카테고리 리스트 가져오기 위한 변수
-     const [FAQList, setFAQList] = useState([]);
-     const [categoryList, setCategoryList] = useState([]);
- 
-     // 우선 더미데이터로 들어감 => 백이랑 연동 후, tempList => noticeList
-     const [cardOnOff, setCardOnOff] = useState(tempList);
-     const [showList, setShowList] = useState(tempList);
-     const [category, setCatecory] = useState("all");
-     showList.sort((a, b) => b.id - a.id); // id순 정렬 (생성 날짜순으로 id 생성되므로 내림차순)
- 
-     /* [POST / notice]: FAQ 목록 가져오기 */
-     const loadNoticeList = async () => {
- 
-         await axios.post('http://gotchy.site/FAQList')
-             .then((res) => {
-                 console.log("[FAQList.js] useEffect() 성공");
-                 console.log(res.data);
-                 setFAQList(res.data);
-             })
-             .catch((err) => {
-                 console.log("[FAQList.js] useEffect() 실패");
-                 console.log(err);
-             });
-     }
- 
-     useEffect(() => {
-         loadNoticeList();
-     }, []);
+const AdminFAQ = () => {
+    const [FAQ, setFAQ] = useState({
+        id: 0,
+        category_type: "",
+        question: "",
+        answer: "",
+        show: false
+    });
 
-     /* [POST / notice]: FAQ 카테고리 목록 가져오기 */
-     const loadCategoryList = async () => {
- 
+    const { id, category_type, question, answer, show } = FAQ;
+
+    // DB에 저장되어 있는 FAQ 및 카테고리 리스트 가져오기 위한 변수
+    const [FAQList, setFAQList] = useState([]);
+    const [categoryList, setCategoryList] = useState([]);
+
+    // Link 용 (함수) 
+    let navigate = useNavigate();
+
+    // 우선 더미데이터로 들어감 => 백이랑 연동 후, tempList => noticeList
+    const [cardOnOff, setCardOnOff] = useState(tempList);
+    const [showList, setShowList] = useState(tempList);
+    const [category, setCatecory] = useState("all");
+    showList.sort((a, b) => b.id - a.id); // id순 정렬 (생성 날짜순으로 id 생성되므로 내림차순)
+
+    /* [POST / notice]: FAQ 목록 가져오기 */
+    const loadNoticeList = async () => {
+
+        await axios.post('http://gotchy.site/FAQList')
+            .then((res) => {
+                console.log("[FAQList.js] useEffect() 성공");
+                console.log(res.data);
+                setFAQList(res.data);
+            })
+            .catch((err) => {
+                console.log("[FAQList.js] useEffect() 실패");
+                console.log(err);
+            });
+    }
+
+    useEffect(() => {
+        loadNoticeList();
+    }, []);
+
+    /* [POST / notice]: FAQ 카테고리 목록 가져오기 */
+    const loadCategoryList = async () => {
+
         await axios.post('http://gotchy.site/categoryList')
             .then((res) => {
                 console.log("[categoryList] useEffect() 성공");
@@ -108,6 +129,17 @@ const FAQ = () => {
     useEffect(() => {
         loadCategoryList();
     }, []);
+
+    /* FAQ 항목 삭제하기 */
+    const deleteFAQ = (productId) => {
+        axios.delete(`http://gotchy.site/FAQList/${id}`)
+            .then((result) => {
+                loadNoticeList();
+            })
+            .catch(() => {
+                alert('오류가 발생했습니다!');
+            });
+    };
 
     const getQnACard = (item, index) => {
         return (
@@ -132,6 +164,17 @@ const FAQ = () => {
                 >
                     <span className="answer-mark">A.</span>
                     <span className="FAQ-card-answer">{item.answer}</span>
+                    <div className="FAQ-buttons">
+                        <button className="FAQ-delete-button" onClick={() => {
+                            const confirmBox = window.confirm(
+                                "선택한 FAQ 항목을 정말 삭제하시겠습니까?"
+                            )
+                            if (confirmBox === true) {
+                                deleteFAQ(item.id)
+                            }
+                        }}>삭제</button>
+                        <button className="FAQ-update-button" >수정</button>
+                    </div>
                 </div>
             </div>
         );
@@ -153,8 +196,10 @@ const FAQ = () => {
 
     return (
         <div className="faq-title-parent">
-            <div className="faq-title">FAQ</div>
-            
+            <div className="faq-title">FAQ 관리</div>
+            <div className="FAQ-write">
+                <Link className="FAQ-write-button" to="/FAQWrite">FAQ 등록</Link>
+            </div>
             <div className="categoryButtons-parent">
                 {tempCategories.map((item, index) =>
                     <button className="categoryButtons" name="name" value={item.value}
@@ -170,4 +215,4 @@ const FAQ = () => {
     );
 };
 
-export default FAQ;
+export default AdminFAQ;
