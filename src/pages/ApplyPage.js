@@ -46,7 +46,7 @@ const ApplyPage = () => {
             <DatePicker selected={new Date(filter.date)} onChange={handleDateChange} />
             <br />
             <p>Selected filter: {filter.date}</p>
-            <button onClick={handleNextStep}>Next</button>
+            <button className="next-button" onClick={handleNextStep}>Next</button>
           </div>
         )}
         {step === 1 && (
@@ -81,10 +81,10 @@ const TermsAndConditions = ({ filter, onNextStep, onPreviousStep }) => {
       <h2>Terms and Conditions</h2>
       <p>Here are the terms and conditions. Please read and agree.</p>
       <p>Selected filter: {filter.date}</p>
-      <button onClick={handlePrevious}>Back</button>
-      <button onClick={handleAgree}>I Agree</button>
+      <button className="back-button" onClick={handlePrevious}>Back</button>
+      <button className="agree-button" onClick={handleAgree}>I Agree</button>
       {agreed && <p>You have agreed to the terms and conditions.</p>}
-      <button onClick={handleNext}>Next</button>
+      <button className="next-button" onClick={handleNext}>Next</button>
     </div>
   );
 };
@@ -118,10 +118,12 @@ const RefundPolicy = ({ filter, onNextStep, onPreviousStep }) => {
       <p>시간 당 5mm 이상 시 날짜 변경 가능</p>
       <p>(기준: 당일 이용 2시간 전 기상청 날씨 해당 주소지 기준)</p>
       <p>Selected filter: {filter.date}</p>
-      <button onClick={handlePrevious}>Back</button>
-      <button onClick={handleAgree}>I Agree</button>
-      {agreed && <p>You have agreed to the refund policy.</p>}
-      <button onClick={handleNext}>Next</button>
+      <div className="apply-button-groups">
+        <button className="back-button" onClick={handlePrevious}>Back</button>
+        <button className="agree-button" onClick={handleAgree}>I Agree</button>
+        {agreed && <p>You have agreed to the refund policy.</p>}
+        <button className="next-button" onClick={handleNext}>Next</button>
+      </div>
     </div>
   );
 };
@@ -136,7 +138,7 @@ const PaymentInfo = ({ filter, onReset }) => {
       <h2>Payment Information</h2>
       <p>Here is the payment information for the selected value.</p>
       <p>Selected filter: {filter.date}</p>
-      <button onClick={handleReset}>Complete Application</button>
+      <button className="complete-button" onClick={handleReset}>Complete Application</button>
     </div>
   );
 };

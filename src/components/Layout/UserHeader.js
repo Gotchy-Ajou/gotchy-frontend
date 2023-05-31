@@ -22,7 +22,7 @@ const UserHeader = () => {
             <NavLink href="/ApplyPage">가치 신청</NavLink>
           </NavItem>
           <NavItem>
-            <NavLink href="/RegisterPage">가치 모집 등록</NavLink>
+            <NavLink href="/Reserve">가치 모집 등록</NavLink>
           </NavItem>
         </Nav>
         {/* <NavbarText>

@@ -14,6 +14,7 @@ import Notice from "./pages/Notice/Notice";
 import FAQ from "./pages/FAQ/FAQ";
 import Filter from "./pages/Filter";
 import ApplyPage from './pages/ApplyPage';
+import Reserve from './pages/Reserve/ReservePage';
 
 // 관리자용 페이지
 import AdminFAQ from './pages/AdminFAQ/AdminFAQ';
@@ -33,7 +34,7 @@ const styles = {
     display: "flex",
   },
   contentMargin: {
-    marginTop: "100px",
+    marginTop: "30px",
     marginLeft: "10px",
     width: "100%",
   },
@@ -56,6 +57,7 @@ function App() {
               <Route path="/" element={<MainPage />} />
               <Route path="/Filter" element={<Filter />} />
               <Route path="/ApplyPage" element={<ApplyPage />} />
+              <Route path="/Reserve" element={<Reserve />} />
               <Route path="/Notice" element={<Notice />} />
               <Route path="/FAQ" element={<FAQ />} />
               {/* <Route path="/members" component={Members} />

@@ -2,7 +2,7 @@ import styled from "styled-components";
 import { useState, useEffect } from "react";
 // import Dummy from "../../dummy.json";
 
-const Reserve = () => {
+const ReservePage = () => {
   const today = new Date();
   const TODAY = `${today.getFullYear()}-${String(today.getMonth() + 1).padStart(
     2,
@@ -135,7 +135,7 @@ const Reserve = () => {
     </>
   );
 };
-export default Reserve;
+export default ReservePage;
 
 const InputContainer = styled.div`
   margin-top: 30px;
