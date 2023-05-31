@@ -13,10 +13,7 @@ import { MainPage } from './pages/Main/MainPage';
 import Notice from "./pages/Notice/Notice";
 import FAQ from "./pages/FAQ/FAQ";
 import Filter from "./pages/Filter";
-import Reserve from "./components/Reserve";
-import GuidePage from "./components/Guide";
-import Inquiry from "./components/Inquiry";
-import ApplyPage from "./pages/ApplyPage";
+import ApplyPage from './pages/ApplyPage';
 
 // 관리자용 페이지
 import AdminFAQ from './pages/AdminFAQ/AdminFAQ';
@@ -55,11 +52,15 @@ function App() {
         <div style={styles.contentDiv}>
           <UserSideNavigation></UserSideNavigation>
           <div style={styles.contentMargin}>
-          <Routes>
-            <Route path="/Filter" element={<Filter />} />
-            {/* <Route path="/members" component={Members} />
+            <Routes>
+              <Route path="/" element={<MainPage />} />
+              <Route path="/Filter" element={<Filter />} />
+              <Route path="/ApplyPage" element={<ApplyPage />} />
+              <Route path="/Notice" element={<Notice />} />
+              <Route path="/FAQ" element={<FAQ />} />
+              {/* <Route path="/members" component={Members} />
           <Route path="/cashes" component={Cashes} /> */}
-          </Routes>
+            </Routes>
           </div>
         </div>
       </Router >

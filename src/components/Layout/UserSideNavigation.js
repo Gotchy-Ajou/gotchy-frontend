@@ -61,7 +61,7 @@ const UserSideNavigation = () => {
                 <SubMenu title="마이 페이지" icon={<SlHeart />}>
                     <MenuItem icon={<SlUser />}>
                         나의 정보
-                        <Link to="/" />
+                        <Link to="/MyInformationPage" />
                     </MenuItem>
                     <MenuItem icon={<SlEmotsmile />}>
                         나의 레벨
