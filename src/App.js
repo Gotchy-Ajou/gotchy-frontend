@@ -83,7 +83,7 @@ function App() {
           <AdminSideNavigation></AdminSideNavigation>
           <div style={styles.contentMargin}>
             <Routes>
-              <Route path="/" element={<MainPage />} />
+              <Route path="/" element={<UserManage />} />
               <Route path="/AdminNotice" element={<AdminNotice />} />
               <Route path="/NoticeWrite" element={<NoticeWrite />} />
               <Route path="/NoticeUpdate/:postId" element={<NoticeUpdate />} />
@@ -171,7 +171,7 @@ export default App;
 //               {/* 관리자 페이지 */}
 //               {
 //                 (user_option == "1") ?
-//                   <Route path="/" element={<MainPage />} /> :
+//                   <Route path="/" element={<UserManage />} /> :
 //                   <Route path="/" element={<LoginPage />} />
 //               }
 //                {
