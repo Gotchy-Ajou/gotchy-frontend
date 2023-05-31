@@ -7,19 +7,19 @@ function NoticeUpdate() {
     const navigate = useNavigate();
 
     const [title, setTitle] = useState("");
-    const [context, setContext] = useState("");
+    const [content, setContent] = useState("");
 
     const param = useParams(); // 파라미터 가져오기
 
     useEffect(() => {
-        console.log(param.notice_id);
+        console.log(param.postId);
         const getNotice = async () => {
-            const { data } = await axios.post(`http://gotchy.site/NoticeList/${param.notice_id}`);
+            const { data } = await axios.post(`http://gotchy.site/NoticeList/${param.postId}`);
             return data;
         }
         getNotice().then((result) => {
             setTitle(result.title);
-            setContext(result.context);
+            setContent(result.content);
         });
     }, [])
 
@@ -28,17 +28,18 @@ function NoticeUpdate() {
         setTitle(e.target.value);
     }
 
-    const changeContext = (e) => {
+    const changeContent = (e) => {
         e.preventDefault();
-        setContext(e.target.value);
+        setContent(e.target.value);
     }
 
+    /* 공지사항 업데이트 */
     const updateNotice = async (e) => {
         e.preventDefault();
         let formData = new FormData();
-        formData.append("notice_id", param.notice_id);
+        formData.append("postId", param.postId);
         formData.append("title", title);
-        formData.append("context", context);
+        formData.append("content", content);
 
         axios.post("http://gotchy.site/NoticeList/update", formData, {
             headers: {
@@ -78,7 +79,7 @@ function NoticeUpdate() {
                                 <tr>
                                     <th class="Write_header">내용</th>
                                     <td class="Write_input_container">
-                                        <textarea class="Write_input" value={context} onChange={changeContext} rows="10"></textarea>
+                                        <textarea class="Write_input" value={content} onChange={changeContent} rows="10"></textarea>
                                     </td>
                                 </tr>
 

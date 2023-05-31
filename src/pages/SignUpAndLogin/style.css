@@ -171,7 +171,7 @@
 
 .signupClose{
     position: absolute;
-    top: 14%;
+    top: 8%;
     left: 75%;
     transform: translate(-50%, -50%);
     font-size: 30px;
@@ -183,11 +183,11 @@
 }
 
 .signup{
-    top: 70px;
+    top: 20px;
     width: 800px;
     position: absolute;
     margin-top: 10px;
-    padding-top: 35px;
+    padding-top: 20px;
     z-index: 2;
     border : 2px solid #fffafa;
     border-radius: 20px;
@@ -208,7 +208,7 @@
     margin-left: 100px;
     padding-bottom: 20px;
     width: 600px;
-    height: 100px;
+    height: 70px;
     border: none;
     border-radius: 20px;
 }
@@ -228,7 +228,7 @@
 .signup .box.nickname .sidBox div{
     margin-top: 12px;
     padding-top : 15px;
-    height: 40px;
+    height: 30px;
     width:120px;
     border-radius: 7px;
     color: white;
@@ -236,35 +236,37 @@
 }
 .signup .box .name{
     text-align: left;
-    font-size: 20px;
+    font-size: 15px;
     color: #460057;
 }
 .signup .box.last{
-  margin-bottom: 20px;
+  margin-bottom: 10px;
 }
-.signup .box input{
+.signup .box input,
+.signup .box select{
     position:relative;
     left: 0px;
-    top: 10px;
-    height: 50px;
+    top: 5px;
+    height: 35px;
     width: 600px;
     border: 2px solid #e8bcf0;
     border-radius: 5px;
-    font-size: 20px;
+    font-size: 14px;
     border-radius: 12px;
 }
 .signup .loginButton{
 
-    height: 80px;
+    height: 50px;
     width: 600px;
     text-align: center;
+    vertical-align: middle;
     color: #a000c8;
-    padding-top: 15px;
-    font-size: 30px;
+    padding-top: 10px;
+    font-size: 20px;
     background-color: white;
     border-radius: 12px;
     margin: 0 auto;
-    margin-bottom: 50px;
+    margin-bottom: 20px;
     margin-top: 20px;
 
 }

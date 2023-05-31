@@ -19,12 +19,12 @@ const AdminHeader = () => {
             <NavLink href="/UserManage">회원 관리</NavLink>
           </NavItem>
           <NavItem>
+            <NavLink href="/UserStatistic">회원 통계</NavLink>
+          </NavItem>
+          <NavItem>
             <NavLink href="/PartnerManage">제휴업체 관리</NavLink>
           </NavItem>
         </Nav>
-        {/* <NavbarText>
-            <NavLink href="/InquiryPage">로그아웃</NavLink>
-        </NavbarText> */}
       </Navbar>
     </div>
   );

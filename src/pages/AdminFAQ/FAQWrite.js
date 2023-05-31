@@ -9,18 +9,18 @@ function FAQWrite() {
 
     const navigate = useNavigate();
 
-    const [title, setTitle] = useState("");
-    const [context, setContext] = useState("");
+    const [question, setQuestion] = useState("");
+    const [answer, setAnswer] = useState("");
     const [category, setCategory] = useState("");
 
-    const changeTitle = (e) => {
+    const changeQuestion = (e) => {
         e.preventDefault();
-        setTitle(e.target.value);
+        setQuestion(e.target.value);
     }
 
-    const changeContext = (e) => {
+    const changeAnswer = (e) => {
         e.preventDefault();
-        setContext(e.target.value);
+        setAnswer(e.target.value);
     }
 
     const changeCategory = (e) => {
@@ -32,9 +32,9 @@ function FAQWrite() {
     const createFAQ = async (e) => {
         e.preventDefault();
         let formData = new FormData();
-        formData.append("title", title);
-        formData.append("context", context);
-
+        formData.append("question", question);
+        formData.append("answer", answer);
+        formData.append("category", category);
 
         axios.post("http://gotchy.site/FAQList/create", formData, {
             headers: {
@@ -44,7 +44,7 @@ function FAQWrite() {
             .then((resp) => {
                 console.log("[FAQWrite.js] createFAQ() success :D");
                 console.log(resp.data);
-                alert("새로운 공지사항을 성공적으로 등록했습니다 :D");
+                alert("새로운 FAQ를 성공적으로 등록했습니다 :D");
                 navigate("/AdminFAQ"); // FAQ 목록 페이지로 이동
             })
             .catch((err) => {
@@ -83,16 +83,16 @@ function FAQWrite() {
                                 </tr>
 
                                 <tr>
-                                    <th class="Write_header">제목</th>
+                                    <th class="Write_header">질문</th>
                                     <td class="Write_input_container">
-                                        <input class="Write_input" type="text" value={title} onChange={changeTitle} size="50px" />
+                                        <input class="Write_input" type="text" value={question} onChange={changeQuestion} size="50px" />
                                     </td>
                                 </tr>
 
                                 <tr>
-                                    <th class="Write_header">내용</th>
+                                    <th class="Write_header">답변</th>
                                     <td class="Write_input_container">
-                                        <textarea class="Write_input" value={context} onChange={changeContext} rows="10"></textarea>
+                                        <textarea class="Write_input" value={answer} onChange={changeAnswer} rows="10"></textarea>
                                     </td>
                                 </tr>
 

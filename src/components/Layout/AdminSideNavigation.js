@@ -3,7 +3,7 @@ import { useNavigate } from 'react-router-dom';
 import { Link } from 'react-router-dom';
 import { useSelector, useDispatch } from 'react-redux';
 import { setUserId, setUserName, setUserOption } from '../../redux/action';
-import { SlMenu, SlUser, SlEmotsmile, SlBell, SlHeart, SlEarphonesAlt, SlBubble, SlLogout } from "react-icons/sl";
+import { SlMenu, SlBell, SlEarphonesAlt, SlBubble, SlLogout } from "react-icons/sl";
 import {
     Menu,
     MenuItem,

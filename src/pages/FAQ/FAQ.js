@@ -24,36 +24,42 @@ export const tempCategories = [
 
 const tempList = [
     {
+        faqId: 1,
         category: "category1",
         question: "what is that ? 1",
         answer: "this is react. 1",
         show: false
     },
     {
+        faqId: 2,
         category: "category2",
         question: "what is that ? 2",
         answer: "this is react. 2",
         show: false
     },
     {
+        faqId: 3,
         category: "category3",
         question: "what is that ? 3",
         answer: "this is react. 3",
         show: false
     },
     {
+        faqId: 4,
         category: "category1",
         question: "what is that ? 4",
         answer: "this is react. 4",
         show: false
     },
     {
+        faqId: 5,
         category: "category2",
         question: "what is that ? 5",
         answer: "this is react. 5",
         show: false
     },
     {
+        faqId: 6,
         category: "category3",
         question: "what is that ? 6",
         answer: "this is react. 6",
@@ -70,7 +76,7 @@ const FAQ = () => {
      const [cardOnOff, setCardOnOff] = useState(tempList);
      const [showList, setShowList] = useState(tempList);
      const [category, setCatecory] = useState("all");
-     showList.sort((a, b) => b.id - a.id); // id순 정렬 (생성 날짜순으로 id 생성되므로 내림차순)
+    //  showList.sort((a, b) => b.faqId - a.faqId); // id순 정렬 (생성 날짜순으로 id 생성되므로 내림차순)
  
      /* [POST / notice]: FAQ 목록 가져오기 */
      const loadNoticeList = async () => {

@@ -26,42 +26,42 @@ export const tempCategories = [
 
 const tempList = [
     {
-        id: 1,
+        faqId: 1,
         category: "category1",
         question: "what is that ? 1",
         answer: "this is react. 1",
         show: false
     },
     {
-        id: 2,
+        faqId: 2,
         category: "category2",
         question: "what is that ? 2",
         answer: "this is react. 2",
         show: false
     },
     {
-        id: 3,
+        faqId: 3,
         category: "category3",
         question: "what is that ? 3",
         answer: "this is react. 3",
         show: false
     },
     {
-        id: 4,
+        faqId: 4,
         category: "category1",
         question: "what is that ? 4",
         answer: "this is react. 4",
         show: false
     },
     {
-        id: 5,
+        faqId: 5,
         category: "category2",
         question: "what is that ? 5",
         answer: "this is react. 5",
         show: false
     },
     {
-        id: 6,
+        faqId: 6,
         category: "category3",
         question: "what is that ? 6",
         answer: "this is react. 6",
@@ -71,14 +71,14 @@ const tempList = [
 
 const AdminFAQ = () => {
     const [FAQ, setFAQ] = useState({
-        id: 0,
-        category_type: "",
+        faqId: 0,
+        category: "",
         question: "",
         answer: "",
         show: false
     });
 
-    const { id, category_type, question, answer, show } = FAQ;
+    const { faqId, category, question, answer, show } = FAQ;
 
     // DB에 저장되어 있는 FAQ 및 카테고리 리스트 가져오기 위한 변수
     const [FAQList, setFAQList] = useState([]);
@@ -90,8 +90,8 @@ const AdminFAQ = () => {
     // 우선 더미데이터로 들어감 => 백이랑 연동 후, tempList => noticeList
     const [cardOnOff, setCardOnOff] = useState(tempList);
     const [showList, setShowList] = useState(tempList);
-    const [category, setCatecory] = useState("all");
-    showList.sort((a, b) => b.id - a.id); // id순 정렬 (생성 날짜순으로 id 생성되므로 내림차순)
+    const [categoryType, setCategoryType] = useState("all");
+    // showList.sort((a, b) => b.faqId - a.faqId); // id순 정렬 (생성 날짜순으로 id 생성되므로 내림차순)
 
     /* [POST / notice]: FAQ 목록 가져오기 */
     const loadNoticeList = async () => {
@@ -131,8 +131,8 @@ const AdminFAQ = () => {
     }, []);
 
     /* FAQ 항목 삭제하기 */
-    const deleteFAQ = (productId) => {
-        axios.delete(`http://gotchy.site/FAQList/${id}`)
+    const deleteFAQ = (faqId) => {
+        axios.delete(`http://gotchy.site/FAQList/${faqId}`)
             .then((result) => {
                 loadNoticeList();
             })
@@ -170,10 +170,10 @@ const AdminFAQ = () => {
                                 "선택한 FAQ 항목을 정말 삭제하시겠습니까?"
                             )
                             if (confirmBox === true) {
-                                deleteFAQ(item.id)
+                                deleteFAQ(item.faqId)
                             }
                         }}>삭제</button>
-                        <button className="FAQ-update-button" >수정</button>
+                        <Link className="notice-update-button" to={{ pathname: `/FAQUpdate/${item.faqId}` }}>수정</Link>
                     </div>
                 </div>
             </div>
@@ -183,15 +183,15 @@ const AdminFAQ = () => {
     useEffect(() => {
         setShowList(
             tempList.filter((item) => {
-                if (category === "all") return true;
-                if (category === item.category) return true;
+                if (categoryType === "all") return true;
+                if (categoryType === item.category) return true;
                 return false;
             })
         );
-    }, [category]);
+    }, [categoryType]);
 
     const categoryClickEvent = e => {
-        setCatecory(e.target.value);
+        setCategoryType(e.target.value);
     }
 
     return (

@@ -9,16 +9,16 @@ function NoticeWrite() {
     const navigate = useNavigate();
 
     const [title, setTitle] = useState("");
-    const [context, setContext] = useState("");
+    const [content, setContent] = useState("");
 
     const changeTitle = (e) => {
         e.preventDefault();
         setTitle(e.target.value);
     }
 
-    const changeContext = (e) => {
+    const changeContent = (e) => {
         e.preventDefault();
-        setContext(e.target.value);
+        setContent(e.target.value);
     }
 
     /* 공지사항 작성 */
@@ -26,7 +26,7 @@ function NoticeWrite() {
         e.preventDefault();
         let formData = new FormData();
         formData.append("title", title);
-        formData.append("context", context);
+        formData.append("content", content);
 
 
         axios.post("http://gotchy.site/NoticeList/create", formData, {
@@ -68,7 +68,7 @@ function NoticeWrite() {
                                 <tr>
                                     <th class="Write_header">내용</th>
                                     <td class="Write_input_container">
-                                        <textarea class="Write_input" value={context} onChange={changeContext} rows="10"></textarea>
+                                        <textarea class="Write_input" value={content} onChange={changeContent} rows="10"></textarea>
                                     </td>
                                 </tr>
 
