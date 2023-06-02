@@ -6,6 +6,8 @@ import Header from "./components/Layout/Header";
 import Sidebar from "./components/Layout/Sidebar";
 import "./assets/font.css"
 
+import MyPage from './pages/MyPage/MyPage';
+
 import { LoginPage } from './pages/SignUpAndLogin/LoginPage';
 import { MainPage } from './pages/Main/MainPage';
 
@@ -91,6 +93,8 @@ function App() {
             <Routes>
               <Route path="/" element={<UserManage />} />
               <Route path="/AdminNotice" element={<AdminNotice />} />
+              <Route path="/ApplyPage" element={<ApplyPage />} />
+              <Route path="/MyPage" element={<MyPage />} />
               <Route path="/NoticeWrite" element={<NoticeWrite />} />
               <Route path="/NoticeUpdate/:postId" element={<NoticeUpdate />} />
               <Route path="/AdminFAQ" element={<AdminFAQ />} />
