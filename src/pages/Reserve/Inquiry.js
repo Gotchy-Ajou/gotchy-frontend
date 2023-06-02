@@ -163,7 +163,7 @@ const Inquiry = () => {
             <div>취미 </div>
             <div>성별 </div>
             <div>레벨 </div>
-            <div>개인 보집 여부 </div>
+            <div>개인 모집 여부 </div>
           </ListContainer>
           <Hr />
           <DataListContainer>

@@ -27,6 +27,12 @@ import UserManage from './pages/AdminManage/UserManage';
 import PartnerManage from './pages/AdminManage/PartnerManage';
 import UserStatistic from './pages/AdminManage/UserStatistic';
 
+// reserve
+import Guide from "./pages/Reserve/Guide";
+import Inquiry from "./pages/Reserve/Inquiry";
+import ReservePage from "./pages/Reserve/ReservePage";
+import SelectDiv from "./pages/Reserve/SelectDiv";
+
 // 임시, 삭제할 예정
 import UserHeader from './components/Layout/UserHeader';
 import UserSideNavigation from './components/Layout/UserSideNavigation';
