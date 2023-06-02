@@ -1,6 +1,6 @@
 import styled from "styled-components";
 import { useState, useEffect } from "react";
-// import Dummy from "../../dummy.json";
+import axios from "axios";
 
 const ReservePage = () => {
   const today = new Date();
@@ -58,6 +58,23 @@ const ReservePage = () => {
     createdDate: TODAY,
     date: TODAY,
   });
+
+  // const requestInput = async (e) => {
+  //   e.preventDefault();
+  //
+  //   axios.get("", {
+  //     headers: {
+  //       "Content-Type": "multipart/form-data",
+  //     }
+  //   })
+  //     .then((resp) => {
+  //
+  //     })
+  //     .catch((err) => {
+  //
+  //       console.log(err);
+  //     });
+  // }
 
   const onChangeData = ({ props, e }) => {
     setData({ ...data, [props]: e.target.value });
@@ -138,17 +155,20 @@ export default ReservePage;
 
 const InputContainer = styled.div`
   margin-top: 50px;
-  width: 60%;
-  height: 80%;
+  /* width: 60%; */
+  /* height: 500px; */
   border: 2px solid #8f23c0;
   border-radius: 15px;
-  padding: 30px;
+  padding: 35px;
+
   > div {
     width: 100%;
     display: flex;
     justify-content: center;
+
     > button {
       margin-top: 50px;
+      margin-bottom: 30px;
       width: 250px;
       height: 50px;
       background-color: #8f23c0;
@@ -163,10 +183,10 @@ const InputContainer = styled.div`
       color: #fff;
     }
   }
-  > input,
-  > select {
+  > select,
+  > input {
     border: 2px solid #888;
-    width: 400px;
+    width: 350px;
     height: 7%;
     border-radius: 5px;
     padding-left: 10px;
@@ -174,12 +194,18 @@ const InputContainer = styled.div`
     display: flex;
   }
   > select {
-    width: 414px;
+    border: 2px solid #888;
+    width: 350px;
+    height: 7%;
+    border-radius: 5px;
+    padding-left: 10px;
+    margin-bottom: 15px;
+    display: flex;
   }
 `;
 
 const MainDiv = styled.div`
-  height: 100vh;
+  height: 1000px;
   display: flex;
   text-decoration: underline #a000c8;
   text-underline-position: under;
@@ -194,5 +220,4 @@ const MainDiv = styled.div`
   > h1 {
     margin: 0;
   }
-  
 `;
