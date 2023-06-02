@@ -1,7 +1,7 @@
 import styled from "styled-components";
 import React, { useState, useEffect } from "react";
-import SelectDiv from "../SelectDiv";
-import Dummy from "../../dummy.json";
+import SelectDiv from "./SelectDiv";
+import Dummy from "../dummy.json";
 
 const Inquiry = () => {
   const today = new Date();

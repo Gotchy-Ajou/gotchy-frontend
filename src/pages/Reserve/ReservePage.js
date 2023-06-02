@@ -2,7 +2,7 @@ import styled from "styled-components";
 import { useState, useEffect } from "react";
 // import Dummy from "../../dummy.json";
 
-const Reserve = () => {
+const ReservePage = () => {
   const today = new Date();
   const TODAY = `${today.getFullYear()}-${String(today.getMonth() + 1).padStart(
     2,
@@ -66,8 +66,7 @@ const Reserve = () => {
   return (
     <>
       <MainDiv>
-        <h1>모집 등록</h1>
-        <hr />
+        <h1>가치 모집 등록</h1>
         <InputContainer>
           <select
             onChange={(e) => onChangeData({ props: "gotchyHobby", e: e })}
@@ -127,7 +126,7 @@ const Reserve = () => {
                 }
               }}
             >
-              가치 모집 등록
+              등록하기
             </button>
           </div>
         </InputContainer>
@@ -135,10 +134,10 @@ const Reserve = () => {
     </>
   );
 };
-export default Reserve;
+export default ReservePage;
 
 const InputContainer = styled.div`
-  margin-top: 30px;
+  margin-top: 50px;
   width: 60%;
   height: 80%;
   border: 2px solid #8f23c0;
@@ -147,9 +146,9 @@ const InputContainer = styled.div`
   > div {
     width: 100%;
     display: flex;
-    justify-content: flex-end;
+    justify-content: center;
     > button {
-      margin-top: 20px;
+      margin-top: 50px;
       width: 250px;
       height: 50px;
       background-color: #8f23c0;
@@ -158,6 +157,10 @@ const InputContainer = styled.div`
       border: none;
       border-radius: 10px;
       cursor: pointer;
+    }
+    button:hover {
+      background-color: #b100cd;
+      color: #fff;
     }
   }
   > input,
@@ -177,8 +180,11 @@ const InputContainer = styled.div`
 
 const MainDiv = styled.div`
   height: 100vh;
-  padding-top: 100px;
   display: flex;
+  text-decoration: underline #a000c8;
+  text-underline-position: under;
+  text-underline-offset: 8px;
+  padding: 0.5em;
   flex-direction: column;
   align-items: center;
 
@@ -188,10 +194,5 @@ const MainDiv = styled.div`
   > h1 {
     margin: 0;
   }
-  > hr {
-    background-color: #8f23c0;
-    border: none;
-    width: 150px;
-    height: 4px;
-  }
+  
 `;

@@ -1,8 +1,8 @@
-import UserHeader from "./UserHeader";
-import AdminHeader from "./AdminHeader";
+import UserSideNavigation from "./UserSideNavigation";
+import AdminSideNavigation from "./AdminSideNavigation";
 import { useSelector } from 'react-redux';
 
-  function Header() {
+  function Sidebar() {
 
     const user_option = useSelector((state => state.user_option))
 
@@ -12,13 +12,13 @@ import { useSelector } from 'react-redux';
         {
             (user_option == 1)
             ?
-            <UserHeader/>
+            <UserSideNavigation/>
             :
             null
         }
         {
             (user_option == 2)?
-            <AdminHeader/>
+            <AdminSideNavigation/>
             :
             null
         }
@@ -26,4 +26,4 @@ import { useSelector } from 'react-redux';
     );
   }
 
-  export default Header;
+  export default Sidebar;

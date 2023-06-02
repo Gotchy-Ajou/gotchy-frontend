@@ -1,7 +1,7 @@
 import styled from "styled-components";
 import { useRef } from "react";
 
-const GuidePage = () => {
+const Guide = () => {
   const agree = useRef();
   return (
     <>
@@ -57,7 +57,7 @@ const GuidePage = () => {
     </>
   );
 };
-export default GuidePage;
+export default Guide;
 
 const Container = styled.div`
   margin-top: 30px;

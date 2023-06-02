@@ -1,6 +1,7 @@
-import React, { useEffect, useState } from "react";
+import React, { useParams, useEffect, useState } from "react";
 import axios from "axios";
-import "./Notice.css";
+import { Link, useNavigate } from "react-router-dom";
+import "../Notice/Notice.css";
 
 const tempList = [
     {
@@ -23,9 +24,21 @@ const tempList = [
     }
 ];
 
-const Notice = () => {
+const AdminNotice = () => {
+    const [notice, setNotice] = useState({
+        postId: 0,
+        title: "",
+        content: "",
+        createdDate: ""
+    });
+
+    const { postId, title, content, createdDate } = notice;
+
     // DB에 저장되어 있는 공지사항 리스트 가져오기 위한 변수
     const [noticeList, setNoticeList] = useState([]);
+
+    // Link 용 (함수) 
+    let navigate = useNavigate();
 
     // 우선 더미데이터로 들어감 => 백이랑 연동 후, tempList => noticeList
     const [cardOnOff, setCardOnOff] = useState(tempList);
@@ -51,6 +64,17 @@ const Notice = () => {
         loadNoticeList();
     }, []);
 
+    /* 공지사항 항목 삭제하기 */
+    const deleteNotice = (postId) => {
+        axios.delete(`http://gotchy.site/NoticeList/${postId}`)
+            .then((result) => {
+                loadNoticeList();
+            })
+            .catch(() => {
+                alert('오류가 발생했습니다!');
+            });
+    };
+
     const getQnACard = (item, index) => {
         return (
             <div className="notice-card" key={index}>
@@ -73,6 +97,17 @@ const Notice = () => {
                     }
                 >
                     <span className="notice-card-context">{item.content}</span>
+                    <div className="notice-buttons">
+                        <button className="notice-delete-button" onClick={() => {
+                            const confirmBox = window.confirm(
+                                "선택한 공지사항 항목을 정말 삭제하시겠습니까?"
+                            )
+                            if (confirmBox === true) {
+                                deleteNotice(item.postId)
+                            }
+                        }}>삭제</button>
+                        <Link className="notice-update-button" to={{ pathname: `/NoticeUpdate/${item.postId}` }}>수정</Link>
+                    </div>
                 </div>
             </div>
         );
@@ -84,7 +119,10 @@ const Notice = () => {
 
     return (
         <div className="notice-title-parent">
-            <div className="notice-title">공지사항</div>
+            <div className="notice-title">공지사항 관리</div>
+            <div className="notice-write">
+                <Link className="notice-write-button" to="/NoticeWrite">공지사항 등록</Link>
+            </div>
 
             <div className="notice-parent">
                 <div className="notice-list">
@@ -95,4 +133,4 @@ const Notice = () => {
     );
 };
 
-export default Notice;
+export default AdminNotice;
