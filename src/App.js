@@ -14,7 +14,7 @@ import { MainPage } from './pages/Main/MainPage';
 // 회원용 페이지
 import Notice from "./pages/Notice/Notice";
 import FAQ from "./pages/FAQ/FAQ";
-import Filter from "./pages/Filter";
+//import Filter from "./pages/Filter";
 import ApplyPage from './pages/ApplyPage';
 import Reserve from './pages/Reserve/ReservePage';
 
