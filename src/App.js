@@ -7,19 +7,18 @@ import CommonHeader from './components/Layout/CommonHeader';
 import Sidebar from "./components/Layout/Sidebar";
 import "./assets/font.css"
 
-import MyPage from './pages/MyPage/MyPage';
-
-import { LoginPage } from './pages/SignUpAndLogin/LoginPage';
-import { MainPage } from './pages/Main/MainPage';
-
 // 일반 페이지
+import { LoginPage } from './pages/SignUpAndLogin/LoginPage';
 import PartnerGuidePage from './pages/AdminGuide/PartnerGuidePage';
 
 // 회원용 페이지
 import Notice from "./pages/Notice/Notice";
 import FAQ from "./pages/FAQ/FAQ";
-//import Filter from "./pages/Filter";
 import ApplyPage from './pages/ApplyPage';
+import Inquiry from "./pages/Reserve/Inquiry";
+import ReservePage from "./pages/Reserve/ReservePage";
+import MyInfo from './pages/MyPage/MyInfo';
+import MyHobby from './pages/MyPage/MyHobby';
 
 // 관리자용 페이지
 import AdminNotice from './pages/AdminNotice/AdminNotice';
@@ -34,8 +33,6 @@ import UserStatistic from './pages/AdminManage/UserStatistic';
 
 // reserve
 import Guide from "./pages/Reserve/Guide";
-import Inquiry from "./pages/Reserve/Inquiry";
-import ReservePage from "./pages/Reserve/ReservePage";
 import SelectDiv from "./pages/Reserve/SelectDiv";
 
 // 임시, 삭제할 예정
@@ -69,14 +66,15 @@ function App() {
         <UserSideNavigation></UserSideNavigation>
         <div style={styles.contentMargin}>
           <Routes>
-            <Route path="/" element={<MainPage />} />
+            <Route path="/" element={<Inquiry />} />
             <Route path="/Inquiry" element={<Inquiry />} />
             <Route path="/ApplyPage" element={<ApplyPage />} />
             <Route path="/ReservePage" element={<ReservePage />} />
             <Route path="/Guide" element={<Guide />} />
             <Route path="/Notice" element={<Notice />} />
             <Route path="/FAQ" element={<FAQ />} />
-            <Route path="/MyPage" element={<MyPage />} />
+            <Route path="/MyInfo" element={<MyInfo />} />
+            <Route path="/MyHobby" element={<MyHobby />} />
 
           </Routes>
         </div>
@@ -152,13 +150,13 @@ function App() {
 //               회원 페이지
 //               {
 //                 (user_option == "1") ?
-//                   <Route path="/" element={<MainPage />} /> :
+//                   <Route path="/" element={<Inquiry />} /> :
 //                   <Route path="/" element={<LoginPage />} />
 //               }
 //               {
 //                 (user_option == "1") ?
-//                   <Route path="/Filter" element={<Filter />} /> :
-//                   <Route path="/Filter" element={<LoginPage />} />
+//                   <Route path="/Inquiry" element={<Inquiry />} /> :
+//                   <Route path="/Inquiry" element={<LoginPage />} />
 //               }
 //               {
 //                 (user_option == "1") ?
@@ -167,8 +165,8 @@ function App() {
 //               }
 //               {
 //                 (user_option == "1") ?
-//                   <Route path="/Reserve" element={<Reserve />} /> :
-//                   <Route path="/Reserve" element={<LoginPage />} />
+//                   <Route path="/ReservePage" element={<ReservePage />} /> :
+//                   <Route path="/ReservePage" element={<LoginPage />} />
 //               }
 //               {
 //                 (user_option == "1") ?
@@ -179,6 +177,16 @@ function App() {
 //                 (user_option == "1") ?
 //                   <Route path="/FAQ" element={<FAQ />} /> :
 //                   <Route path="/FAQ" element={<LoginPage />} />
+//               }
+//               {
+//                 (user_option == "1") ?
+//                   <Route path="/MyInfo" element={<MyInfo />} /> :
+//                   <Route path="/MyInfo" element={<LoginPage />} />
+//               }
+//               {
+//                 (user_option == "1") ?
+//                   <Route path="/MyHobby" element={<MyHobby />} /> :
+//                   <Route path="/MyHobby" element={<LoginPage />} />
 //               }
 
 //               관리자 페이지
@@ -191,6 +199,11 @@ function App() {
 //                 (user_option == "2") ?
 //                   <Route path="/UserManage" element={<UserManage />} /> :
 //                   <Route path="/UserManage" element={<LoginPage />} />
+//               }
+//               {
+//                 (user_option == "2") ?
+//                   <Route path="/UserStatistic" element={<UserStatistic />} /> :
+//                   <Route path="/UserStatistic" element={<LoginPage />} />
 //               }
 //               {
 //                 (user_option == "2") ?

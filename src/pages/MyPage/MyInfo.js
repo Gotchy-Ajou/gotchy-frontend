@@ -1,9 +1,9 @@
 import React, { useState } from 'react';
-import './MyPage.css';
+import './MyInfo.css';
 import 'react-datepicker/dist/react-datepicker.css';
 import { Axios } from 'axios';
 
-const MyPage = () => {
+const MyInfo = () => {
     const [userInfo, setUserInfo] = useState({
         name: '',
         age: '',
@@ -77,37 +77,37 @@ const MyPage = () => {
     return (
         <div>
             <h1>My Page</h1>
-            <form onSubmit={handleSubmit}>
+            <form class="myPage-form" onSubmit={handleSubmit}>
                 <label>
                     Name:
-                    <input type="text" name="name" value={name} onChange={handleChange} />
+                    <input class="myPage-input" type="text" name="name" value={name} onChange={handleChange} />
                 </label>
                 <label>
                     Age:
-                    <input type="text" name="age" value={age} onChange={handleChange} />
+                    <input class="myPage-input" type="text" name="age" value={age} onChange={handleChange} />
                 </label>
                 <label>
                     Region:
-                    <input type="text" name="region" value={region} onChange={handleChange} />
+                    <input class="myPage-input" type="text" name="region" value={region} onChange={handleChange} />
                 </label>
                 <div>
                     Hobbies:
                     <label htmlFor="Hobby1">Hobby1</label>
-                    <input type="checkbox" id="Hobby1" name="Hobby1" onChange={handleCheckboxChange} />
+                    <input class="myPage-input" type="checkbox" id="Hobby1" name="Hobby1" onChange={handleCheckboxChange} />
                     <label htmlFor="Hobby2">Hobby2</label>
-                    <input type="checkbox" id="Hobby2" name="Hobby2" onChange={handleCheckboxChange} />
+                    <input class="myPage-input" type="checkbox" id="Hobby2" name="Hobby2" onChange={handleCheckboxChange} />
                     <label htmlFor="Hobby3">Hobby3</label>
-                    <input type="checkbox" id="Hobby3" name="Hobby3" onChange={handleCheckboxChange} />
+                    <input class="myPage-input" type="checkbox" id="Hobby3" name="Hobby3" onChange={handleCheckboxChange} />
                 </div>
                 <label>
                     Upload your photo:
-                    <input type="file" onChange={handleFileChange} />
+                    <input class="myPage-input" type="file" onChange={handleFileChange} />
                 </label>
                 {preview && <img src={preview} alt="Preview" className="preview" />}
-                <button type="submit">Update</button>
+                <button class="myPage-button" type="submit">Update</button>
             </form>
         </div>
     );
 };
 
-export default MyPage;
+export default MyInfo;

@@ -1,0 +1,48 @@
+.add-modal-title,
+.edit-modal-title {
+    color: #73685d;
+    font-weight: bold;
+}
+
+.hobby-label {
+    color: #3c0149;
+    float: left;
+    padding: 5px;
+    font-size: 18px;
+    margin-top: 15px;
+}
+
+.hobby-form-item input {
+    width: 90%;
+    height: 50px;
+    padding: 5px;
+    font-size: 16px;
+    border: 1px solid #dadce0;
+    color: #73685d;
+    border-radius: 10px;
+    text-align: center;
+}
+
+button.hobby-form-add {
+    background: white;
+    color: black;
+    padding: 0.5rem 1rem;
+    margin: 20px;
+    font-size: 18px;
+    font-weight: bold;
+    text-align: center;
+    text-decoration: none;
+
+    border: none;
+    border-radius: 20px;
+
+    box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1), 0 2px 4px -1px rgba(0, 0, 0, 0.06);
+    cursor: pointer;
+    transition: 0.5s;
+}
+
+button.hobby-form-add:hover{
+    cursor: pointer;
+    background-color: #a000c8;
+    color:white;
+}

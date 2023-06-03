@@ -19,6 +19,7 @@
 .guide-context {
     margin: 10px;
     font-size: 22px;
+    color: #460057;
 }
 
 .guide-tel-box {
@@ -32,4 +33,5 @@
 
 .guide-gotchy {
     color: #a000c8;
+    font-weight: bold;
 }

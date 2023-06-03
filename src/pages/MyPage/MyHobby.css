@@ -1,0 +1,116 @@
+.hobby-title {
+    display: flex;
+    text-decoration: underline #a000c8;
+    text-underline-position: under;
+    text-underline-offset: 5px;
+    padding: 0.5em;
+    font-size: 35px;
+    font-weight: bold;
+    align-items: center;
+    text-align: center;
+    justify-content: center;
+    color: black;
+}
+
+section.hobbySection {
+    margin-top: 10px;
+    margin-left: 5%;
+    padding: 10px;
+    border-radius: 20px;
+    width: 90%
+}
+
+/* 버튼 css */
+button.hobby-add-button {
+    display: inline-block;
+    width: auto;
+    cursor: pointer;
+    margin-bottom: 15px;
+    padding: 0.5rem 1rem;
+
+    background-color: #e8bcf0;
+    color: #a000c8;
+    box-shadow: 0 9px 10px rgba(158, 55, 163, 0.3);
+    border-radius: 10px;
+    border: none;
+    transition: 0.5s;
+
+    font-size: .9em;
+    font-weight: bold;
+    text-align: center;
+    text-decoration: none;
+}
+
+button.hobby-delete-button {
+    display: inline-block;
+    width: auto;
+    cursor: pointer;
+    padding: 0.5rem 1rem;
+
+    background-color: brown;
+    color: white;
+    border-radius: 10px;
+    border: none;
+    transition: 0.5s;
+
+    font-size: .9em;
+    font-weight: bold;
+    text-align: center;
+    text-decoration: none;
+}
+
+button.hobby-edit-button {
+    display: inline-block;
+    width: auto;
+    cursor: pointer;
+    padding: 0.5rem 1rem;
+
+    background-color: #12B560;
+    color: white;
+    border-radius: 10px;
+    border: none;
+    transition: 0.5s;
+
+    font-size: .9em;
+    font-weight: bold;
+    text-align: center;
+    text-decoration: none;
+}
+
+/* 목록 테이블 css */
+table.hobbyList {
+    margin-top: 20px;
+    border: 1px #a39485 solid;
+    font-size: .9em;
+    box-shadow: 0 2px 5px rgba(0, 0, 0, .25);
+    width: 100%;
+    border-collapse: collapse;
+    border-radius: 20px;
+    overflow: hidden;
+}
+
+th.hobbyList {
+    text-align: center;
+    color: #73685d;
+    font-size: 18px;
+}
+
+thead.hobbyList {
+    background-color: white;
+    font-size: 30px;
+    margin-top: 30px;
+    border-color: white;
+}
+
+td.hobbyList,
+th.hobbyList {
+    padding: 1em .5em;
+    vertical-align: middle;
+    text-align: center;
+}
+
+td.hobbyList {
+    border-bottom: 1px solid rgba(0, 0, 0, .1);
+    background: #fff;
+    color: black;
+}

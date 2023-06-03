@@ -3,7 +3,7 @@ body {
     color: #a000c8;
 }
 
-form {
+form.myPage-form {
     display: flex;
     flex-direction: column;
     gap: 20px;
@@ -15,7 +15,7 @@ form {
     background-color: white;
 }
 
-input[type="text"] {
+input.myPage-input[type="text"] {
     padding: 10px;
     border: 1px solid #a000c8;
     border-radius: 5px;
@@ -23,7 +23,7 @@ input[type="text"] {
     background-color: #f0f0f0;
 }
 
-input[type="file"] {
+input.myPage-input[type="file"] {
     padding: 10px;
     border: 1px solid #a000c8;
     border-radius: 5px;
@@ -32,11 +32,11 @@ input[type="file"] {
 }
 
 
-input[type="checkbox"] {
+input.myPage-input[type="checkbox"] {
     margin-right: 5px;
 }
 
-button {
+button.myPage-button {
     padding: 10px;
     border: none;
     border-radius: 5px;
