@@ -2,8 +2,12 @@ import React, { useState } from 'react';
 import './ApplyPage.css';
 import DatePicker from 'react-datepicker';
 import 'react-datepicker/dist/react-datepicker.css';
+import axios from 'axios';
+const API_URL = 'http://localhost:5000/api';
 
 const ApplyPage = () => {
+  const [termsAgreed, setTermsAgreed] = useState(false);
+  const [refundPolicyAgreed, setRefundPolicyAgreed] = useState(false);
   const today = new Date();
   const [step, setStep] = useState(0); // 단계 상태
   const [filter, setFilter] = useState({
@@ -27,8 +31,28 @@ const ApplyPage = () => {
     setStep(0);
   };
 
-  const handleDateChange = (date) => {
-    setFilter({ ...filter, date: date.toISOString().split('T')[0] });
+  const handleDateChange = async (date) => {
+    const selectedDate = date.toISOString().split('T')[0];
+    setFilter({ ...filter, date: selectedDate });
+
+    try {
+      const response = await axios.get(`${API_URL}/getDateInfo`, { params: { date: selectedDate } });
+      console.log(response.data); // Log the response data
+    } catch (error) {
+      console.error(error);
+    }
+  };
+
+  const handleCompleteApplication = async () => {
+    try {
+      const response = await axios.post(`${API_URL}/completeApplication`, {
+        termsAgreed,
+        refundPolicyAgreed,
+      });
+      console.log(response.data);
+    } catch (error) {
+      console.error(error);
+    }
   };
 
   const handleSubmit = () => {
@@ -50,12 +74,17 @@ const ApplyPage = () => {
           </div>
         )}
         {step === 1 && (
-          <TermsAndConditions filter={filter} onNextStep={handleNextStep} onPreviousStep={handlePreviousStep} />
+          <TermsAndConditions agreed={termsAgreed} onAgree={() => setTermsAgreed(true)} filter={filter} onNextStep={handleNextStep} onPreviousStep={handlePreviousStep} />
         )}
         {step === 2 && (
-          <RefundPolicy filter={filter} onNextStep={handleNextStep} onPreviousStep={handlePreviousStep} />
+          <RefundPolicy agreed={refundPolicyAgreed} onAgree={() => setRefundPolicyAgreed(true)} filter={filter} onNextStep={handleNextStep} onPreviousStep={handlePreviousStep} />
         )}
-        {step === 3 && <PaymentInfo filter={filter} onReset={handleReset} />}
+        {step === 3 && (
+          <PaymentInfo 
+            filter={filter} 
+            onReset={handleReset} 
+            onComplete={handleCompleteApplication} 
+          />)}
       </div>
     </div>
   );
@@ -128,7 +157,7 @@ const RefundPolicy = ({ filter, onNextStep, onPreviousStep }) => {
   );
 };
 
-const PaymentInfo = ({ filter, onReset }) => {
+const PaymentInfo = ({ filter, onReset , onComplete }) => {
   const handleReset = () => {
     onReset();
   };
@@ -138,9 +167,10 @@ const PaymentInfo = ({ filter, onReset }) => {
       <h2>Payment Information</h2>
       <p>Here is the payment information for the selected value.</p>
       <p>Selected filter: {filter.date}</p>
-      <button className="complete-button" onClick={handleReset}>Complete Application</button>
+      <button className="complete-button" onClick={onComplete}>Complete Application</button>
     </div>
   );
 };
+
 
 export default ApplyPage;
