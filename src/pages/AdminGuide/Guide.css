@@ -1,0 +1,35 @@
+.guide-parent {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    text-align: center;
+    justify-content: center;
+}
+
+.guide-title {
+    padding: 0.5em;
+    font-size: 45px;
+    font-weight: bold;
+    align-items: center;
+    text-align: center;
+    justify-content: center;
+    color: #a000c8;
+}
+
+.guide-context {
+    margin: 10px;
+    font-size: 22px;
+}
+
+.guide-tel-box {
+    margin: 30px;
+    padding: 2rem 10rem;
+    border: 2px solid #e8bcf0;
+    border-radius: 5px;
+    font-size: 18px;
+    box-shadow: 0 5px 5px #ca7ddd; 
+}
+
+.guide-gotchy {
+    color: #a000c8;
+}
