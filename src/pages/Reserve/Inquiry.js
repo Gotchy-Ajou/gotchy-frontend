@@ -16,17 +16,12 @@ const Inquiry = () => {
     date: `${today.getFullYear()}-${String(today.getMonth() + 1).padStart(
       2,
       '0'
-    )}-${String(today.getDate()).padStart(2, '0')}`
+    )}-${String(today.getDate()).padStart(2, '0')}`,
+    time: 'any',
   });
 
   const peKind = ['축구', '농구', '족구', '탁구', '배드민턴', '테니스'];
-  const artKind = [
-    '합주(밴드, 오케스트라)',
-    '노래',
-    '춤',
-    '독서토론',
-    '보드게임'
-  ];
+  const artKind = ['합주(밴드, 오케스트라)', '노래', '춤', '독서토론', '보드게임'];
 
   const ReplaceData = () => {
     return Dummy.map((e) => {
@@ -64,7 +59,7 @@ const Inquiry = () => {
     '광주',
     '전남',
     '전북',
-    '제주'
+    '제주',
   ];
 
   const hobbyList = ['취미', '체육', '예술'];
@@ -89,6 +84,7 @@ const Inquiry = () => {
         <hr className="list_container_title" />
         <ListContainer>
           <div>날짜</div>
+          <div>시간</div>
           <div>위치</div>
           <div>취미</div>
           <div>성별</div>
@@ -101,6 +97,11 @@ const Inquiry = () => {
             type="date"
             onChange={(e) => onChangeFilter({ props: 'date', e: e })}
             value={filter.date}
+          />
+          <input
+            type="time"
+            onChange={(e) => onChangeFilter({ props: 'time', e: e })}
+            value={filter.time}
           />
           <select onChange={(e) => onChangeFilter({ props: 'location', e: e })}>
             {location.map((e) => (
@@ -115,27 +116,27 @@ const Inquiry = () => {
                   props: 'gotchyHobby',
                   e: {
                     target: {
-                      value: 'any'
-                    }
-                  }
+                      value: 'any',
+                    },
+                  },
                 });
               else if (e.target.value === '체육')
                 onChangeFilter({
                   props: 'gotchyHobby',
                   e: {
                     target: {
-                      value: peKind[0]
-                    }
-                  }
+                      value: peKind[0],
+                    },
+                  },
                 });
               else
                 onChangeFilter({
                   props: 'gotchyHobby',
                   e: {
                     target: {
-                      value: artKind[0]
-                    }
-                  }
+                      value: artKind[0],
+                    },
+                  },
                 });
             }}
           >
@@ -144,7 +145,9 @@ const Inquiry = () => {
           {hobby !== 'any' ? (
             <>
               <select
-                onChange={(e) => onChangeFilter({ props: 'gotchyHobby', e: e })}
+                onChange={(e) =>
+                  onChangeFilter({ props: 'gotchyHobby', e: e })
+                }
               >
                 {hobby === '체육'
                   ? peKind.map((e) => <option value={e}>{e}</option>)
@@ -171,6 +174,7 @@ const Inquiry = () => {
           {/*<DataListContainer>*/}
           <ListContainer>
             <div>날짜</div>
+            <div>시간</div>
             <div>위치</div>
             <div>취미</div>
             <div>성별</div>
@@ -180,6 +184,7 @@ const Inquiry = () => {
           <hr className="list_container_title" />
           <ListContainer>
             <div>2021-05-29</div>
+            <div>18:00</div>
             <div>서울</div>
             <div>축구</div>
             <div>여자</div>
@@ -192,6 +197,7 @@ const Inquiry = () => {
           <hr className="list_container_title" />
           <ListContainer>
             <div>2021-05-29</div>
+            <div>18:00</div>
             <div>서울</div>
             <div>농구</div>
             <div>남자</div>
@@ -204,6 +210,7 @@ const Inquiry = () => {
           <hr className="list_container_title" />
           <ListContainer>
             <div>2021-05-29</div>
+            <div>18:00</div>
             <div>인천</div>
             <div>밴드</div>
             <div>여자</div>
@@ -218,7 +225,6 @@ const Inquiry = () => {
     </>
   );
 };
-export default Inquiry;
 
 const Hr = styled.hr`
   background-color: #8f23c0;
@@ -237,13 +243,13 @@ const SubmitButton = styled.button`
   border-radius: 5px;
 `;
 
-const DataListContainer = styled.div`
-
-`;
+const DataListContainer = styled.div``;
 
 const ListContainer = styled.div`
   display: flex;
   margin-top: 20px;
+  width: 980px;
+  justify-content: space-between;
 
   > div {
     width: 120px;
@@ -273,14 +279,14 @@ const MainDiv = styled.div`
   .list_container_line {
     background-color: #8f23c0;
     border: none;
-    width: 730px;
+    width: 990px;
     height: 3px;
   }
 `;
 
 const SelectContainer = styled.div`
   display: flex;
-  gap: 4px;
+  gap: 25px;
 
   > select,
   > input {
@@ -296,3 +302,5 @@ const SelectContainer = styled.div`
     cursor: pointer;
   }
 `;
+
+export default Inquiry;
