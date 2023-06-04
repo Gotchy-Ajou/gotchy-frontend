@@ -2,10 +2,15 @@ import styled from 'styled-components';
 import React, { useState, useEffect } from 'react';
 import SelectDiv from './SelectDiv';
 import Dummy from '../dummy.json';
+import {
+
+  NavLink,
+} from "reactstrap";
 import UserManage from '../AdminManage/UserManage';
 
 const Inquiry = () => {
   const today = new Date();
+
 
   const [filter, setFilter] = useState({
     gotchyHobby: 'any',
@@ -171,16 +176,7 @@ const Inquiry = () => {
         <div>
           <br />
 
-          {/*<DataListContainer>*/}
-          <ListContainer>
-            <div>날짜</div>
-            <div>시간</div>
-            <div>위치</div>
-            <div>취미</div>
-            <div>성별</div>
-            <div>레벨</div>
-            <div>개인 모집 여부</div>
-          </ListContainer>
+
           <hr className="list_container_title" />
           <ListContainer>
             <div>2021-05-29</div>
@@ -191,7 +187,7 @@ const Inquiry = () => {
             <div>비기너</div>
             <div>
               <TextSpan>No</TextSpan>
-              <SubmitButton>신청</SubmitButton>
+              <SubmitButton href="/ApplyPage">신청</SubmitButton>
             </div>
           </ListContainer>
           <hr className="list_container_title" />
@@ -204,7 +200,7 @@ const Inquiry = () => {
             <div>아마추어</div>
             <div>
               <TextSpan>Yes</TextSpan>
-              <SubmitButton>신청</SubmitButton>
+              <SubmitButton href="/ApplyPage">신청</SubmitButton>
             </div>
           </ListContainer>
           <hr className="list_container_title" />
@@ -217,7 +213,7 @@ const Inquiry = () => {
             <div>프로</div>
             <div>
               <TextSpan>No</TextSpan>
-              <SubmitButton>신청</SubmitButton>
+              <SubmitButton href="/ApplyPage">신청</SubmitButton>
             </div>
           </ListContainer>
         </div>
@@ -236,14 +232,23 @@ const TextSpan = styled.span`
   margin-right: 30px;
 `;
 
-const SubmitButton = styled.button`
+const SubmitButton = styled(NavLink)`
   border: none;
-  color: #fff;
-  background-color: #460057;
+  color: rgb(255, 255, 255);
+  background-color: rgb(70, 0, 87);
   border-radius: 5px;
+  padding: 2px 11px;
+  font-size: 12px;
+  text-align: center;
+  text-decoration: none;
+  
+  &:hover {
+    background-color: rgb(70, 0, 87);
+    color: #fff;
+  }
 `;
 
-const DataListContainer = styled.div``;
+
 
 const ListContainer = styled.div`
   display: flex;
@@ -254,26 +259,22 @@ const ListContainer = styled.div`
   > div {
     width: 120px;
     font-size: 15px;
+    display: flex;
     font-weight: bold;
+    justify-content: space-between;
   }
 `;
 
 const MainDiv = styled.div`
   width: 100%;
   /* margin-left: 5%; */
+  padding-top: 100px;
   display: flex;
   flex-direction: column;
   align-items: center;
 
   > h1 {
     margin: 0;
-    text-decoration: underline #a000c8;
-    text-underline-position: under;
-    text-underline-offset:5px;
-    padding: 0.5em;
-    font-size: 35px;
-    font-weight: bold;
-    color: black;
   }
 
   .list_container_title {
@@ -299,7 +300,7 @@ const SelectContainer = styled.div`
     width: 120px;
 
     font-size: 12px;
-    padding: 10px 20px;
+    padding: 10px;
     border: none;
     outline: none;
     background-color: #a374db;
@@ -310,3 +311,4 @@ const SelectContainer = styled.div`
 `;
 
 export default Inquiry;
+
