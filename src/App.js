@@ -19,6 +19,7 @@ import Inquiry from "./pages/Reserve/Inquiry";
 import ReservePage from "./pages/Reserve/ReservePage";
 import MyInfo from './pages/MyPage/MyInfo';
 import MyHobby from './pages/MyPage/MyHobby';
+import Back from './pages/back'
 
 // 관리자용 페이지
 import AdminNotice from './pages/AdminNotice/AdminNotice';
@@ -66,7 +67,8 @@ function App() {
         <UserSideNavigation></UserSideNavigation>
         <div style={styles.contentMargin}>
           <Routes>
-            <Route path="/" element={<Inquiry />} />
+            {/* <Route path="/" element={<Inquiry />} /> */}
+            <Route path="/back" element={<Back />} />
             <Route path="/Inquiry" element={<Inquiry />} />
             <Route path="/ApplyPage" element={<ApplyPage />} />
             <Route path="/ReservePage" element={<ReservePage />} />

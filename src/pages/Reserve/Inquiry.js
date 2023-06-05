@@ -1,11 +1,72 @@
 import styled from 'styled-components';
+import axios from "axios";
 import React, { useState, useEffect } from 'react';
 import SelectDiv from './SelectDiv';
 import Dummy from '../dummy.json';
+import { NavLink } from "reactstrap";
 import UserManage from '../AdminManage/UserManage';
+
+
+// const loadFilterData = async () => {
+//   try {
+//     const { data } = await axios.post('http://your_server_endpoint');  
+//     setFilter({
+//       gotchyHobby: data.gotchyHobby,
+//       location: data.location,
+//       gender: data.gender,
+//       level: data.level,
+//       mode: data.mode
+//     });
+//   } catch (err) {
+//     console.error(err);
+//   }
+// };
+
+// useEffect(() => {
+//   loadFilterData();
+// }, []);
+
+// const updateFilterData = async (field, value) => {
+//   try {
+//     const { data } = await axios.post('http://your_server_endpoint', { 
+//       [field]: value
+//     });
+//     setFilter(prevFilter => ({
+//       ...prevFilter,
+//       [field]: data[field]
+//     }));
+//   } catch (err) {
+//     console.error(err);
+//   }
+// };
+
+// const onChangeFilter = ({ props, e }) => {
+//   const value = e.target.value;
+//   updateFilterData(props, value);
+// };
+
+
+
 
 const Inquiry = () => {
   const today = new Date();
+  const [meetings, setMeetings] = useState([]); 
+  const onChangeLocation = e => {
+    const selectedLocation = e.target.value;
+    // 사용자가 '모든 지역'을 선택하면 모든 데이터를 다시 불러옵니다.
+    if (selectedLocation === '모든 지역') {
+      setData(ReplaceData());
+    } else {
+      // 그렇지 않으면 선택한 지역의 모임 데이터만 불러옵니다.
+      axios.get(`http://localhost:8080/api/vi/gotchyfilter?location=${selectedLocation}`)
+        .then(response => {
+          setData(response.data);
+        })
+        .catch(error => {
+          console.error('Error fetching data: ', error);
+        });
+    }
+  };
 
   const [filter, setFilter] = useState({
     gotchyHobby: 'any',
@@ -39,6 +100,7 @@ const Inquiry = () => {
         return null;
       return e;
     });
+
   };
 
   const [data, setData] = useState(ReplaceData());
@@ -77,6 +139,17 @@ const Inquiry = () => {
     setData(ReplaceData());
   }, [filter]);
 
+  //axios
+  const handleFilterApply = async () => {
+    try {
+      const response = await axios.get('/api/path', { params: filter });
+      setData(response.data);
+    } catch (error) {
+      console.error(error);
+    }
+  };
+
+
   return (
     <>
       <MainDiv>
@@ -103,8 +176,8 @@ const Inquiry = () => {
             onChange={(e) => onChangeFilter({ props: 'time', e: e })}
             value={filter.time}
           />
-          <select onChange={(e) => onChangeFilter({ props: 'location', e: e })}>
-            {location.map((e) => (
+          <select onChange={onChangeLocation}>
+            {location.map(e => (
               <option value={e === '모든 지역' ? 'any' : e}>{e}</option>
             ))}
           </select>
@@ -167,57 +240,65 @@ const Inquiry = () => {
             <SelectDiv list={recruit} />
           </select>
         </SelectContainer>
+
+        {/* <button onClick={handleFilterApply}>조회</button> */}
+
         <br />
         <div>
           <br />
 
-          {/*<DataListContainer>*/}
-          <ListContainer>
-            <div>날짜</div>
-            <div>시간</div>
-            <div>위치</div>
-            <div>취미</div>
-            <div>성별</div>
-            <div>레벨</div>
-            <div>개인 모집 여부</div>
-          </ListContainer>
+          {meetings.map(meeting => (
+            <ListContainer key={meeting.id}>
+              <div>{meeting.date}</div>
+              <div>{meeting.time}</div>
+              <div>{meeting.location}</div>
+              <div>{meeting.hobby}</div>
+              <div>{meeting.gender}</div>
+              <div>{meeting.level}</div>
+              <div>
+                <TextSpan>{meeting.mode === 'yes' ? 'Yes' : 'No'}</TextSpan>
+                <SubmitButton href="/ApplyPage">신청</SubmitButton>
+              </div>
+            </ListContainer>
+          ))}
+
           <hr className="list_container_title" />
           <ListContainer>
-            <div>2021-05-29</div>
-            <div>18:00</div>
+            <div>2023-05-29</div>
+            <div>12:00</div>
             <div>서울</div>
             <div>축구</div>
             <div>여자</div>
             <div>비기너</div>
             <div>
               <TextSpan>No</TextSpan>
-              <SubmitButton>신청</SubmitButton>
+              <SubmitButton href="/ApplyPage">신청</SubmitButton>
             </div>
           </ListContainer>
           <hr className="list_container_title" />
           <ListContainer>
-            <div>2021-05-29</div>
-            <div>18:00</div>
+            <div>2023-05-29</div>
+            <div>12:00</div>
             <div>서울</div>
             <div>농구</div>
             <div>남자</div>
             <div>아마추어</div>
             <div>
               <TextSpan>Yes</TextSpan>
-              <SubmitButton>신청</SubmitButton>
+              <SubmitButton href="/ApplyPage">신청</SubmitButton>
             </div>
           </ListContainer>
           <hr className="list_container_title" />
           <ListContainer>
-            <div>2021-05-29</div>
-            <div>18:00</div>
+            <div>2023-05-29</div>
+            <div>12:00</div>
             <div>인천</div>
             <div>밴드</div>
             <div>여자</div>
             <div>프로</div>
             <div>
               <TextSpan>No</TextSpan>
-              <SubmitButton>신청</SubmitButton>
+              <SubmitButton href="/ApplyPage">신청</SubmitButton>
             </div>
           </ListContainer>
         </div>
@@ -236,14 +317,23 @@ const TextSpan = styled.span`
   margin-right: 30px;
 `;
 
-const SubmitButton = styled.button`
+const SubmitButton = styled(NavLink)`
   border: none;
-  color: #fff;
-  background-color: #460057;
+  color: rgb(255, 255, 255);
+  background-color: rgb(70, 0, 87);
   border-radius: 5px;
+  padding: 2px 11px;
+  font-size: 12px;
+  text-align: center;
+  text-decoration: none;
+  
+  &:hover {
+    background-color: rgb(70, 0, 87);
+    color: #fff;
+  }
 `;
 
-const DataListContainer = styled.div``;
+
 
 const ListContainer = styled.div`
   display: flex;
@@ -254,26 +344,22 @@ const ListContainer = styled.div`
   > div {
     width: 120px;
     font-size: 15px;
+    display: flex;
     font-weight: bold;
+    justify-content: space-between;
   }
 `;
 
 const MainDiv = styled.div`
   width: 100%;
   /* margin-left: 5%; */
+  padding-top: 100px;
   display: flex;
   flex-direction: column;
   align-items: center;
 
   > h1 {
     margin: 0;
-    text-decoration: underline #a000c8;
-    text-underline-position: under;
-    text-underline-offset:5px;
-    padding: 0.5em;
-    font-size: 35px;
-    font-weight: bold;
-    color: black;
   }
 
   .list_container_title {
@@ -299,7 +385,7 @@ const SelectContainer = styled.div`
     width: 120px;
 
     font-size: 12px;
-    padding: 10px 20px;
+    padding: 10px;
     border: none;
     outline: none;
     background-color: #a374db;
@@ -310,3 +396,4 @@ const SelectContainer = styled.div`
 `;
 
 export default Inquiry;
+
