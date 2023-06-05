@@ -59,6 +59,19 @@ const ReservePage = () => {
     date: TODAY
   });
 
+  //axios 
+//   const postData = async (data) => {
+//     try {
+//       await axios.post('http://your_server_endpoint', data); 
+//       alert('등록 되었습니다.');
+//       window.location.href = '/guide';
+//     } catch (err) {
+//       console.error(err);
+//       alert('등록에 실패했습니다.');
+//     }
+//   };
+
+
   // const requestInput = async (e) => {
   //   e.preventDefault();
   //
@@ -125,7 +138,7 @@ const ReservePage = () => {
               <option>{e}</option>
             ))}
           </select>
-          <label>래밸</label>
+          <label>레밸</label>
           <select onChange={(e) => onChangeData({ props: 'level', e: e })}>
             {level.map((e) => (
               <option>{e}</option>

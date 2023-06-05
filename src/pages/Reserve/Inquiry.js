@@ -1,10 +1,53 @@
 import styled from 'styled-components';
+import axios from "axios";
 import React, { useState, useEffect } from 'react';
 import SelectDiv from './SelectDiv';
 import Dummy from '../dummy.json';
 import axios from 'axios';
 import { NavLink } from "reactstrap";
 import UserManage from '../AdminManage/UserManage';
+
+
+// const loadFilterData = async () => {
+//   try {
+//     const { data } = await axios.post('http://your_server_endpoint');  
+//     setFilter({
+//       gotchyHobby: data.gotchyHobby,
+//       location: data.location,
+//       gender: data.gender,
+//       level: data.level,
+//       mode: data.mode
+//     });
+//   } catch (err) {
+//     console.error(err);
+//   }
+// };
+
+// useEffect(() => {
+//   loadFilterData();
+// }, []);
+
+// const updateFilterData = async (field, value) => {
+//   try {
+//     const { data } = await axios.post('http://your_server_endpoint', { 
+//       [field]: value
+//     });
+//     setFilter(prevFilter => ({
+//       ...prevFilter,
+//       [field]: data[field]
+//     }));
+//   } catch (err) {
+//     console.error(err);
+//   }
+// };
+
+// const onChangeFilter = ({ props, e }) => {
+//   const value = e.target.value;
+//   updateFilterData(props, value);
+// };
+
+
+
 
 const Inquiry = () => {
   const today = new Date();
@@ -207,8 +250,8 @@ const Inquiry = () => {
 
           <hr className="list_container_title" />
           <ListContainer>
-            <div>2021-05-29</div>
-            <div>18:00</div>
+            <div>2023-05-29</div>
+            <div>12:00</div>
             <div>서울</div>
             <div>축구</div>
             <div>여자</div>
@@ -220,8 +263,8 @@ const Inquiry = () => {
           </ListContainer>
           <hr className="list_container_title" />
           <ListContainer>
-            <div>2021-05-29</div>
-            <div>18:00</div>
+            <div>2023-05-29</div>
+            <div>12:00</div>
             <div>서울</div>
             <div>농구</div>
             <div>남자</div>
@@ -233,8 +276,8 @@ const Inquiry = () => {
           </ListContainer>
           <hr className="list_container_title" />
           <ListContainer>
-            <div>2021-05-29</div>
-            <div>18:00</div>
+            <div>2023-05-29</div>
+            <div>12:00</div>
             <div>인천</div>
             <div>밴드</div>
             <div>여자</div>
