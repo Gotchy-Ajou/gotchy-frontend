@@ -16,13 +16,13 @@ const UserHeader = () => {
           <img src={GotchyImg} /></NavbarBrand>
         <Nav className="collapse navbar-collapse justify-content-end" navbar style={{ "font-size": "20px" }}>
           <NavItem>
-            <NavLink href="/Filter">가치 조회</NavLink>
+            <NavLink href="/Inquiry">가치 조회</NavLink>
           </NavItem>
           <NavItem>
             <NavLink href="/ApplyPage">가치 신청</NavLink>
           </NavItem>
           <NavItem>
-            <NavLink href="/Reserve">가치 모집 등록</NavLink>
+            <NavLink href="/ReservePage">가치 모집 등록</NavLink>
           </NavItem>
         </Nav>
         {/* <NavbarText>
