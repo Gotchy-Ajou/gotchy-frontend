@@ -2,15 +2,29 @@ import styled from 'styled-components';
 import React, { useState, useEffect } from 'react';
 import SelectDiv from './SelectDiv';
 import Dummy from '../dummy.json';
-import {
-
-  NavLink,
-} from "reactstrap";
+import axios from 'axios';
+import { NavLink } from "reactstrap";
 import UserManage from '../AdminManage/UserManage';
 
 const Inquiry = () => {
   const today = new Date();
-
+  const [meetings, setMeetings] = useState([]); 
+  const onChangeLocation = e => {
+    const selectedLocation = e.target.value;
+    // 사용자가 '모든 지역'을 선택하면 모든 데이터를 다시 불러옵니다.
+    if (selectedLocation === '모든 지역') {
+      setData(ReplaceData());
+    } else {
+      // 그렇지 않으면 선택한 지역의 모임 데이터만 불러옵니다.
+      axios.get(`http://localhost:8080/api/vi/gotchyfilter?location=${selectedLocation}`)
+        .then(response => {
+          setData(response.data);
+        })
+        .catch(error => {
+          console.error('Error fetching data: ', error);
+        });
+    }
+  };
 
   const [filter, setFilter] = useState({
     gotchyHobby: 'any',
@@ -108,8 +122,8 @@ const Inquiry = () => {
             onChange={(e) => onChangeFilter({ props: 'time', e: e })}
             value={filter.time}
           />
-          <select onChange={(e) => onChangeFilter({ props: 'location', e: e })}>
-            {location.map((e) => (
+          <select onChange={onChangeLocation}>
+            {location.map(e => (
               <option value={e === '모든 지역' ? 'any' : e}>{e}</option>
             ))}
           </select>
@@ -176,6 +190,20 @@ const Inquiry = () => {
         <div>
           <br />
 
+          {meetings.map(meeting => (
+            <ListContainer key={meeting.id}>
+              <div>{meeting.date}</div>
+              <div>{meeting.time}</div>
+              <div>{meeting.location}</div>
+              <div>{meeting.hobby}</div>
+              <div>{meeting.gender}</div>
+              <div>{meeting.level}</div>
+              <div>
+                <TextSpan>{meeting.mode === 'yes' ? 'Yes' : 'No'}</TextSpan>
+                <SubmitButton href="/ApplyPage">신청</SubmitButton>
+              </div>
+            </ListContainer>
+          ))}
 
           <hr className="list_container_title" />
           <ListContainer>
