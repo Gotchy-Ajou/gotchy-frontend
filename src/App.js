@@ -66,7 +66,7 @@ function App() {
         <UserSideNavigation></UserSideNavigation>
         <div style={styles.contentMargin}>
           <Routes>
-            <Route path="/" element={<Inquiry />} />
+            {/* <Route path="/" element={<Inquiry />} /> */}
             <Route path="/Inquiry" element={<Inquiry />} />
             <Route path="/ApplyPage" element={<ApplyPage />} />
             <Route path="/ReservePage" element={<ReservePage />} />
