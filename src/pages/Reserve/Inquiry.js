@@ -3,7 +3,6 @@ import axios from "axios";
 import React, { useState, useEffect } from 'react';
 import SelectDiv from './SelectDiv';
 import Dummy from '../dummy.json';
-import axios from 'axios';
 import { NavLink } from "reactstrap";
 import UserManage from '../AdminManage/UserManage';
 
