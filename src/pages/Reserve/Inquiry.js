@@ -87,6 +87,7 @@ const Inquiry = () => {
         return null;
       return e;
     });
+
   };
 
   const [data, setData] = useState(ReplaceData());
@@ -124,6 +125,17 @@ const Inquiry = () => {
   useEffect(() => {
     setData(ReplaceData());
   }, [filter]);
+
+  //axios
+  const handleFilterApply = async () => {
+    try {
+      const response = await axios.get('/api/path', { params: filter });
+      setData(response.data);
+    } catch (error) {
+      console.error(error);
+    }
+  };
+
 
   return (
     <>
@@ -215,6 +227,9 @@ const Inquiry = () => {
             <SelectDiv list={recruit} />
           </select>
         </SelectContainer>
+
+        {/* <button onClick={handleFilterApply}>조회</button> */}
+
         <br />
         <div>
           <br />
