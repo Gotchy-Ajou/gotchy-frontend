@@ -54,35 +54,35 @@ const styles = {
 };
 
 function App() {
-  return (
+  // return (
   // 회원용 웹페이지
-  <div className="App">
-    <Router>
-      <Row>
-        <Col>
-          <UserHeader></UserHeader>
-        </Col>
-      </Row>
-      <div style={styles.contentDiv}>
-        <UserSideNavigation></UserSideNavigation>
-        <div style={styles.contentMargin}>
-          <Routes>
-            {/* <Route path="/" element={<Inquiry />} /> */}
-            <Route path="/back" element={<Back />} />
-            <Route path="/Inquiry" element={<Inquiry />} />
-            <Route path="/ApplyPage" element={<ApplyPage />} />
-            <Route path="/ReservePage" element={<ReservePage />} />
-            <Route path="/Guide" element={<Guide />} />
-            <Route path="/Notice" element={<Notice />} />
-            <Route path="/FAQ" element={<FAQ />} />
-            <Route path="/MyInfo" element={<MyInfo />} />
-            <Route path="/MyHobby" element={<MyHobby />} />
+  // <div className="App">
+  //   <Router>
+  //     <Row>
+  //       <Col>
+  //         <UserHeader></UserHeader>
+  //       </Col>
+  //     </Row>
+  //     <div style={styles.contentDiv}>
+  //       <UserSideNavigation></UserSideNavigation>
+  //       <div style={styles.contentMargin}>
+  //         <Routes>
+  //           {/* <Route path="/" element={<Inquiry />} /> */}
+  //           <Route path="/back" element={<Back />} />
+  //           <Route path="/Inquiry" element={<Inquiry />} />
+  //           <Route path="/ApplyPage" element={<ApplyPage />} />
+  //           <Route path="/ReservePage" element={<ReservePage />} />
+  //           <Route path="/Guide" element={<Guide />} />
+  //           <Route path="/Notice" element={<Notice />} />
+  //           <Route path="/FAQ" element={<FAQ />} />
+  //           <Route path="/MyInfo" element={<MyInfo />} />
+  //           <Route path="/MyHobby" element={<MyHobby />} />
 
-          </Routes>
-        </div>
-      </div>
-    </Router >
-  </div >
+  //         </Routes>
+  //       </div>
+  //     </div>
+  //   </Router >
+  // </div >
 
   // 관리자용 웹페이지
   // <div className="App">
@@ -111,146 +111,146 @@ function App() {
   //     </div>
   //   </Router >
   // </div >
-    );
-  }
-  export default App;
+  //   );
+  // }
+  // export default App;
 
-//   const user_option = useSelector((state => state.user_option))
-//   return (
-//     <div className="App">
-//       <HashRouter>
-//       <Router>
-//         <Row>
-//           <Col>
-//             {
-//               (!!user_option) ?
-//                 <Header /> :
-//                 <CommonHeader />
-//             }
-//           </Col>
-//         </Row>
-//         <div style={styles.contentDiv}>
-//           <Sidebar />
-//           <div style={styles.contentMargin}>
-//             <Routes>
-//               미가입 일반 유저용 페이지
-//               {
-//                 (user_option != "1" && user_option != "2") ?
-//                 <Route path="/" element={<LoginPage />} /> :
-//                 null
-//               }
-//               {
-//                 (user_option != "1" && user_option != "2") ?
-//                 <Route path="/LoginPage" element={<LoginPage />} /> :
-//                 null
-//               }
-//               {
-//                 (user_option != "1" && user_option != "2") ?
-//                 <Route path="/PartnerGuidePage" element={<PartnerGuidePage />} /> :
-//                 null
-//               }
-//               회원 페이지
-//               {
-//                 (user_option == "1") ?
-//                   <Route path="/" element={<Inquiry />} /> :
-//                   <Route path="/" element={<LoginPage />} />
-//               }
-//               {
-//                 (user_option == "1") ?
-//                   <Route path="/Inquiry" element={<Inquiry />} /> :
-//                   <Route path="/Inquiry" element={<LoginPage />} />
-//               }
-//               {
-//                 (user_option == "1") ?
-//                   <Route path="/ApplyPage" element={<ApplyPage />} /> :
-//                   <Route path="/ApplyPage" element={<LoginPage />} />
-//               }
-//               {
-//                 (user_option == "1") ?
-//                   <Route path="/ReservePage" element={<ReservePage />} /> :
-//                   <Route path="/ReservePage" element={<LoginPage />} />
-//               }
-//               {
-//                 (user_option == "1") ?
-//                   <Route path="/Notice" element={<Notice />} /> :
-//                   <Route path="/Notice" element={<LoginPage />} />
-//               }
-//               {
-//                 (user_option == "1") ?
-//                   <Route path="/FAQ" element={<FAQ />} /> :
-//                   <Route path="/FAQ" element={<LoginPage />} />
-//               }
-//               {
-//                 (user_option == "1") ?
-//                   <Route path="/MyInfo" element={<MyInfo />} /> :
-//                   <Route path="/MyInfo" element={<LoginPage />} />
-//               }
-//               {
-//                 (user_option == "1") ?
-//                   <Route path="/MyHobby" element={<MyHobby />} /> :
-//                   <Route path="/MyHobby" element={<LoginPage />} />
-//               }
+  const user_option = useSelector((state => state.user_option))
+  return (
+    <div className="App">
+      {/* <HashRouter> */}
+      <Router>
+        <Row>
+          <Col>
+            {
+              (!!user_option) ?
+                <Header /> :
+                <CommonHeader />
+            }
+          </Col>
+        </Row>
+        <div style={styles.contentDiv}>
+          <Sidebar />
+          <div style={styles.contentMargin}>
+            <Routes>
+              미가입 일반 유저용 페이지
+              {
+                (user_option != "1" && user_option != "2") ?
+                <Route path="/" element={<LoginPage />} /> :
+                null
+              }
+              {
+                (user_option != "1" && user_option != "2") ?
+                <Route path="/LoginPage" element={<LoginPage />} /> :
+                null
+              }
+              {
+                (user_option != "1" && user_option != "2") ?
+                <Route path="/PartnerGuidePage" element={<PartnerGuidePage />} /> :
+                null
+              }
+              회원 페이지
+              {
+                (user_option == "1") ?
+                  <Route path="/" element={<Inquiry />} /> :
+                  <Route path="/" element={<LoginPage />} />
+              }
+              {
+                (user_option == "1") ?
+                  <Route path="/Inquiry" element={<Inquiry />} /> :
+                  <Route path="/Inquiry" element={<LoginPage />} />
+              }
+              {
+                (user_option == "1") ?
+                  <Route path="/ApplyPage" element={<ApplyPage />} /> :
+                  <Route path="/ApplyPage" element={<LoginPage />} />
+              }
+              {
+                (user_option == "1") ?
+                  <Route path="/ReservePage" element={<ReservePage />} /> :
+                  <Route path="/ReservePage" element={<LoginPage />} />
+              }
+              {
+                (user_option == "1") ?
+                  <Route path="/Notice" element={<Notice />} /> :
+                  <Route path="/Notice" element={<LoginPage />} />
+              }
+              {
+                (user_option == "1") ?
+                  <Route path="/FAQ" element={<FAQ />} /> :
+                  <Route path="/FAQ" element={<LoginPage />} />
+              }
+              {
+                (user_option == "1") ?
+                  <Route path="/MyInfo" element={<MyInfo />} /> :
+                  <Route path="/MyInfo" element={<LoginPage />} />
+              }
+              {
+                (user_option == "1") ?
+                  <Route path="/MyHobby" element={<MyHobby />} /> :
+                  <Route path="/MyHobby" element={<LoginPage />} />
+              }
 
-//               관리자 페이지
-//               {
-//                 (user_option == "2") ?
-//                   <Route path="/" element={<UserManage />} /> :
-//                   <Route path="/" element={<LoginPage />} />
-//               }
-//               {
-//                 (user_option == "2") ?
-//                   <Route path="/UserManage" element={<UserManage />} /> :
-//                   <Route path="/UserManage" element={<LoginPage />} />
-//               }
-//               {
-//                 (user_option == "2") ?
-//                   <Route path="/UserStatistic" element={<UserStatistic />} /> :
-//                   <Route path="/UserStatistic" element={<LoginPage />} />
-//               }
-//               {
-//                 (user_option == "2") ?
-//                   <Route path="/PartnerManage" element={<PartnerManage />} /> :
-//                   <Route path="/PartnerManage" element={<LoginPage />} />
-//               }
-//               {
-//                 (user_option == "2") ?
-//                   <Route path="/AdminNotice" element={<AdminNotice />} /> :
-//                   <Route path="/AdminNotice" element={<LoginPage />} />
-//               }
-//               {
-//                 (user_option == "2") ?
-//                   <Route path="/NoticeWrite" element={<NoticeWrite />} /> :
-//                   <Route path="/NoticeWrite" element={<LoginPage />} />
-//               }
-//               {
-//                 (user_option == "2") ?
-//                   <Route path="/NoticeUpdate" element={<NoticeUpdate />} /> :
-//                   <Route path="/NoticeUpdate" element={<LoginPage />} />
-//               }
-//               {
-//                 (user_option == "2") ?
-//                   <Route path="/AdminFAQ" element={<AdminFAQ />} /> :
-//                   <Route path="/AdminFAQ" element={<LoginPage />} />
-//               }
-//               {
-//                 (user_option == "2") ?
-//                   <Route path="/FAQWrite" element={<FAQWrite />} /> :
-//                   <Route path="/FAQWrite" element={<LoginPage />} />
-//               }
-//               {
-//                 (user_option == "2") ?
-//                   <Route path="/FAQUpdate" element={<FAQUpdate />} /> :
-//                   <Route path="/FAQUpdate" element={<LoginPage />} />
-//               }
-//             </Routes>
-//           </div>
-//         </div>
+              관리자 페이지
+              {
+                (user_option == "2") ?
+                  <Route path="/" element={<UserManage />} /> :
+                  <Route path="/" element={<LoginPage />} />
+              }
+              {
+                (user_option == "2") ?
+                  <Route path="/UserManage" element={<UserManage />} /> :
+                  <Route path="/UserManage" element={<LoginPage />} />
+              }
+              {
+                (user_option == "2") ?
+                  <Route path="/UserStatistic" element={<UserStatistic />} /> :
+                  <Route path="/UserStatistic" element={<LoginPage />} />
+              }
+              {
+                (user_option == "2") ?
+                  <Route path="/PartnerManage" element={<PartnerManage />} /> :
+                  <Route path="/PartnerManage" element={<LoginPage />} />
+              }
+              {
+                (user_option == "2") ?
+                  <Route path="/AdminNotice" element={<AdminNotice />} /> :
+                  <Route path="/AdminNotice" element={<LoginPage />} />
+              }
+              {
+                (user_option == "2") ?
+                  <Route path="/NoticeWrite" element={<NoticeWrite />} /> :
+                  <Route path="/NoticeWrite" element={<LoginPage />} />
+              }
+              {
+                (user_option == "2") ?
+                  <Route path="/NoticeUpdate" element={<NoticeUpdate />} /> :
+                  <Route path="/NoticeUpdate" element={<LoginPage />} />
+              }
+              {
+                (user_option == "2") ?
+                  <Route path="/AdminFAQ" element={<AdminFAQ />} /> :
+                  <Route path="/AdminFAQ" element={<LoginPage />} />
+              }
+              {
+                (user_option == "2") ?
+                  <Route path="/FAQWrite" element={<FAQWrite />} /> :
+                  <Route path="/FAQWrite" element={<LoginPage />} />
+              }
+              {
+                (user_option == "2") ?
+                  <Route path="/FAQUpdate" element={<FAQUpdate />} /> :
+                  <Route path="/FAQUpdate" element={<LoginPage />} />
+              }
+            </Routes>
+          </div>
+        </div>
 
-//       </Router>
-//       </HashRouter>
-//     </div >
-//   );
-// }
+      </Router>
+      {/* </HashRouter> */}
+    </div >
+  );
+}
 
-// export default App;
+export default App;
 
