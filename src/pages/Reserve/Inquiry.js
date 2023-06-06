@@ -3,7 +3,6 @@ import axios from "axios";
 import React, { useState, useEffect } from 'react';
 import SelectDiv from './SelectDiv';
 import Dummy from '../dummy.json';
-import axios from 'axios';
 import { NavLink } from "reactstrap";
 import UserManage from '../AdminManage/UserManage';
 
@@ -100,7 +99,12 @@ const Inquiry = () => {
       )
         return null;
       return e;
+<<<<<<< HEAD
       });
+=======
+    });
+
+>>>>>>> a8ca8f320e5dd2c0e4e6f87ca5f38881ce0433fd
   };
 
   const [data, setData] = useState(ReplaceData());
@@ -138,6 +142,17 @@ const Inquiry = () => {
   useEffect(() => {
     setData(ReplaceData());
   }, [filter]);
+
+  //axios
+  const handleFilterApply = async () => {
+    try {
+      const response = await axios.get('/api/path', { params: filter });
+      setData(response.data);
+    } catch (error) {
+      console.error(error);
+    }
+  };
+
 
   return (
     <>
@@ -229,6 +244,9 @@ const Inquiry = () => {
             <SelectDiv list={recruit} />
           </select>
         </SelectContainer>
+
+        {/* <button onClick={handleFilterApply}>조회</button> */}
+
         <br />
         <div>
           <br />

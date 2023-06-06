@@ -8,7 +8,8 @@ export default function AddHobby() {
         '합주(밴드, 오케스트라)', '노래', '춤', '독서토론', '보드게임'];
     const levelKind = ['비기너', '아마추어', '프로'];
 
-    let userid = localStorage.getItem('userid');
+    // let userid = localStorage.getItem('userid');
+    let userid = 1;
     const [hobby, setHobby] = useState({
         hobbyId: 0,
         hobbyName: "",
@@ -24,7 +25,7 @@ export default function AddHobby() {
         e.preventDefault();
         e.target.reset();
         console.log(hobby);
-        await axios.post("http://gotchy.site/Hobby/Hobby_submit", { userid, hobby })
+        await axios.post("api/v1/hobby/1", {hobby })
             .then(function (response) {
                 console.log(response.data);
                 // if(response.data === "success") {

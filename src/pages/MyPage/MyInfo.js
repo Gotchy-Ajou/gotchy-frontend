@@ -10,11 +10,13 @@ const MyInfo = () => {
         region: '',
         hobbies: [],
         file: null,
+        bankAccount: '',
+        cashBalance: 0,
     });
 
     const [preview, setPreview] = useState(null);
 
-    const { name, age, region, hobbies, file } = userInfo;
+    const { name, age, region, hobbies, file, bankAccount, cashBalance } = userInfo;
 
     const handleChange = (e) => {
         const { name, value } = e.target;
@@ -51,28 +53,34 @@ const MyInfo = () => {
     };
     const handleSubmit = async (e) => {
         e.preventDefault();
-      
+
         const formData = new FormData();
         formData.append('name', name);
         formData.append('age', age);
         formData.append('region', region);
         for (let hobby of hobbies) {
-          formData.append('hobbies', hobby);
+            formData.append('hobbies', hobby);
         }
         formData.append('file', file);
-      
+
         try {
-          const response = await Axios.post('http://localhost:5000/api/updateUserInfo', formData, {
-            headers: {
-              'Content-Type': 'multipart/form-data'
-            }
-          });
-      
-          console.log(response.data);
+            const response = await Axios.post('http://localhost:5000/api/updateUserInfo', formData, {
+                headers: {
+                    'Content-Type': 'multipart/form-data'
+                }
+            });
+
+            console.log(response.data);
         } catch (error) {
-          console.error(error);
+            console.error(error);
         }
-      };
+    };
+
+    // This is a mock function for cash charging. You should replace it with real API call.
+    const handleCashCharge = async (e) => {
+        console.log("Cash charging...");
+        // You need to call actual API to charge cash
+    }
 
     return (
         <div>
@@ -99,6 +107,15 @@ const MyInfo = () => {
                     <label htmlFor="Hobby3">Hobby3</label>
                     <input class="myPage-input" type="checkbox" id="Hobby3" name="Hobby3" onChange={handleCheckboxChange} />
                 </div>
+                <label>
+                    Bank Account:
+                    <input class="myPage-input" type="text" name="bankAccount" value={bankAccount} onChange={handleChange} disabled />
+                </label>
+                <label>
+                    Cash Balance:
+                    <input class="myPage-input" type="text" name="cashBalance" value={cashBalance} onChange={handleChange} disabled />
+                </label>
+                <button class="myPage-button" type="button" onClick={handleCashCharge}>Charge Cash</button>
                 <label>
                     Upload your photo:
                     <input class="myPage-input" type="file" onChange={handleFileChange} />
