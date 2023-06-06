@@ -119,7 +119,7 @@ const locationList = async (e) => {
 
 const Inquiry = () => {
   const today = new Date();
-  const [meetings, setMeetings] = useState([]); 
+  const [meetings, setMeetings] = useState([]);
   const onChangeLocation = e => {
     const selectedLocation = e.target.value;
     // 사용자가 '모든 지역'을 선택하면 모든 데이터를 다시 불러옵니다.
@@ -339,18 +339,18 @@ const Inquiry = () => {
 
           {meetings.map(meeting => (
             <ListContainer key={meeting.id}>
-              <div>{meeting.date}</div>
-              <div>{meeting.time}</div>
-              <div>{meeting.location}</div>
-              <div>{meeting.hobby}</div>
-              <div>{meeting.gender}</div>
-              <div>{meeting.level}</div>
-              <div>
+            <div>{meeting.date}</div>
+            <div>{meeting.time}</div>
+            <div>{meeting.location}</div>
+            <div>{meeting.hobby}</div>
+            <div>{meeting.gender}</div>
+            <div>{meeting.level}</div>
+            <div>
                 <TextSpan>{meeting.mode === 'yes' ? 'Yes' : 'No'}</TextSpan>
-                <SubmitButton href="/ApplyPage">신청</SubmitButton>
-              </div>
+              <SubmitButton href="/ApplyPage">신청</SubmitButton>
+            </div>
             </ListContainer>
-          ))}
+        ))}
 
           <hr className="list_container_title" />
           <ListContainer>
