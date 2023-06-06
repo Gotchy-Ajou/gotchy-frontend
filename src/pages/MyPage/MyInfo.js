@@ -1,5 +1,6 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import './MyInfo.css';
+import axios from 'axios';
 import 'react-datepicker/dist/react-datepicker.css';
 import { Axios } from 'axios';
 
@@ -18,13 +19,28 @@ const MyInfo = () => {
 
     const { name, age, region, hobbies, file, bankAccount, cashBalance } = userInfo;
 
+    useEffect(() => {
+        const fetchUserInfo = async () => {
+            try {
+                const response = await axios.get('http://localhost:5000/api/getUserInfo'); // your API endpoint here
+                setUserInfo(response.data);
+            } catch (error) {
+                console.error(error);
+            }
+        };
+
+        fetchUserInfo();
+    }, []);
+
     const handleChange = (e) => {
         const { name, value } = e.target;
         setUserInfo({
             ...userInfo,
-            [name]: value,
+            [name]: name === 'hobbies' ? value.split(', ').filter((hobby) => hobby !== '') : value,
         });
     };
+
+
 
     const handleCheckboxChange = (e) => {
         const { name, checked } = e.target;
@@ -64,10 +80,11 @@ const MyInfo = () => {
         formData.append('file', file);
 
         try {
-            const response = await Axios.post('http://localhost:5000/api/updateUserInfo', formData, {
+            // Send the updated user info back to the server
+            const response = await axios.post('http://localhost:5000/api/updateUserInfo', formData, {
                 headers: {
-                    'Content-Type': 'multipart/form-data'
-                }
+                    'Content-Type': 'multipart/form-data',
+                },
             });
 
             console.log(response.data);
@@ -75,6 +92,7 @@ const MyInfo = () => {
             console.error(error);
         }
     };
+
 
     // This is a mock function for cash charging. You should replace it with real API call.
     const handleCashCharge = async (e) => {
@@ -98,24 +116,21 @@ const MyInfo = () => {
                     Region:
                     <input class="myPage-input" type="text" name="region" value={region} onChange={handleChange} />
                 </label>
-                <div>
+                <label>
                     Hobbies:
-                    <label htmlFor="Hobby1">Hobby1</label>
-                    <input class="myPage-input" type="checkbox" id="Hobby1" name="Hobby1" onChange={handleCheckboxChange} />
-                    <label htmlFor="Hobby2">Hobby2</label>
-                    <input class="myPage-input" type="checkbox" id="Hobby2" name="Hobby2" onChange={handleCheckboxChange} />
-                    <label htmlFor="Hobby3">Hobby3</label>
-                    <input class="myPage-input" type="checkbox" id="Hobby3" name="Hobby3" onChange={handleCheckboxChange} />
-                </div>
+                    <input class="myPage-input" type="text" name="hobbies" value={hobbies.join(', ')} onChange={handleChange} />
+                </label>
                 <label>
                     Bank Account:
                     <input class="myPage-input" type="text" name="bankAccount" value={bankAccount} onChange={handleChange} disabled />
                 </label>
-                <label>
-                    Cash Balance:
-                    <input class="myPage-input" type="text" name="cashBalance" value={cashBalance} onChange={handleChange} disabled />
-                </label>
-                <button class="myPage-button" type="button" onClick={handleCashCharge}>Charge Cash</button>
+                <div style={{ display: 'flex', alignItems: 'center' }}>
+                    <label>
+                        Cash Balance:
+                        <input class="myPage-input" type="text" name="cashBalance" value={cashBalance} onChange={handleChange} disabled />
+                    </label>
+                    <button class="myPage-button" type="button" onClick={handleCashCharge}>Charge Cash</button>
+                </div>
                 <label>
                     Upload your photo:
                     <input class="myPage-input" type="file" onChange={handleFileChange} />

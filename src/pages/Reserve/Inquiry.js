@@ -99,12 +99,8 @@ const Inquiry = () => {
       )
         return null;
       return e;
-<<<<<<< HEAD
-      });
-=======
     });
 
->>>>>>> a8ca8f320e5dd2c0e4e6f87ca5f38881ce0433fd
   };
 
   const [data, setData] = useState(ReplaceData());
