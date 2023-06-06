@@ -57,3 +57,17 @@ button.myPage-button {
 .hobby-checkbox {
     margin-right: 20px;
 }
+
+.form-group {
+    display: flex;
+    align-items: center;
+    justify-content: flex-start;
+}
+
+.form-group label {
+    width: 200px; /* You can adjust this value to your needs */
+}
+
+.form-group .myPage-input {
+    flex: 2; /* This will make the input take the remaining space */
+}

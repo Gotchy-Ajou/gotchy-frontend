@@ -104,26 +104,36 @@ const MyInfo = () => {
         <div>
             <h1>My Page</h1>
             <form class="myPage-form" onSubmit={handleSubmit}>
-                <label>
-                    Name:
-                    <input class="myPage-input" type="text" name="name" value={name} onChange={handleChange} />
-                </label>
-                <label>
-                    Age:
-                    <input class="myPage-input" type="text" name="age" value={age} onChange={handleChange} />
-                </label>
-                <label>
-                    Region:
-                    <input class="myPage-input" type="text" name="region" value={region} onChange={handleChange} />
-                </label>
+                <div className="form-group">
+                    <label>
+                        Name:
+                        <input class="myPage-input" type="text" name="name" value={name} onChange={handleChange} />
+                    </label>
+                </div>
+                <div className="form-group">
+                    <label>
+                        Age:
+                        <input class="myPage-input" type="text" name="age" value={age} onChange={handleChange} />
+                    </label>
+                </div>
+                <div className="form-group">
+                    <label>
+                        Region:
+                        <input class="myPage-input" type="text" name="region" value={region} onChange={handleChange} />
+                    </label>
+                </div>
+                <div className="form-group">
                 <label>
                     Hobbies:
                     <input class="myPage-input" type="text" name="hobbies" value={hobbies.join(', ')} onChange={handleChange} />
                 </label>
+                </div>
+                <div className="form-group">
                 <label>
                     Bank Account:
                     <input class="myPage-input" type="text" name="bankAccount" value={bankAccount} onChange={handleChange} disabled />
                 </label>
+                </div>
                 <div style={{ display: 'flex', alignItems: 'center' }}>
                     <label>
                         Cash Balance:
