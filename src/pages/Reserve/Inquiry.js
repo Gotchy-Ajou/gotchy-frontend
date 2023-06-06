@@ -46,6 +46,75 @@ import UserManage from '../AdminManage/UserManage';
 // };
 
 
+// location
+const locationList = async (e) => {
+      e.preventDefault();
+    
+      axios.post("", {
+        headers: {
+          "Content-Type": "multipart/form-data",
+        }
+      })
+        .then((resp) => {
+    
+        })
+        .catch((err) => {
+    
+          console.log(err);
+        });
+    }
+// gender
+    const genderList = async (e) => {
+      e.preventDefault();
+    
+      axios.post("", {
+        headers: {
+          "Content-Type": "multipart/form-data",
+        }
+      })
+        .then((resp) => {
+    
+        })
+        .catch((err) => {
+    
+          console.log(err);
+        });
+    }
+// level
+    const levelList = async (e) => {
+      e.preventDefault();
+    
+      axios.post("", {
+        headers: {
+          "Content-Type": "multipart/form-data",
+        }
+      })
+        .then((resp) => {
+    
+        })
+        .catch((err) => {
+    
+          console.log(err);
+        });
+    }
+    
+    //mode
+    const modeList = async (e) => {
+      e.preventDefault();
+    
+      axios.post("", {
+        headers: {
+          "Content-Type": "multipart/form-data",
+        }
+      })
+        .then((resp) => {
+    
+        })
+        .catch((err) => {
+    
+          console.log(err);
+        });
+    }
 
 
 const Inquiry = () => {
@@ -55,18 +124,39 @@ const Inquiry = () => {
     const selectedLocation = e.target.value;
     // 사용자가 '모든 지역'을 선택하면 모든 데이터를 다시 불러옵니다.
     if (selectedLocation === '모든 지역') {
-      setData(ReplaceData());
+      location(ReplaceData());
     } else {
       // 그렇지 않으면 선택한 지역의 모임 데이터만 불러옵니다.
       axios.get(`http://localhost:8080/api/vi/gotchyfilter?location=${selectedLocation}`)
         .then(response => {
-          setData(response.data);
+          location(response.data);
         })
         .catch(error => {
           console.error('Error fetching data: ', error);
         });
     }
   };
+
+  const onChangeGender = e => {
+    const selectedGender = e.target.value;
+  
+    // 사용자가 '모든 성별'을 선택하면 모든 데이터를 다시 불러옵니다.
+    if (selectedGender === '모든 성별') {
+      gender(ReplaceData());
+    } else {
+      // 그렇지 않으면 선택한 성별의 모임 데이터만 불러옵니다.
+      axios.get(`http://localhost:8080/api/v1/gotchyfilter?gender=${selectedGender}`)
+        .then(response => {
+          gender(response.data);
+        })
+        .catch(error => {
+          console.error('데이터를 불러오는데 에러가 발생했습니다: ', error);
+        });
+    }
+  };
+
+  
+  
 
   const [filter, setFilter] = useState({
     gotchyHobby: 'any',
