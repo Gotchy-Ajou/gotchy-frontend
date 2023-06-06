@@ -4,40 +4,30 @@ body {
 }
 
 form.myPage-form {
-    display: flex;
-    flex-direction: column;
-    gap: 20px;
-    width: 400px;
-    margin: 0 auto;
-    padding: 20px;
-    border: 3px solid #a000c8;
-    border-radius: 5px;
-    background-color: white;
+    display:inline-block;
+    margin-top: 20px;
+    border: none;
+    font-size: .9em;
+    box-shadow: 0 2px 5px #6f0489b7;
+    width: 60%;
+    border-radius: 20px;
 }
 
-input.myPage-input[type="text"] {
-    padding: 10px;
-    border: 1px solid #a000c8;
-    border-radius: 5px;
-    color: #a000c8;
-    background-color: #f0f0f0;
-}
-
-input.myPage-input[type="file"] {
-    padding: 10px;
-    border: 1px solid #a000c8;
-    border-radius: 5px;
-    color: #a000c8;
-    /*background-color: #f0f0f0;*/
-}
-
-
-input.myPage-input[type="checkbox"] {
-    margin-right: 5px;
+input.myPage-input {
+    width: 500px;
+    height: 50px;
+    padding: 5px;
+    margin-left: 20px;
+    font-size: 16px;
+    border: 1px solid #dadce0;
+    color: #735d6d;
+    border-radius: 10px;
+    text-align: center;
 }
 
 button.myPage-button {
-    padding: 10px;
+    /* padding: 10px; */
+    height: 50px;
     border: none;
     border-radius: 5px;
     background-color: #a000c8;
@@ -50,24 +40,15 @@ button.myPage-button {
     height: 200px;
   }
 
-.hobby-label {
-    margin-right: 10px;
-}
-
-.hobby-checkbox {
-    margin-right: 20px;
-}
-
 .form-group {
     display: flex;
     align-items: center;
-    justify-content: flex-start;
+    vertical-align: middle;
+    /* justify-content: space-around; */
 }
 
 .form-group label {
-    width: 200px; /* You can adjust this value to your needs */
-}
-
-.form-group .myPage-input {
-    flex: 2; /* This will make the input take the remaining space */
+    margin: 20px;
+    font-size: 16px;
+    color: black;
 }

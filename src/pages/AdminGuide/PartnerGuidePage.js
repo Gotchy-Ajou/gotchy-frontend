@@ -8,7 +8,6 @@ const logoStyle = {
   height: '440px', 
   marginTop: '30px',
   marginBottom: '20px'
-
 };
 
 function PartnerGuidePage() {

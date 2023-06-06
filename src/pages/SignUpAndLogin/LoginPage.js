@@ -5,6 +5,7 @@ import { LoginForm } from "./LoginForm";
 import { SignUpForm } from './SignUpForm';
 import { useSelector, useDispatch } from 'react-redux';
 import { setShowSignup } from '../../redux/action';
+import CommonHeader from '../../components/Layout/CommonHeader';
 
 export const LoginPage = () => {
   const dispatch = useDispatch();
@@ -23,7 +24,7 @@ export const LoginPage = () => {
     setUserOption(e.target.value);
   };
   const option2name = (num) => {
-    switch(num){
+    switch (num) {
       case "1":
         return "회원"
       case "2":
@@ -32,8 +33,8 @@ export const LoginPage = () => {
   };
 
   const logoStyle = {
-    width: 'auto', 
-    height: '100px', 
+    width: 'auto',
+    height: '100px',
     marginTop: '30px',
     marginBottom: '20px'
 
@@ -45,31 +46,38 @@ export const LoginPage = () => {
     paddingRight: '10px',
     paddingLeft: '10px',
     width: '50%',
-    margin: '45px auto', 
+    margin: '45px auto',
     display: 'flex',
     flexDirection: 'column',
     justifyContent: 'center',
     alignItems: 'center',
-    
     height: '90%',
 
   };
-
+  const user_option = useSelector((state => state.user_option))
   return (
-    <div style={{ ...loginFormWrapperStyle, fontFamily: "Eorinai" }} className='login_page'>
-      {showSignup ? <div className="blur"></div> : null}
+    <>
+      {
+        (!user_option) ?
+          <CommonHeader />: null
+      }
+
+
+      <div style={{ ...loginFormWrapperStyle, fontFamily: "Eorinai" }} className='login_page'>
+        {showSignup ? <div className="blur"></div> : null}
 
         <div className='radioGroup'>
-          <input type='radio' value="1" id="1" checked={userOption == "1"} onChange={clickradio}/> <label for="1">회원</label>
-          <input type='radio' value="2" id="2" checked={userOption == "2"} onChange={clickradio}/> <label for="2">관리자</label>
+          <input type='radio' value="1" id="1" checked={userOption == "1"} onChange={clickradio} /> <label for="1">회원</label>
+          <input type='radio' value="2" id="2" checked={userOption == "2"} onChange={clickradio} /> <label for="2">관리자</label>
         </div>
 
         <img src={Gotchy} alt="Gotchy" style={logoStyle} />
-        <h1 className="login_title">가치, 장소를 대여해주는 취미 모임 플랫폼</h1> 
+        <h1 className="login_title">가치, 장소를 대여해주는 취미 모임 플랫폼</h1>
 
         <LoginForm option={userOption} setUserOption={setUserOption} title={option2name(userOption)} />
-          {showSignup ? <span className="signupClose" onClick={clickClose}>X</span> : null}
-          {showSignup ? <SignUpForm option={userOption} /> : null}
-    </div>
+        {showSignup ? <span className="signupClose" onClick={clickClose}>X</span> : null}
+        {showSignup ? <SignUpForm option={userOption} /> : null}
+      </div>
+    </>
   );
 };

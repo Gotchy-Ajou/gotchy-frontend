@@ -118,12 +118,12 @@ function App() {
 //   const user_option = useSelector((state => state.user_option))
 //   return (
 //     <div className="App">
-//       <HashRouter>
+//       {/* <HashRouter> */}
 //       <Router>
 //         <Row>
 //           <Col>
 //             {
-//               (!!user_option) ?
+//               (!user_option) ?
 //                 <Header /> :
 //                 <CommonHeader />
 //             }
@@ -133,7 +133,7 @@ function App() {
 //           <Sidebar />
 //           <div style={styles.contentMargin}>
 //             <Routes>
-//               미가입 일반 유저용 페이지
+//               {/* 미가입 일반 유저용 페이지 */}
 //               {
 //                 (user_option != "1" && user_option != "2") ?
 //                 <Route path="/" element={<LoginPage />} /> :
@@ -149,10 +149,10 @@ function App() {
 //                 <Route path="/PartnerGuidePage" element={<PartnerGuidePage />} /> :
 //                 null
 //               }
-//               회원 페이지
+//               {/* 회원 페이지 */}
 //               {
 //                 (user_option == "1") ?
-//                   <Route path="/" element={<Inquiry />} /> :
+//                   <Route path="/" element={<LoginPage />} /> :
 //                   <Route path="/" element={<LoginPage />} />
 //               }
 //               {
@@ -191,7 +191,7 @@ function App() {
 //                   <Route path="/MyHobby" element={<LoginPage />} />
 //               }
 
-//               관리자 페이지
+//               {/* 관리자 페이지 */}
 //               {
 //                 (user_option == "2") ?
 //                   <Route path="/" element={<UserManage />} /> :
@@ -247,7 +247,7 @@ function App() {
 //         </div>
 
 //       </Router>
-//       </HashRouter>
+//       {/* </HashRouter> */}
 //     </div >
 //   );
 // }

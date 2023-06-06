@@ -1,6 +1,14 @@
 import styled from 'styled-components';
 import { useState, useEffect } from 'react';
 import axios from 'axios';
+import Guide from "./Guide.jpg"
+
+const logoStyle = {
+  width: 'auto',
+  height: '360px',
+  marginTop: '30px',
+  marginBottom: '20px',
+};
 
 const ReservePage = () => {
   const today = new Date();
@@ -95,7 +103,10 @@ const ReservePage = () => {
 
   return (
     <>
-    <div className="hobby-title">가치 모집 등록</div>
+      <div className="notice-write-title">새로운 가치를 등록해주세요!</div>
+      <div style={{ "text-align": "center" }}>
+        <img src={Guide} alt="Guide" style={logoStyle} />
+      </div>
       <MainDiv>
         <InputContainer>
           <label>취미</label>
@@ -151,23 +162,23 @@ const ReservePage = () => {
             type="number"
             value={data.price}
           />
+          <ButtonWrapper>
+            <button
+              onClick={() => {
+                if (Object.values(data).includes(null))
+                  alert('내용을 모두 입력해주세요..');
+                else {
+                  // api 요청.then (() => {
+                  alert('등록 되었습니다.');
+                  window.location.href = '/guide';
+                  //})
+                }
+              }}
+            >
+              등록하기
+            </button>
+          </ButtonWrapper>
         </InputContainer>
-        <ButtonWrapper>
-          <button
-            onClick={() => {
-              if (Object.values(data).includes(null))
-                alert('내용을 모두 입력해주세요..');
-              else {
-                // api 요청.then (() => {
-                alert('등록 되었습니다.');
-                window.location.href = '/guide';
-                //})
-              }
-            }}
-          >
-            등록하기
-          </button>
-        </ButtonWrapper>
       </MainDiv>
     </>
   );
@@ -176,7 +187,7 @@ export default ReservePage;
 
 const InputContainer = styled.div`
   margin-top: 50px;
-  /* width: 60%; */
+  width: 60%;
   /* height: 500px; */
   border: 2px solid #8f23c0;
   border-radius: 15px;
@@ -189,7 +200,7 @@ const InputContainer = styled.div`
   > select,
   > input {
     border: 2px solid #888;
-    width: 450px;
+    width: 100%;
     height: 7%;
     border-radius: 5px;
     padding-left: 10px;
@@ -199,7 +210,7 @@ const InputContainer = styled.div`
 
   > select {
     border: 2px solid #888;
-    width: 450px;
+    width: 100%;
     height: 7%;
     border-radius: 5px;
     padding-left: 10px;
@@ -215,7 +226,7 @@ const ButtonWrapper = styled.div`
   justify-content: center;
 
   > button {
-    margin-top: 50px;
+    margin-top: 20px;
     margin-bottom: 30px;
     width: 250px;
     height: 50px;

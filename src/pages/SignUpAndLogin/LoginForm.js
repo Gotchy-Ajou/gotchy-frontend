@@ -34,43 +34,57 @@ export const LoginForm = (props) => {
     };
 
     const clickLogin = () => {
-        axios.post("http://gotchy.site/login", {
-            "user_id": id,
-            "user_pw": pw,
-            "option": (props.option - 0)
-        }).then((res) => {
-            console.log(res.data)
-            if (res.data.name !== "Error") {
+        if (props.option == "1") {
+            props.setUserOption(props.option);
+            localStorage.setItem('useroption', (props.option - 0));
+            dispatch(setUserOption((props.option - 0)));
+            console.log("hi");
+            navigate('/Inquiry');
+        }
+        if (props.option == "2") {
+            props.setUserOption(props.option);
+            localStorage.setItem('useroption', (props.option - 0));
+            dispatch(setUserOption((props.option - 0)));
+            console.log("hi");
+            navigate('/UserManage');
+        }
+        // axios.post("http://gotchy.site/login", {
+        //     "user_id": id,
+        //     "user_pw": pw,
+        //     "option": (props.option - 0)
+        // }).then((res) => {
+        //     console.log(res.data)
+        //     if (res.data.name !== "Error") {
 
-                //alert('로그인!');
-                console.log(res.data)
-                if (props.option == "2") {
-                    console.log("admin")
-                    localStorage.setItem('userid', res.data.user_id);
-                    dispatch(setUserId(res.data.user_id));
-                }
-                else {
-                    localStorage.setItem('userid', res.data.id);
-                    dispatch(setUserId(res.data.id));
-                }
-                localStorage.setItem('username', res.data.name);
-                dispatch(setUserName(res.data.name));
-                localStorage.setItem('useroption', (props.option - 0));
-                dispatch(setUserOption((props.option - 0)));
+        //         //alert('로그인!');
+        //         console.log(res.data)
+        //         if (props.option == "2") {
+        //             console.log("admin")
+        //             localStorage.setItem('userid', res.data.user_id);
+        //             dispatch(setUserId(res.data.user_id));
+        //         }
+        //         else {
+        //             localStorage.setItem('userid', res.data.id);
+        //             dispatch(setUserId(res.data.id));
+        //         }
+        //         localStorage.setItem('username', res.data.name);
+        //         dispatch(setUserName(res.data.name));
+        //         localStorage.setItem('useroption', (props.option - 0));
+        //         dispatch(setUserOption((props.option - 0)));
 
-                if (props.option == "1") {
-                    console.log("hi");
-                    navigate('/Filter');
-                }
-                if (props.option == "2") {
-                    console.log("hi");
-                    navigate('/MainPage');
-                }
-            }
-            else {
-                alert('실패')
-            }
-        })
+        //         if (props.option == "1") {
+        //             console.log("hi");
+        //             navigate('/');
+        //         }
+        //         if (props.option == "2") {
+        //             console.log("hi");
+        //             navigate('/');
+        //         }
+        //     }
+        //     else {
+        //         alert('실패')
+        //     }
+        // })
 
     };
 

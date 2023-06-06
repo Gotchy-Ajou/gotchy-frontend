@@ -25,7 +25,7 @@ const AdminSideNavigation = () => {
         dispatch(setUserName(""));
         dispatch(setUserOption(""));
         localStorage.clear()
-        navigate('/');
+        navigate('/LoginPage');
     };
     
 

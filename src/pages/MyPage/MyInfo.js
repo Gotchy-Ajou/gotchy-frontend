@@ -103,51 +103,55 @@ const MyInfo = () => {
     return (
         <div>
             <div className="hobby-title">나의 정보</div>
-            <form class="myPage-form" onSubmit={handleSubmit}>
-                <div className="form-group">
-                    <label>
-                        Name:
-                        <input class="myPage-input" type="text" name="name" value={name} onChange={handleChange} />
-                    </label>
-                </div>
-                <div className="form-group">
-                    <label>
-                        Age:
-                        <input class="myPage-input" type="text" name="age" value={age} onChange={handleChange} />
-                    </label>
-                </div>
-                <div className="form-group">
-                    <label>
-                        Region:
-                        <input class="myPage-input" type="text" name="region" value={region} onChange={handleChange} />
-                    </label>
-                </div>
-                <div className="form-group">
-                    <label>
-                        Hobbies:
-                        <input class="myPage-input" type="text" name="hobbies" value={hobbies.join(', ')} onChange={handleChange} />
-                    </label>
-                </div>
-                <div className="form-group">
-                    <label>
-                        Bank Account:
-                        <input class="myPage-input" type="text" name="bankAccount" value={bankAccount} onChange={handleChange} disabled />
-                    </label>
-                </div>
-                <div style={{ display: 'flex', alignItems: 'center' }}>
-                    <label>
-                        Cash Balance:
-                        <input class="myPage-input" type="text" name="cashBalance" value={cashBalance} onChange={handleChange} disabled />
-                    </label>
-                    <button class="myPage-button" type="button" onClick={handleCashCharge}>Charge Cash</button>
-                </div>
-                <label>
-                    Upload your photo:
-                    <input class="myPage-input" type="file" onChange={handleFileChange} />
-                </label>
-                {preview && <img src={preview} alt="Preview" className="preview" />}
-                <button class="myPage-button" type="submit">Update</button>
-            </form>
+            <div style={{ margin: "auto", textAlign: "center" }}>
+                <form class="myPage-form" onSubmit={handleSubmit}>
+                    <div className="form-group">
+                        <label>
+                            Name:
+                            <input class="myPage-input" type="text" name="name" value={name} onChange={handleChange} />
+                        </label>
+                    </div>
+                    <div className="form-group">
+                        <label>
+                            Age:
+                            <input class="myPage-input" type="text" name="age" value={age} onChange={handleChange} />
+                        </label>
+                    </div>
+                    <div className="form-group">
+                        <label>
+                            Region:
+                            <input class="myPage-input" type="text" name="region" value={region} onChange={handleChange} />
+                        </label>
+                    </div>
+                    <div className="form-group">
+                        <label>
+                            Hobbies:
+                            <input class="myPage-input" type="text" name="hobbies" value={hobbies.join(', ')} onChange={handleChange} />
+                        </label>
+                    </div>
+                    <div className="form-group">
+                        <label>
+                            Bank Account:
+                            <input class="myPage-input" type="text" name="bankAccount" value={bankAccount} onChange={handleChange} disabled />
+                        </label>
+                    </div>
+                    <div className="form-group">
+                        <label>
+                            Cash Balance:
+                            <input class="myPage-input" type="text" name="cashBalance" value={cashBalance} onChange={handleChange} disabled />
+                        </label>
+                        <button class="myPage-button" type="button" onClick={handleCashCharge}>Charge Cash</button>
+                    </div>
+                    <div className="form-group">
+                        <label>
+                            Upload your photo:
+                            <input class="myPage-input" type="file" onChange={handleFileChange} />
+                        </label>
+                        {preview && <img src={preview} alt="Preview" className="preview" />}
+                        <button class="myPage-button" type="submit">Update</button>
+                    </div>
+                </form>
+            </div>
         </div>
     );
 };

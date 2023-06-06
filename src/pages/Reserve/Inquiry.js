@@ -4,9 +4,14 @@ import React, { useState, useEffect } from 'react';
 import SelectDiv from './SelectDiv';
 import Dummy from '../dummy.json';
 import { NavLink } from "reactstrap";
-import UserManage from '../AdminManage/UserManage';
+import Guide from "./Guide.jpg"
 
-
+const logoStyle = {
+  width: 'auto',
+  height: '360px',
+  marginTop: '30px',
+  marginBottom: '20px',
+};
 // const loadFilterData = async () => {
 //   try {
 //     const { data } = await axios.post('http://your_server_endpoint');  
@@ -243,8 +248,10 @@ const Inquiry = () => {
   return (
     <>
       <div className="hobby-title">가치 조회</div>
+      <div style={{"text-align" : "center"}}>
+        <img src={Guide} alt="Guide" style={logoStyle} />
+      </div>
       <MainDiv>
-
         <ListContainer>
           <div>날짜</div>
           <div>시간</div>
@@ -443,7 +450,7 @@ const ListContainer = styled.div`
 const MainDiv = styled.div`
   width: 100%;
   /* margin-left: 5%; */
-  padding-top: 100px;
+  padding-top: 20px;
   display: flex;
   flex-direction: column;
   align-items: center;

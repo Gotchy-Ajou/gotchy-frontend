@@ -24,8 +24,8 @@ const UserSideNavigation = () => {
         dispatch(setUserId(""));
         dispatch(setUserName(""));
         dispatch(setUserOption(""));
-        localStorage.clear()
-        navigate('/');
+        localStorage.clear();
+        navigate('/LoginPage');
     };
 
     const [collapsed, setCollapsed] = useState(false);
@@ -47,8 +47,8 @@ const UserSideNavigation = () => {
     useEffect(() => {
         console.log(user_option)
         console.log(localStorage.getItem('useroption') || "")
-      }, []);
-      
+    }, []);
+
     return (
 
         <ProSidebar style={styles.sideBarHeight} collapsed={!collapsed}>
