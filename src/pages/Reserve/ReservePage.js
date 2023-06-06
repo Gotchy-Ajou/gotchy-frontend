@@ -60,16 +60,16 @@ const ReservePage = () => {
   });
 
   //axios 
-//   const postData = async (data) => {
-//     try {
-//       await axios.post('http://your_server_endpoint', data); 
-//       alert('등록 되었습니다.');
-//       window.location.href = '/guide';
-//     } catch (err) {
-//       console.error(err);
-//       alert('등록에 실패했습니다.');
-//     }
-//   };
+  //   const postData = async (data) => {
+  //     try {
+  //       await axios.post('http://your_server_endpoint', data); 
+  //       alert('등록 되었습니다.');
+  //       window.location.href = '/guide';
+  //     } catch (err) {
+  //       console.error(err);
+  //       alert('등록에 실패했습니다.');
+  //     }
+  //   };
 
 
   // const requestInput = async (e) => {
@@ -95,8 +95,8 @@ const ReservePage = () => {
 
   return (
     <>
+    <div className="hobby-title">가치 모집 등록</div>
       <MainDiv>
-        <h1>가치 모집 등록</h1>
         <InputContainer>
           <label>취미</label>
           <select

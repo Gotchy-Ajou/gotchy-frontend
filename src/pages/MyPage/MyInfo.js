@@ -102,7 +102,7 @@ const MyInfo = () => {
 
     return (
         <div>
-            <h1>My Page</h1>
+            <div className="hobby-title">나의 정보</div>
             <form class="myPage-form" onSubmit={handleSubmit}>
                 <div className="form-group">
                     <label>
@@ -123,16 +123,16 @@ const MyInfo = () => {
                     </label>
                 </div>
                 <div className="form-group">
-                <label>
-                    Hobbies:
-                    <input class="myPage-input" type="text" name="hobbies" value={hobbies.join(', ')} onChange={handleChange} />
-                </label>
+                    <label>
+                        Hobbies:
+                        <input class="myPage-input" type="text" name="hobbies" value={hobbies.join(', ')} onChange={handleChange} />
+                    </label>
                 </div>
                 <div className="form-group">
-                <label>
-                    Bank Account:
-                    <input class="myPage-input" type="text" name="bankAccount" value={bankAccount} onChange={handleChange} disabled />
-                </label>
+                    <label>
+                        Bank Account:
+                        <input class="myPage-input" type="text" name="bankAccount" value={bankAccount} onChange={handleChange} disabled />
+                    </label>
                 </div>
                 <div style={{ display: 'flex', alignItems: 'center' }}>
                     <label>

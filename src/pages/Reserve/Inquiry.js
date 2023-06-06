@@ -48,73 +48,73 @@ import UserManage from '../AdminManage/UserManage';
 
 // location
 const locationList = async (e) => {
-      e.preventDefault();
-    
-      axios.post("", {
-        headers: {
-          "Content-Type": "multipart/form-data",
-        }
-      })
-        .then((resp) => {
-    
-        })
-        .catch((err) => {
-    
-          console.log(err);
-        });
+  e.preventDefault();
+
+  axios.post("", {
+    headers: {
+      "Content-Type": "multipart/form-data",
     }
+  })
+    .then((resp) => {
+
+    })
+    .catch((err) => {
+
+      console.log(err);
+    });
+}
 // gender
-    const genderList = async (e) => {
-      e.preventDefault();
-    
-      axios.post("", {
-        headers: {
-          "Content-Type": "multipart/form-data",
-        }
-      })
-        .then((resp) => {
-    
-        })
-        .catch((err) => {
-    
-          console.log(err);
-        });
+const genderList = async (e) => {
+  e.preventDefault();
+
+  axios.post("", {
+    headers: {
+      "Content-Type": "multipart/form-data",
     }
+  })
+    .then((resp) => {
+
+    })
+    .catch((err) => {
+
+      console.log(err);
+    });
+}
 // level
-    const levelList = async (e) => {
-      e.preventDefault();
-    
-      axios.post("", {
-        headers: {
-          "Content-Type": "multipart/form-data",
-        }
-      })
-        .then((resp) => {
-    
-        })
-        .catch((err) => {
-    
-          console.log(err);
-        });
+const levelList = async (e) => {
+  e.preventDefault();
+
+  axios.post("", {
+    headers: {
+      "Content-Type": "multipart/form-data",
     }
-    
-    //mode
-    const modeList = async (e) => {
-      e.preventDefault();
-    
-      axios.post("", {
-        headers: {
-          "Content-Type": "multipart/form-data",
-        }
-      })
-        .then((resp) => {
-    
-        })
-        .catch((err) => {
-    
-          console.log(err);
-        });
+  })
+    .then((resp) => {
+
+    })
+    .catch((err) => {
+
+      console.log(err);
+    });
+}
+
+//mode
+const modeList = async (e) => {
+  e.preventDefault();
+
+  axios.post("", {
+    headers: {
+      "Content-Type": "multipart/form-data",
     }
+  })
+    .then((resp) => {
+
+    })
+    .catch((err) => {
+
+      console.log(err);
+    });
+}
 
 
 const Inquiry = () => {
@@ -139,7 +139,7 @@ const Inquiry = () => {
 
   const onChangeGender = e => {
     const selectedGender = e.target.value;
-  
+
     // 사용자가 '모든 성별'을 선택하면 모든 데이터를 다시 불러옵니다.
     if (selectedGender === '모든 성별') {
       gender(ReplaceData());
@@ -155,8 +155,8 @@ const Inquiry = () => {
     }
   };
 
-  
-  
+
+
 
   const [filter, setFilter] = useState({
     gotchyHobby: 'any',
@@ -242,9 +242,9 @@ const Inquiry = () => {
 
   return (
     <>
+      <div className="hobby-title">가치 조회</div>
       <MainDiv>
-        <h1>가치 조회</h1>
-        <hr className="list_container_title" />
+
         <ListContainer>
           <div>날짜</div>
           <div>시간</div>
@@ -339,18 +339,18 @@ const Inquiry = () => {
 
           {meetings.map(meeting => (
             <ListContainer key={meeting.id}>
-            <div>{meeting.date}</div>
-            <div>{meeting.time}</div>
-            <div>{meeting.location}</div>
-            <div>{meeting.hobby}</div>
-            <div>{meeting.gender}</div>
-            <div>{meeting.level}</div>
-            <div>
+              <div>{meeting.date}</div>
+              <div>{meeting.time}</div>
+              <div>{meeting.location}</div>
+              <div>{meeting.hobby}</div>
+              <div>{meeting.gender}</div>
+              <div>{meeting.level}</div>
+              <div>
                 <TextSpan>{meeting.mode === 'yes' ? 'Yes' : 'No'}</TextSpan>
-              <SubmitButton href="/ApplyPage">신청</SubmitButton>
-            </div>
+                <SubmitButton href="/ApplyPage">신청</SubmitButton>
+              </div>
             </ListContainer>
-        ))}
+          ))}
 
           <hr className="list_container_title" />
           <ListContainer>
