@@ -164,9 +164,32 @@ const PaymentInfo = ({ filter, onReset , onComplete }) => {
 
   return (
     <div className='step'>
-      <h2>Payment Information</h2>
+       <h2>Payment Information</h2>
       <p>Here is the payment information for the selected value.</p>
       <p>Selected filter: {filter.date}</p>
+
+      {/* Added Payment Method Info */}
+      <div className='payment-info'>
+        <h3>지불 방법 안내</h3>
+
+        <h4>1. 신용카드 / 체크카드 결제</h4>
+        <p>웹사이트를 통해 신용카드 또는 체크카드로 바로 결제하실 수 있습니다. 모든 주요 신용카드(Visa, Mastercard, American Express 등)를 통한 결제가 가능합니다.</p>
+
+        <h4>2. 계좌이체</h4>
+        <p>아래의 은행 계좌로 직접 이체하실 수 있습니다. 입금시 참고사항에 주문번호를 꼭 입력해 주세요.</p>
+        <div>
+          <p>은행명: 국민은행</p>
+          <p>계좌번호: 123-456-78900</p>
+          <p>예금주: 가치</p>
+        </div>
+
+        <h4>3. 페이팔 결제</h4>
+        <p>페이팔 계정을 통해 결제하실 수 있습니다. 체크아웃 과정에서 페이팔을 선택하신 후, 페이팔 로그인을 하여 결제를 진행하시면 됩니다.</p>
+
+        <h4>4. 모바일 결제</h4>
+        <p>애플 페이, 구글 페이 등의 모바일 결제도 가능합니다. 결제 과정에서 해당 옵션을 선택하신 후, 요구되는 정보를 입력하시면 됩니다.</p>
+      </div>
+
       <button className="complete-button" onClick={onComplete}>Complete Application</button>
     </div>
   );
