@@ -15,13 +15,6 @@ const AdminNotice = () => {
 
     // DB에 저장되어 있는 공지사항 리스트 가져오기 위한 변수
     const [noticeList, setNoticeList] = useState([
-        {
-            postId: 0,
-            title: "",
-            content: "",
-            createdDate: "",
-            show: false
-        }
         // {
         //     postId: 1,
         //     title: "Notice 1",
@@ -48,7 +41,6 @@ const AdminNotice = () => {
     // Link 용 (함수) 
     let navigate = useNavigate();
 
-    // 우선 더미데이터로 들어감 => 백이랑 연동 후, tempList => noticeList
     const [cardOnOff, setCardOnOff] = useState(noticeList);
     const [showList, setShowList] = useState(noticeList);
     showList.sort((a, b) => b.postId - a.postId); // id순 정렬 (생성 날짜순으로 id 생성되므로 내림차순)
@@ -59,6 +51,32 @@ const AdminNotice = () => {
         await axios.get('http://localhost:3000/api/v1/posts')
             .then(function (response) {
                 setNoticeList(response.data.responseData.map(function (el, idx) {
+                    console.log("[NoticeList.js] useEffect() 성공");
+                    console.log(response.data);
+                    var returnObj = {}
+
+                    returnObj['postId'] = el.postId;
+                    returnObj['title'] = el.title;
+                    returnObj['content'] = el.content;
+                    returnObj['createdDate'] = el.createdDate;
+                    returnObj['show'] = false;
+
+                    return returnObj;
+                }));
+                setCardOnOff(response.data.responseData.map(function (el, idx) {
+                    console.log("[NoticeList.js] useEffect() 성공");
+                    console.log(response.data);
+                    var returnObj = {}
+
+                    returnObj['postId'] = el.postId;
+                    returnObj['title'] = el.title;
+                    returnObj['content'] = el.content;
+                    returnObj['createdDate'] = el.createdDate;
+                    returnObj['show'] = false;
+
+                    return returnObj;
+                }));
+                setShowList(response.data.responseData.map(function (el, idx) {
                     console.log("[NoticeList.js] useEffect() 성공");
                     console.log(response.data);
                     var returnObj = {}
@@ -143,7 +161,7 @@ const AdminNotice = () => {
 
             <div className="notice-parent">
                 <div className="notice-list">
-                    {noticeList.map((item, index) => getQnACard(item, index))}
+                    {showList.map((item, index) => getQnACard(item, index))}
                 </div>
             </div>
         </div>
