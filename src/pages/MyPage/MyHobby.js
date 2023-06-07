@@ -20,7 +20,7 @@ function MyLevel() {
     const loadHobbyList = async () => {
         await axios.get(`http://localhost:3000/api/v1/hobby/${usersId}`)
             .then(function (response) {
-                setHobbyList(response.data.map(function (el) {
+                setHobbyList(response.data.responseData.map(function (el) {
                     console.log(el);
 
                     var returnObj = {}
