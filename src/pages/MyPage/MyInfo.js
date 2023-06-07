@@ -6,13 +6,13 @@ import { Axios } from 'axios';
 
 const MyInfo = () => {
     const [userInfo, setUserInfo] = useState({
-        name: "황수빈",
-        nickname: "오복이",
-        age: 23,
-        region: "경기/인천",
-        phone: '010-2532-7535',
-        manner: "좋음",
-        account: "111-12344-551-25"
+        // name: "황수빈",
+        // nickname: "오복이",
+        // age: 23,
+        // region: "경기/인천",
+        // phone: '010-2532-7535',
+        // manner: "좋음",
+        // account: "111-12344-551-25"
     });
 
     let usersId = 1;

@@ -124,7 +124,7 @@ function App() {
         <Row>
           <Col>
             {
-              (user_option === 1 || user_option === 2) ?
+              (user_option) ?
                 <Header /> :
                 <CommonHeader />
             }
@@ -136,11 +136,7 @@ function App() {
           </Col>
         </Row>
         <div style={styles.contentDiv}>
-          {
-            (user_option === 1 || user_option === 2) ?
-              <Sidebar /> :
-              null
-          }
+          <Sidebar />
           <div style={styles.contentMargin}>
             <Routes>
               {/* 미가입 일반 유저용 페이지 */}
