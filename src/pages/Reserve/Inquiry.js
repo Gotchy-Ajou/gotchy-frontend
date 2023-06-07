@@ -35,7 +35,7 @@ const Inquiry = () => {
   const hobbyList = ['모든 취미', '축구', '농구', '족구', '탁구', '배드민턴', '테니스', '합주(밴드, 오케스트라)', '노래', '춤', '독서토론', '보드게임'];
   const genderList = ['성별', '남자', '여자'];
   const levelList = ['레벨', '비기너', '아마추어', '프로'];
-  const recruitList = ['개인 모집 여부', 'YES', 'NO'];
+  const modeList = ['개인 모집 여부', 'YES', 'NO'];
 
   const today = new Date();
   const [gotchyList, setGotchyList] = useState([])
@@ -84,6 +84,7 @@ const Inquiry = () => {
 
   // 필터링
   const submitFilter = async (e) => {
+    console.log(filter);
     e.preventDefault();
     axios.post("http://localhost:3000/api/v1/gotchyfilter", { filter })
       .then((response) => {
@@ -156,17 +157,17 @@ const Inquiry = () => {
             ))}
           </select>
 
-          <select onChange={(e) => onFilterChange(e)}>
+          <select name="gotchyHobby" value={gotchyHobby} onChange={(e) => onFilterChange(e)}>
             <SelectDiv list={hobbyList} />
           </select>
-          <select onChange={(e) => onFilterChange(e)}>
+          <select name="gender" value={gender} onChange={(e) => onFilterChange(e)}>
             <SelectDiv list={genderList} />
           </select>
-          <select onChange={(e) => onFilterChange(e)}>
+          <select name="level" value={level} onChange={(e) => onFilterChange(e)}>
             <SelectDiv list={levelList} />
           </select>
-          <select onChange={(e) => onFilterChange(e)}>
-            <SelectDiv list={recruitList} />
+          <select name="mode" value={mode} onChange={(e) => onFilterChange(e)}>
+            <SelectDiv list={modeList} />
           </select>
 
           <button onClick={(e) => submitFilter(e)}>조회</button>
@@ -182,7 +183,7 @@ const Inquiry = () => {
                 <div>{meeting.gotchyDate}</div>
                 <div>{meeting.gotchyTime}</div>
                 <div>{meeting.location}</div>
-                <div>{meeting.gotchyhobby}</div>
+                <div>{meeting.gotchyHobby}</div>
                 <div>{meeting.gender}</div>
                 <div>{meeting.level}</div>
                 <div>{meeting.mode}</div>
