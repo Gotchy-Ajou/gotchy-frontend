@@ -64,12 +64,13 @@ const ApplyPage = () => {
     <div className='apply-page'>
       <div className='step-container'>
         {step === 0 && (
-          <div className='step'>
+          <div className='step'> 
             <h2 className="notice-write-title">가치 신청</h2>
-            <p>날짜를 선택하시오</p>
+            {/*<p>날짜를 선택하시오</p>
             <DatePicker selected={new Date(filter.date)} onChange={handleDateChange} />
-            <br />
-            <p>선택된 날짜: {filter.date}</p>
+            <br />*/}
+            <p>선택하신 가치의 날짜: {filter.date}</p>
+            <p>신청하시겠습니까?</p>
             <button className="next-button" onClick={handleNextStep}>다음</button>
           </div>
         )}
@@ -109,7 +110,7 @@ const TermsAndConditions = ({ filter, onNextStep, onPreviousStep }) => {
     <div className='step'>
       <h2 className="notice-write-title">가치 세부사항</h2>
       <p>선택하신 가치의 세부사항입니다. </p>
-      <p>가치 날짜: {filter.date}</p>
+      <p>{filter.date} 12 : 00 서울 축구 여자 비기너</p>
       <button className="back-button" onClick={handlePrevious}>뒤로</button>
       <button className="agree-button" onClick={handleAgree}>동의</button>
       {agreed && <p>상기 내용에 전부 동의하셨습니다.</p>}
@@ -146,7 +147,6 @@ const RefundPolicy = ({ filter, onNextStep, onPreviousStep }) => {
       <p>(적용기준: 호우경보,대설경보,태풍주의보,태풍경보)</p>
       <p>시간 당 5mm 이상 시 날짜 변경 가능</p>
       <p>(기준: 당일 이용 2시간 전 기상청 날씨 해당 주소지 기준)</p>
-      <p>Selected filter: {filter.date}</p>
       <div className="apply-button-groups">
         <button className="back-button" onClick={handlePrevious}>뒤로</button>
         <button className="agree-button" onClick={handleAgree}>동의</button>
