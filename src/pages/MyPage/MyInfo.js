@@ -5,11 +5,16 @@ import 'react-datepicker/dist/react-datepicker.css';
 import { Axios } from 'axios';
 
 const MyInfo = () => {
-    const [userInfo, setUserInfo] = useState();
+    const [userInfo, setUserInfo] = useState({
+        name: "",
+        age: 0,
+        region: "",
+        account: ""
+    });
 
     let usersId = 1;
     const [preview, setPreview] = useState(null);
-    const { name, age, region, hobbyList, gotchyList, account } = userInfo;
+    // const { name, age, region, hobbyList, gotchyList, account } = userInfo;
 
     const loadMyInfo = async () => {
         await axios.get(`http://localhost:3000/api/v1/users/${usersId}`)
