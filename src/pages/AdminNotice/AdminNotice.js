@@ -3,27 +3,6 @@ import axios from "axios";
 import { Link, useNavigate } from "react-router-dom";
 import "../Notice/Notice.css";
 
-const tempList = [
-    {
-        postId: 1,
-        title: "Notice 1",
-        content: "Notice 1의 내용입니다.",
-        createdDate: "2022-05-20"
-    },
-    {
-        postId: 2,
-        title: "Notice 2",
-        content: "Notice 2의 내용입니다.",
-        createdDate: "2022-08-20"
-    },
-    {
-        postId: 3,
-        title: "Notice 3",
-        content: "Notice 3의 내용입니다.",
-        createdDate: "2023-05-20"
-    }
-];
-
 const AdminNotice = () => {
     const [notice, setNotice] = useState({
         postId: 0,
@@ -35,14 +14,36 @@ const AdminNotice = () => {
     const { postId, title, content, createdDate } = notice;
 
     // DB에 저장되어 있는 공지사항 리스트 가져오기 위한 변수
-    const [noticeList, setNoticeList] = useState([]);
+    const [noticeList, setNoticeList] = useState([
+        // {
+        //     postId: 1,
+        //     title: "Notice 1",
+        //     content: "Notice 1의 내용입니다.",
+        //     createdDate: "2022-05-20",
+        //     show: false
+        // },
+        // {
+        //     postId: 2,
+        //     title: "Notice 2",
+        //     content: "Notice 2의 내용입니다.",
+        //     createdDate: "2022-08-20",
+        //     show: false
+        // },
+        // {
+        //     postId: 3,
+        //     title: "Notice 3",
+        //     content: "Notice 3의 내용입니다.",
+        //     createdDate: "2023-05-20",
+        //     show: false
+        // }
+    ]);
 
     // Link 용 (함수) 
     let navigate = useNavigate();
 
     // 우선 더미데이터로 들어감 => 백이랑 연동 후, tempList => noticeList
-    const [cardOnOff, setCardOnOff] = useState([]);
-    const [showList, setShowList] = useState([]);
+    const [cardOnOff, setCardOnOff] = useState(noticeList);
+    const [showList, setShowList] = useState(noticeList);
     showList.sort((a, b) => b.postId - a.postId); // id순 정렬 (생성 날짜순으로 id 생성되므로 내림차순)
 
     /* [POST / notice]: 공지사항 목록 가져오기 */
@@ -135,7 +136,7 @@ const AdminNotice = () => {
 
             <div className="notice-parent">
                 <div className="notice-list">
-                    {showList.map((item, index) => getQnACard(item, index))}
+                    {noticeList.map((item, index) => getQnACard(item, index))}
                 </div>
             </div>
         </div>
