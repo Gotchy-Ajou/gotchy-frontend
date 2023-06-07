@@ -15,15 +15,15 @@ function UserStatistic() {
 
     /* 성별에 따른 유저 정보 로드 및 설정하기 */
     useEffect(() => {
-        axios.post('http://3000/api/v1/users')
+        axios.get('http://3000/api/v1/users')
             .then(function (response) {
                 console.log(response.data);
-                setManData(response.data.filter(function (el, idx) {
+                setManData(response.data.responseData.filter(function (el, idx) {
                     if (el.gender === "남자") {
                         return el;
                     }
                 }));
-                setWomanData(response.data.filter(function (el, idx) {
+                setWomanData(response.data.responseData.filter(function (el, idx) {
                     if (el.gender === "여자") {
                         return el;
                     }
@@ -35,25 +35,25 @@ function UserStatistic() {
 
     /* 나이에 따른 유저 정보 로드 및 설정하기 */
     useEffect(() => {
-        axios.post('http://3000/api/v1/users')
+        axios.get('http://3000/api/v1/users')
             .then(function (response) {
                 console.log(response.data);
-                setTeenagerData(response.data.filter(function (el, idx) { // 10대
+                setTeenagerData(response.data.responseData.filter(function (el, idx) { // 10대
                     if (el.age >= 10 && el.age < 20) {
                         return el;
                     }
                 }));
-                setTwentiesData(response.data.filter(function (el, idx) { // 20대
+                setTwentiesData(response.data.responseData.filter(function (el, idx) { // 20대
                     if (el.age >= 20 && el.age < 30) {
                         return el;
                     }
                 }));
-                setThirtiesData(response.data.filter(function (el, idx) { // 30대
+                setThirtiesData(response.data.responseData.filter(function (el, idx) { // 30대
                     if (el.age >= 30 && el.age < 40) {
                         return el;
                     }
                 }));
-                setEtcData(response.data.filter(function (el, idx) { // 그외
+                setEtcData(response.data.responseData.filter(function (el, idx) { // 그외
                     if (el.age >= 40) {
                         return el;
                     }

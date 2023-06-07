@@ -32,9 +32,9 @@ function UserManage() {
 
     /* 유저 정보 로드하기 */
     const loadUserRecord = async () => {
-        await axios.post('http://3000/api/v1/users')
+        await axios.get('http://3000/api/v1/users')
             .then(function (response) {
-                setRecord(response.data.map(function (el, idx) {
+                setRecord(response.data.responseData.map(function (el, idx) {
                     var returnObj = {}
 
                     returnObj['usersId'] = el.usersId;
