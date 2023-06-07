@@ -5,17 +5,17 @@ import "./Manage.css"
 
 function UserStatistic() {
     /* 더미, 빈 객체로 변경 예정 */
-    const [manData, setManData] = useState([1, 2])
-    const [womanData, setWomanData] = useState([1]) // 성별
+    const [manData, setManData] = useState([])
+    const [womanData, setWomanData] = useState([]) // 성별
 
-    const [teenagerData, setTeenagerData] = useState([1, 2, 3, 4, 5])
-    const [twentiesDate, setTwentiesData] = useState([1, 2, 3, 4, 5, 6, 7, 8])
-    const [thirtiesData, setThirtiesData] = useState([1, 2, 3])
+    const [teenagerData, setTeenagerData] = useState([])
+    const [twentiesDate, setTwentiesData] = useState([])
+    const [thirtiesData, setThirtiesData] = useState([])
     const [etcDate, setEtcData] = useState([1]) // 나이
 
     /* 성별에 따른 유저 정보 로드 및 설정하기 */
     useEffect(() => {
-        axios.get('http://3000/api/v1/users')
+        axios.get('http://localhost:3000/api/v1/users')
             .then(function (response) {
                 console.log(response.data);
                 setManData(response.data.responseData.filter(function (el, idx) {
@@ -35,7 +35,7 @@ function UserStatistic() {
 
     /* 나이에 따른 유저 정보 로드 및 설정하기 */
     useEffect(() => {
-        axios.get('http://3000/api/v1/users')
+        axios.get('http://localhost:3000/api/v1/users')
             .then(function (response) {
                 console.log(response.data);
                 setTeenagerData(response.data.responseData.filter(function (el, idx) { // 10대
