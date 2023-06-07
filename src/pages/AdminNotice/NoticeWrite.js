@@ -24,15 +24,14 @@ function NoticeWrite() {
     /* 공지사항 작성 */
     const createNotice = async (e) => {
         e.preventDefault();
-        let formData = new FormData();
-        formData.append("title", title);
-        formData.append("content", content);
+        // let formData = new FormData();
+        // formData.append("title", title);
+        // formData.append("content", content);
 
-
-        axios.post("http://localhost:3000/api/v1/posts", formData, {
-            headers: {
-                "Content-Type": "multipart/form-data",
-            }
+        axios.post("http://localhost:3000/api/v1/posts", {
+            'title': title,
+            'content': content,
+            'createdDate': new Date()
         })
             .then((resp) => {
                 console.log("[NoticeWrite.js] createNotice() success :D");

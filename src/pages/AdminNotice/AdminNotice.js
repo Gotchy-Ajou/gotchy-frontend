@@ -15,6 +15,13 @@ const AdminNotice = () => {
 
     // DB에 저장되어 있는 공지사항 리스트 가져오기 위한 변수
     const [noticeList, setNoticeList] = useState([
+        {
+            postId: 0,
+            title: "",
+            content: "",
+            createdDate: "",
+            show: false
+        }
         // {
         //     postId: 1,
         //     title: "Notice 1",
