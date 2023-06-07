@@ -1,7 +1,7 @@
 import styled from 'styled-components';
 import axios from "axios";
 import React, { useState, useEffect } from 'react';
-import SelectDiv from './SelectDiv';
+import { Link } from 'react-router-dom';
 import { NavLink } from "reactstrap";
 import Guide from "./Guide.jpg"
 
@@ -31,7 +31,7 @@ const Inquiry = () => {
     '전북',
     '제주',
   ];
-  const hobbyList = ['축구', '농구', '족구', '탁구', '배드민턴', '테니스', '합주', '노래', '춤', '독서토론', '보드게임'];
+  const hobbyList = ['축구', '농구', '야구', '족구', '탁구', '배드민턴', '테니스', '합주', '노래', '춤', '독서토론', '보드게임'];
   const genderList = ['남자', '여자'];
   const levelList = ['비기너', '아마추어', '프로'];
   const modeList = ['YES', 'NO'];
@@ -47,6 +47,7 @@ const Inquiry = () => {
           console.log(el);
 
           var returnObj = {}
+          returnObj['gotchyId'] = el.gotchyId;
           returnObj['gotchyDate'] = el.gotchyDate;
           returnObj['gotchyTime'] = el.gotchyTime;
           returnObj['location'] = el.location;
@@ -85,13 +86,13 @@ const Inquiry = () => {
   function submitFilter() {
     console.log(filter);
     axios.post("http://localhost:3000/api/v1/gotchyfilter", {
-      gotchyDate: filter.gotchyDate,
-      gotchyTime: filter.gotchyTime,
-      location: filter.location,
-      gotchyHobby: filter.gotchyHobby,
-      gender: filter.gender,
-      level: filter.level,
-      mode: filter.mode
+      'gotchyDate': filter.gotchyDate,
+      'gotchyTime': filter.gotchyTime,
+      'location': filter.location,
+      'gotchyHobby': filter.gotchyHobby,
+      'gender': filter.gender,
+      'level': filter.level,
+      'mode': filter.mode
     })
       .then((response) => {
         console.log("필터링 success");
@@ -101,6 +102,7 @@ const Inquiry = () => {
           console.log(el);
 
           var returnObj = {}
+          returnObj['gotchyId'] = el.gotchyId;
           returnObj['gotchyDate'] = el.gotchyDate;
           returnObj['gotchyTime'] = el.gotchyTime;
           returnObj['location'] = el.location;
@@ -228,7 +230,8 @@ const Inquiry = () => {
                 <div>{meeting.level}</div>
                 <div>{meeting.mode}</div>
                 <div>
-                  <SubmitButton href="/ApplyPage">신청</SubmitButton>
+                  <Link className="notice-update-button" to={{ pathname: `/ApplyPage/${meeting.gotchyId}` }}>수정</Link>
+                  {/* <SubmitButton meetDate={meeting.gotchyDate} href="/ApplyPage">신청</SubmitButton> */}
                 </div>
               </ListContainer>
               <hr className="list_container_title" />

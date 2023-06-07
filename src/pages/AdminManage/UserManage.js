@@ -32,7 +32,7 @@ function UserManage() {
 
     /* 유저 정보 로드하기 */
     const loadUserRecord = async () => {
-        await axios.post('http://8080/api/v1/users')
+        await axios.post('http://3000/api/v1/users')
             .then(function (response) {
                 setRecord(response.data.map(function (el, idx) {
                     var returnObj = {}
@@ -42,6 +42,7 @@ function UserManage() {
                     returnObj['nickname'] = el.nickname;
                     returnObj['gender'] = el.gender;
                     returnObj['age'] = el.age;
+                    returnObj['phone'] = el.phone;
                     returnObj['region'] = el.region;
 
                     return returnObj;
@@ -67,6 +68,7 @@ function UserManage() {
                             <th class="admin">닉네임</th>
                             <th class="admin">성별</th>
                             <th class="admin">나이</th>
+                            <th class="admin">연락처</th>
                             <th class="admin">지역</th>
                         </tr>
                     </thead>
