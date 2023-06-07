@@ -31,7 +31,7 @@ const Inquiry = () => {
     '전북',
     '제주',
   ];
-  const hobbyList = ['축구', '농구', '족구', '탁구', '배드민턴', '테니스', '합주(밴드, 오케스트라)', '노래', '춤', '독서토론', '보드게임'];
+  const hobbyList = ['축구', '농구', '족구', '탁구', '배드민턴', '테니스', '합주', '노래', '춤', '독서토론', '보드게임'];
   const genderList = ['남자', '여자'];
   const levelList = ['비기너', '아마추어', '프로'];
   const modeList = ['YES', 'NO'];
@@ -67,13 +67,13 @@ const Inquiry = () => {
   }, []);
 
   const [filter, setFilter] = useState({
-    gotchyDate: "",
-    gotchyTime: "",
-    location: "",
-    gotchyHobby: "",
-    gender: "",
-    level: "",
-    mode: ""
+    gotchyDate: null,
+    gotchyTime: null,
+    location: null,
+    gotchyHobby: null,
+    gender: null,
+    level: null,
+    mode: null
   });
   const { gotchyDate, gotchyTime, location, gotchyHobby, gender, level, mode } = filter;
 
@@ -84,7 +84,15 @@ const Inquiry = () => {
   // 필터링
   function submitFilter() {
     console.log(filter);
-    axios.post("http://localhost:3000/api/v1/gotchyfilter", {filter})
+    axios.post("http://localhost:3000/api/v1/gotchyfilter", {
+      gotchyDate: filter.gotchyDate,
+      gotchyTime: filter.gotchyTime,
+      location: filter.location,
+      gotchyHobby: filter.gotchyHobby,
+      gender: filter.gender,
+      level: filter.level,
+      mode: filter.mode
+    })
       .then((response) => {
         console.log("필터링 success");
         console.log(response.data);
