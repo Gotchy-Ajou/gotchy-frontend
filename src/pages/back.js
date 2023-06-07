@@ -5,13 +5,13 @@ function DataComponent() {
   const [data, setData] = useState([]);
 
   useEffect(() => {
-    axios.get('http://localhost:8080/api/vi/gotchy')
-      .then(response => {
-        setData(response.data);
-      })
-      .catch(error => {
-        console.error('Error fetching data: ', error);
-      });
+    // axios.get('http://localhost:8080/api/vi/gotchy')
+    //   .then(response => {
+    //     setData(response.data);
+    //   })
+    //   .catch(error => {
+    //     console.error('Error fetching data: ', error);
+    //   });
   }, []);
 
   return (

@@ -81,16 +81,16 @@ const FAQ = () => {
      /* [POST / notice]: FAQ 목록 가져오기 */
      const loadNoticeList = async () => {
  
-         await axios.post('http://gotchy.site/FAQList')
-             .then((res) => {
-                 console.log("[FAQList.js] useEffect() 성공");
-                 console.log(res.data);
-                 setFAQList(res.data);
-             })
-             .catch((err) => {
-                 console.log("[FAQList.js] useEffect() 실패");
-                 console.log(err);
-             });
+        //  await axios.post('http://gotchy.site/FAQList')
+        //      .then((res) => {
+        //          console.log("[FAQList.js] useEffect() 성공");
+        //          console.log(res.data);
+        //          setFAQList(res.data);
+        //      })
+        //      .catch((err) => {
+        //          console.log("[FAQList.js] useEffect() 실패");
+        //          console.log(err);
+        //      });
      }
  
      useEffect(() => {
@@ -100,16 +100,16 @@ const FAQ = () => {
      /* [POST / notice]: FAQ 카테고리 목록 가져오기 */
      const loadCategoryList = async () => {
  
-        await axios.post('http://gotchy.site/categoryList')
-            .then((res) => {
-                console.log("[categoryList] useEffect() 성공");
-                console.log(res.data);
-                setCategoryList(res.data);
-            })
-            .catch((err) => {
-                console.log("[categoryList] useEffect() 실패");
-                console.log(err);
-            });
+        // await axios.post('http://gotchy.site/categoryList')
+        //     .then((res) => {
+        //         console.log("[categoryList] useEffect() 성공");
+        //         console.log(res.data);
+        //         setCategoryList(res.data);
+        //     })
+        //     .catch((err) => {
+        //         console.log("[categoryList] useEffect() 실패");
+        //         console.log(err);
+        //     });
     }
     useEffect(() => {
         loadCategoryList();

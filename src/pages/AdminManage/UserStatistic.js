@@ -15,7 +15,7 @@ function UserStatistic() {
 
     /* 성별에 따른 유저 정보 로드 및 설정하기 */
     useEffect(() => {
-        axios.post('http://gotchy.site/users')
+        axios.post('http://8080/api/v1/users')
             .then(function (response) {
                 console.log(response.data);
                 setManData(response.data.filter(function (el, idx) {
@@ -35,7 +35,7 @@ function UserStatistic() {
 
     /* 나이에 따른 유저 정보 로드 및 설정하기 */
     useEffect(() => {
-        axios.post('http://gotchy.site/users')
+        axios.post('http://8080/api/v1/users')
             .then(function (response) {
                 console.log(response.data);
                 setTeenagerData(response.data.filter(function (el, idx) { // 10대

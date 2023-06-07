@@ -4,35 +4,35 @@ import axios from "axios";
 
 function UserManage() {
     const [record, setRecord] = useState([
-        {
-            usersId: "rorngk22",
-            name: "황수빈",
-            nickname: "오복이",
-            gender: "여자",
-            age: "26",
-            region: "경기"
-        },
-        {
-            usersId: "abc123",
-            name: "이정우",
-            nickname: "별명은",
-            gender: "남자",
-            age: "35",
-            region: "서울"
-        },
-        {
-            usersId: "ds99oal",
-            name: "김나래",
-            nickname: "뭐로하지",
-            gender: "여자",
-            age: "18",
-            region: "제주"
-        }
+        // {
+        //     usersId: "rorngk22",
+        //     name: "황수빈",
+        //     nickname: "오복이",
+        //     gender: "여자",
+        //     age: "26",
+        //     region: "경기"
+        // },
+        // {
+        //     usersId: "abc123",
+        //     name: "이정우",
+        //     nickname: "별명은",
+        //     gender: "남자",
+        //     age: "35",
+        //     region: "서울"
+        // },
+        // {
+        //     usersId: "ds99oal",
+        //     name: "김나래",
+        //     nickname: "뭐로하지",
+        //     gender: "여자",
+        //     age: "18",
+        //     region: "제주"
+        // }
     ]);
 
     /* 유저 정보 로드하기 */
     const loadUserRecord = async () => {
-        await axios.post('http://gotchy.site/users')
+        await axios.post('http://8080/api/v1/users')
             .then(function (response) {
                 setRecord(response.data.map(function (el, idx) {
                     var returnObj = {}

@@ -12,15 +12,15 @@ function NoticeUpdate() {
     const param = useParams(); // 파라미터 가져오기
 
     useEffect(() => {
-        console.log(param.postId);
-        const getNotice = async () => {
-            const { data } = await axios.post(`http://gotchy.site/NoticeList/${param.postId}`);
-            return data;
-        }
-        getNotice().then((result) => {
-            setTitle(result.title);
-            setContent(result.content);
-        });
+        // console.log(param.postId);
+        // const getNotice = async () => {
+        //     const { data } = await axios.post(`http://gotchy.site/NoticeList/${param.postId}`);
+        //     return data;
+        // }
+        // getNotice().then((result) => {
+        //     setTitle(result.title);
+        //     setContent(result.content);
+        // });
     }, [])
 
     const changeTitle = (e) => {
@@ -35,27 +35,27 @@ function NoticeUpdate() {
 
     /* 공지사항 업데이트 */
     const updateNotice = async (e) => {
-        e.preventDefault();
-        let formData = new FormData();
-        formData.append("postId", param.postId);
-        formData.append("title", title);
-        formData.append("content", content);
+        // e.preventDefault();
+        // let formData = new FormData();
+        // formData.append("postId", param.postId);
+        // formData.append("title", title);
+        // formData.append("content", content);
 
-        axios.post("http://gotchy.site/NoticeList/update", formData, {
-            headers: {
-                "Content-Type": "multipart/form-data",
-            }
-        })
-            .then((resp) => {
-                console.log("[NoticeUpdate.js] updateNotice() success :D");
-                console.log(resp.data);
-                alert("공지사항을 성공적으로 수정했습니다 :D");
-                navigate("/AdminNotice"); // 공지사항 목록 페이지로 이동
-            })
-            .catch((err) => {
-                console.log("[NoticeUpdate.js] updateNotice() error :<");
-                console.log(err);
-            });
+        // axios.post("http://gotchy.site/NoticeList/update", formData, {
+        //     headers: {
+        //         "Content-Type": "multipart/form-data",
+        //     }
+        // })
+        //     .then((resp) => {
+        //         console.log("[NoticeUpdate.js] updateNotice() success :D");
+        //         console.log(resp.data);
+        //         alert("공지사항을 성공적으로 수정했습니다 :D");
+        //         navigate("/AdminNotice"); // 공지사항 목록 페이지로 이동
+        //     })
+        //     .catch((err) => {
+        //         console.log("[NoticeUpdate.js] updateNotice() error :<");
+        //         console.log(err);
+        //     });
     }
 
 

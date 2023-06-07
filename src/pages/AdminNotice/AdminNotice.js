@@ -48,16 +48,16 @@ const AdminNotice = () => {
     /* [POST / notice]: 공지사항 목록 가져오기 */
     const loadNoticeList = async () => {
 
-        await axios.post('http://gotchy.site/NoticeList')
-            .then((res) => {
-                console.log("[NoticeList.js] useEffect() 성공");
-                console.log(res.data);
-                setNoticeList(res.data);
-            })
-            .catch((err) => {
-                console.log("[NoticeList.js] useEffect() 실패");
-                console.log(err);
-            });
+        // await axios.post('http://gotchy.site/NoticeList')
+        //     .then((res) => {
+        //         console.log("[NoticeList.js] useEffect() 성공");
+        //         console.log(res.data);
+        //         setNoticeList(res.data);
+        //     })
+        //     .catch((err) => {
+        //         console.log("[NoticeList.js] useEffect() 실패");
+        //         console.log(err);
+        //     });
     }
 
     useEffect(() => {
@@ -66,13 +66,13 @@ const AdminNotice = () => {
 
     /* 공지사항 항목 삭제하기 */
     const deleteNotice = (postId) => {
-        axios.delete(`http://gotchy.site/NoticeList/${postId}`)
-            .then((result) => {
-                loadNoticeList();
-            })
-            .catch(() => {
-                alert('오류가 발생했습니다!');
-            });
+        // axios.delete(`http://gotchy.site/NoticeList/${postId}`)
+        //     .then((result) => {
+        //         loadNoticeList();
+        //     })
+        //     .catch(() => {
+        //         alert('오류가 발생했습니다!');
+        //     });
     };
 
     const getQnACard = (item, index) => {

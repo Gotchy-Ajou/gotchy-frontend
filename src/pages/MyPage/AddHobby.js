@@ -25,7 +25,7 @@ export default function AddHobby() {
         e.preventDefault();
         e.target.reset();
         console.log(hobby);
-        await axios.post("api/v1/hobby/1", {hobby })
+        await axios.post("http://8080/api/v1/hobby/1", {hobby })
             .then(function (response) {
                 console.log(response.data);
                 // if(response.data === "success") {

@@ -3,7 +3,7 @@ import './ApplyPage.css';
 import DatePicker from 'react-datepicker';
 import 'react-datepicker/dist/react-datepicker.css';
 import axios from 'axios';
-const API_URL = 'http://localhost:5000/api';
+// const API_URL = 'http://localhost:5000/api';
 
 const ApplyPage = () => {
   const [termsAgreed, setTermsAgreed] = useState(false);
@@ -35,24 +35,24 @@ const ApplyPage = () => {
     const selectedDate = date.toISOString().split('T')[0];
     setFilter({ ...filter, date: selectedDate });
 
-    try {
-      const response = await axios.get(`${API_URL}/getDateInfo`, { params: { date: selectedDate } });
-      console.log(response.data); // Log the response data
-    } catch (error) {
-      console.error(error);
-    }
+    // try {
+    //   const response = await axios.get(`${API_URL}/getDateInfo`, { params: { date: selectedDate } });
+    //   console.log(response.data); // Log the response data
+    // } catch (error) {
+    //   console.error(error);
+    // }
   };
 
   const handleCompleteApplication = async () => {
-    try {
-      const response = await axios.post(`${API_URL}/completeApplication`, {
-        termsAgreed,
-        refundPolicyAgreed,
-      });
-      console.log(response.data);
-    } catch (error) {
-      console.error(error);
-    }
+    // try {
+    //   const response = await axios.post(`${API_URL}/completeApplication`, {
+    //     termsAgreed,
+    //     refundPolicyAgreed,
+    //   });
+    //   console.log(response.data);
+    // } catch (error) {
+    //   console.error(error);
+    // }
   };
 
   const handleSubmit = () => {

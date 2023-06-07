@@ -20,16 +20,16 @@ const MyInfo = () => {
     const { name, age, region, hobbies, file, bankAccount, cashBalance } = userInfo;
 
     useEffect(() => {
-        const fetchUserInfo = async () => {
-            try {
-                const response = await axios.get('http://localhost:5000/api/getUserInfo'); // your API endpoint here
-                setUserInfo(response.data);
-            } catch (error) {
-                console.error(error);
-            }
-        };
+        // const fetchUserInfo = async () => {
+        //     try {
+        //         const response = await axios.get('http://localhost:5000/api/getUserInfo'); // your API endpoint here
+        //         setUserInfo(response.data);
+        //     } catch (error) {
+        //         console.error(error);
+        //     }
+        // };
 
-        fetchUserInfo();
+        // fetchUserInfo();
     }, []);
 
     const handleChange = (e) => {
@@ -68,29 +68,29 @@ const MyInfo = () => {
         }
     };
     const handleSubmit = async (e) => {
-        e.preventDefault();
+        // e.preventDefault();
 
-        const formData = new FormData();
-        formData.append('name', name);
-        formData.append('age', age);
-        formData.append('region', region);
-        for (let hobby of hobbies) {
-            formData.append('hobbies', hobby);
-        }
-        formData.append('file', file);
+        // const formData = new FormData();
+        // formData.append('name', name);
+        // formData.append('age', age);
+        // formData.append('region', region);
+        // for (let hobby of hobbies) {
+        //     formData.append('hobbies', hobby);
+        // }
+        // formData.append('file', file);
 
-        try {
-            // Send the updated user info back to the server
-            const response = await axios.post('http://localhost:5000/api/updateUserInfo', formData, {
-                headers: {
-                    'Content-Type': 'multipart/form-data',
-                },
-            });
+        // try {
+        //     // Send the updated user info back to the server
+        //     const response = await axios.post('http://localhost:5000/api/updateUserInfo', formData, {
+        //         headers: {
+        //             'Content-Type': 'multipart/form-data',
+        //         },
+        //     });
 
-            console.log(response.data);
-        } catch (error) {
-            console.error(error);
-        }
+        //     console.log(response.data);
+        // } catch (error) {
+        //     console.error(error);
+        // }
     };
 
 

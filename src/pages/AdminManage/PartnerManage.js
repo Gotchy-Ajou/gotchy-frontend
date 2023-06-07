@@ -27,21 +27,21 @@ function PartnerManage() {
 
     /* 제휴업체 정보 로드하기 */
     const loadPartnerRecord = async () => {
-        await axios.post('http://gotchy.site/partners')
-            .then(function (response) {
-                setRecord(response.data.map(function (el, idx) {
-                    var returnObj = {}
+        // await axios.post('http://gotchy.site/partners')
+        //     .then(function (response) {
+        //         setRecord(response.data.map(function (el, idx) {
+        //             var returnObj = {}
 
-                    returnObj['name'] = el.name;
-                    returnObj['region'] = el.region;
-                    returnObj['phone'] = el.phone;
-                    returnObj['durate'] = el.durate;
+        //             returnObj['name'] = el.name;
+        //             returnObj['region'] = el.region;
+        //             returnObj['phone'] = el.phone;
+        //             returnObj['durate'] = el.durate;
 
-                    return returnObj;
-                }));
-            }).catch(function (reason) {
-                console.log(reason);
-            });
+        //             return returnObj;
+        //         }));
+        //     }).catch(function (reason) {
+        //         console.log(reason);
+        //     });
 
     }
     useEffect(() => {

@@ -23,27 +23,27 @@ function NoticeWrite() {
 
     /* 공지사항 작성 */
     const createNotice = async (e) => {
-        e.preventDefault();
-        let formData = new FormData();
-        formData.append("title", title);
-        formData.append("content", content);
+        // e.preventDefault();
+        // let formData = new FormData();
+        // formData.append("title", title);
+        // formData.append("content", content);
 
 
-        axios.post("http://gotchy.site/NoticeList/create", formData, {
-            headers: {
-                "Content-Type": "multipart/form-data",
-            }
-        })
-            .then((resp) => {
-                console.log("[NoticeWrite.js] createNotice() success :D");
-                console.log(resp.data);
-                alert("새로운 공지사항을 성공적으로 등록했습니다 :D");
-                navigate("/AdminNotice"); // 공지사항 목록 페이지로 이동
-            })
-            .catch((err) => {
-                console.log("[NoticeWrite.js] createNotice() error :<");
-                console.log(err);
-            });
+        // axios.post("http://gotchy.site/NoticeList/create", formData, {
+        //     headers: {
+        //         "Content-Type": "multipart/form-data",
+        //     }
+        // })
+        //     .then((resp) => {
+        //         console.log("[NoticeWrite.js] createNotice() success :D");
+        //         console.log(resp.data);
+        //         alert("새로운 공지사항을 성공적으로 등록했습니다 :D");
+        //         navigate("/AdminNotice"); // 공지사항 목록 페이지로 이동
+        //     })
+        //     .catch((err) => {
+        //         console.log("[NoticeWrite.js] createNotice() error :<");
+        //         console.log(err);
+        //     });
     }
 
 

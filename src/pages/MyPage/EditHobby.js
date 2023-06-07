@@ -23,13 +23,13 @@ export default function EditHobby(props) {
 
     // form 제출
     const submitHobby = async (e) => {
-        e.preventDefault();
-        // e.target.reset();
+        // e.preventDefault();
+        // // e.target.reset();
 
-        await axios.post("http://gotchy.site/Hobby/Hobby_submit", { userid, hobby });
-        alert('추가되었습니다!');
-        window.close(); //클로즈 먼저해야만 새로고침이 되었음
-        window.location.reload();
+        // await axios.post("http://gotchy.site/Hobby/Hobby_submit", { userid, hobby });
+        // alert('추가되었습니다!');
+        // window.close(); //클로즈 먼저해야만 새로고침이 되었음
+        // window.location.reload();
     };
 
     return (

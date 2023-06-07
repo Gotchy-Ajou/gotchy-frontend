@@ -35,16 +35,16 @@ const Notice = () => {
     /* [POST / notice]: 공지사항 목록 가져오기 */
     const loadNoticeList = async () => {
 
-        await axios.post('http://gotchy.site/NoticeList')
-            .then((res) => {
-                console.log("[NoticeList.js] useEffect() 성공");
-                console.log(res.data);
-                setNoticeList(res.data);
-            })
-            .catch((err) => {
-                console.log("[NoticeList.js] useEffect() 실패");
-                console.log(err);
-            });
+        // await axios.post('http://gotchy.site/NoticeList')
+        //     .then((res) => {
+        //         console.log("[NoticeList.js] useEffect() 성공");
+        //         console.log(res.data);
+        //         setNoticeList(res.data);
+        //     })
+        //     .catch((err) => {
+        //         console.log("[NoticeList.js] useEffect() 실패");
+        //         console.log(err);
+        //     });
     }
 
     useEffect(() => {

@@ -30,27 +30,27 @@ function FAQWrite() {
 
     /* FAQ 작성 */
     const createFAQ = async (e) => {
-        e.preventDefault();
-        let formData = new FormData();
-        formData.append("question", question);
-        formData.append("answer", answer);
-        formData.append("category", category);
+        // e.preventDefault();
+        // let formData = new FormData();
+        // formData.append("question", question);
+        // formData.append("answer", answer);
+        // formData.append("category", category);
 
-        axios.post("http://gotchy.site/FAQList/create", formData, {
-            headers: {
-                "Content-Type": "multipart/form-data",
-            }
-        })
-            .then((resp) => {
-                console.log("[FAQWrite.js] createFAQ() success :D");
-                console.log(resp.data);
-                alert("새로운 FAQ를 성공적으로 등록했습니다 :D");
-                navigate("/AdminFAQ"); // FAQ 목록 페이지로 이동
-            })
-            .catch((err) => {
-                console.log("[FAQWrite.js] createFAQ() error :<");
-                console.log(err);
-            });
+        // axios.post("http://gotchy.site/FAQList/create", formData, {
+        //     headers: {
+        //         "Content-Type": "multipart/form-data",
+        //     }
+        // })
+        //     .then((resp) => {
+        //         console.log("[FAQWrite.js] createFAQ() success :D");
+        //         console.log(resp.data);
+        //         alert("새로운 FAQ를 성공적으로 등록했습니다 :D");
+        //         navigate("/AdminFAQ"); // FAQ 목록 페이지로 이동
+        //     })
+        //     .catch((err) => {
+        //         console.log("[FAQWrite.js] createFAQ() error :<");
+        //         console.log(err);
+        //     });
     }
 
 

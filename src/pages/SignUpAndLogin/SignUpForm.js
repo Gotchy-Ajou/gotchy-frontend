@@ -60,26 +60,26 @@ export const SignUpForm = (props) => {
   };
 
   const register = () => {
-    axios.post("http://gotchy.site/signup", {
-      "name": name,
-      "phone": phone,
-      "user_id": id,
-      "user_pw": pw,
-      "nickname": nickname,
-      "gender": gender,
-      "age": age,
-      "region": region,
-      "option": (props.option - 0)
-    }).then((res) => {
-      console.log(res.data)
-      if (res.data == "success") {
-        dispatch(setShowSignup(!showSignup));
-        alert('회원가입 되었습니다!');
-      }
-      else {
-        alert('실패')
-      }
-    })
+    // axios.post("http://gotchy.site/signup", {
+    //   "name": name,
+    //   "phone": phone,
+    //   "user_id": id,
+    //   "user_pw": pw,
+    //   "nickname": nickname,
+    //   "gender": gender,
+    //   "age": age,
+    //   "region": region,
+    //   "option": (props.option - 0)
+    // }).then((res) => {
+    //   console.log(res.data)
+    //   if (res.data == "success") {
+    //     dispatch(setShowSignup(!showSignup));
+    //     alert('회원가입 되었습니다!');
+    //   }
+    //   else {
+    //     alert('실패')
+    //   }
+    // })
   }
 
   return (
