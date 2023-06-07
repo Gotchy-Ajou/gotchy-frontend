@@ -82,17 +82,9 @@ const Inquiry = () => {
   };
 
   // 필터링
-  const submitFilter = async (e) => {
-    e.preventDefault();
+  function submitFilter() {
     console.log(filter);
-    let formData = new FormData();
-    formData.append("gotchyDate", filter.gotchyDate);
-    formData.append("gotchyTime", filter.gotchyTime);
-    formData.append("location", filter.location);
-    formData.append("gotchyHobby", filter.gotchyHobby);
-    formData.append("gender", filter.gender);
-    formData.append("level", filter.level);
-    axios.post("http://localhost:3000/api/v1/gotchyfilter", JSON.stringify(filter))
+    axios.post("http://localhost:3000/api/v1/gotchyfilter", {filter})
       .then((response) => {
         console.log("필터링 success");
         console.log(response.data);
@@ -134,87 +126,84 @@ const Inquiry = () => {
           <div>성별</div>
           <div>레벨</div>
           <div>개인 모집 여부</div>
-          <div>조회</div>
         </ListContainer>
         <Hr className="list_container_line" />
-        <form onSubmit={submitFilter}>
-          <SelectContainer>
-            <input
-              type="date"
-              name="gotchyDate"
-              onChange={onFilterChange}
-              value={gotchyDate}
-            />
-            <input
-              type="time"
-              name="gotchyTime"
-              onChange={onFilterChange}
-              value={gotchyTime}
-            />
+        <SelectContainer>
+          <input
+            type="date"
+            name="gotchyDate"
+            onChange={onFilterChange}
+            value={gotchyDate}
+          />
+          <input
+            type="time"
+            name="gotchyTime"
+            onChange={onFilterChange}
+            value={gotchyTime}
+          />
 
-            <select name="location" value={location} onChange={e => onFilterChange(e)} required>
-              <option value="" selected>위치</option>
-              {locationList.map((option) => (
-                <option
-                  key={option}
-                  value={option}
-                >
-                  {option}
-                </option>
-              ))}
-            </select>
+          <select name="location" value={location} onChange={e => onFilterChange(e)} required>
+            <option value="" selected>위치</option>
+            {locationList.map((option) => (
+              <option
+                key={option}
+                value={option}
+              >
+                {option}
+              </option>
+            ))}
+          </select>
 
-            <select name="gotchyHobby" value={gotchyHobby} onChange={(e) => onFilterChange(e)} required>
-              <option value="" selected>취미</option>
-              {hobbyList.map((option) => (
-                <option
-                  key={option}
-                  value={option}
-                >
-                  {option}
-                </option>
-              ))}
-            </select>
+          <select name="gotchyHobby" value={gotchyHobby} onChange={(e) => onFilterChange(e)} required>
+            <option value="" selected>취미</option>
+            {hobbyList.map((option) => (
+              <option
+                key={option}
+                value={option}
+              >
+                {option}
+              </option>
+            ))}
+          </select>
 
-            <select name="gender" value={gender} onChange={(e) => onFilterChange(e)}>
-              <option value="" selected>성별</option>
-              {genderList.map((option) => (
-                <option
-                  key={option}
-                  value={option}
-                >
-                  {option}
-                </option>
-              ))}
-            </select>
+          <select name="gender" value={gender} onChange={(e) => onFilterChange(e)}>
+            <option value="" selected>성별</option>
+            {genderList.map((option) => (
+              <option
+                key={option}
+                value={option}
+              >
+                {option}
+              </option>
+            ))}
+          </select>
 
-            <select name="level" value={level} onChange={(e) => onFilterChange(e)}>
-              <option value="" selected>레벨</option>
-              {levelList.map((option) => (
-                <option
-                  key={option}
-                  value={option}
-                >
-                  {option}
-                </option>
-              ))}
-            </select>
+          <select name="level" value={level} onChange={(e) => onFilterChange(e)}>
+            <option value="" selected>레벨</option>
+            {levelList.map((option) => (
+              <option
+                key={option}
+                value={option}
+              >
+                {option}
+              </option>
+            ))}
+          </select>
 
-            <select name="mode" value={mode} onChange={(e) => onFilterChange(e)}>
-              <option value="" selected>개인모집</option>
-              {modeList.map((option) => (
-                <option
-                  key={option}
-                  value={option}
-                >
-                  {option}
-                </option>
-              ))}
-            </select>
+          <select name="mode" value={mode} onChange={(e) => onFilterChange(e)}>
+            <option value="" selected>개인모집</option>
+            {modeList.map((option) => (
+              <option
+                key={option}
+                value={option}
+              >
+                {option}
+              </option>
+            ))}
+          </select>
 
-            <button type="submit" onClick={() => submitFilter()}>조회</button>
-          </SelectContainer>
-        </form>
+          <button onClick={() => submitFilter()}>조회</button>
+        </SelectContainer>
         <br />
         <div>
           <br />
