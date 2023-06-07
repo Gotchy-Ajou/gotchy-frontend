@@ -64,13 +64,14 @@ const ApplyPage = () => {
     <div className='apply-page'>
       <div className='step-container'>
         {step === 0 && (
-          <div className='step'>
+          <div className='step'> 
             <h2 className="notice-write-title">가치 신청</h2>
-            <p>날짜를 선택하시오</p>
+            {/*<p>날짜를 선택하시오</p>
             <DatePicker selected={new Date(filter.date)} onChange={handleDateChange} />
-            <br />
-            <p>Selected filter: {filter.date}</p>
-            <button className="next-button" onClick={handleNextStep}>Next</button>
+            <br />*/}
+            <p>선택하신 가치의 날짜: {filter.date}</p>
+            <p>신청하시겠습니까?</p>
+            <button className="next-button" onClick={handleNextStep}>다음</button>
           </div>
         )}
         {step === 1 && (
@@ -107,13 +108,13 @@ const TermsAndConditions = ({ filter, onNextStep, onPreviousStep }) => {
 
   return (
     <div className='step'>
-      <h2 className="notice-write-title">Terms and Conditions</h2>
-      <p>Here are the terms and conditions. Please read and agree.</p>
-      <p>Selected filter: {filter.date}</p>
-      <button className="back-button" onClick={handlePrevious}>Back</button>
-      <button className="agree-button" onClick={handleAgree}>I Agree</button>
-      {agreed && <p>You have agreed to the terms and conditions.</p>}
-      <button className="next-button" onClick={handleNext}>Next</button>
+      <h2 className="notice-write-title">가치 세부사항</h2>
+      <p>선택하신 가치의 세부사항입니다. </p>
+      <p>{filter.date} 12 : 00 서울 축구 여자 비기너</p>
+      <button className="back-button" onClick={handlePrevious}>뒤로</button>
+      <button className="agree-button" onClick={handleAgree}>동의</button>
+      {agreed && <p>상기 내용에 전부 동의하셨습니다.</p>}
+      <button className="next-button" onClick={handleNext}>다음</button>
     </div>
   );
 };
@@ -135,7 +136,7 @@ const RefundPolicy = ({ filter, onNextStep, onPreviousStep }) => {
 
   return (
     <div className='step'>
-      <h2 className="notice-write-title">Refund Policy</h2>
+      <h2 className="notice-write-title">환불 정책</h2>
       <p>결제 후 30분 이내 취소 시 100% 환불 (하루 1회)</p>
       <p>7일 전 취소 시 100% 환불</p>
       <p>5일 전 취소 시 80% 환불</p>
@@ -146,12 +147,11 @@ const RefundPolicy = ({ filter, onNextStep, onPreviousStep }) => {
       <p>(적용기준: 호우경보,대설경보,태풍주의보,태풍경보)</p>
       <p>시간 당 5mm 이상 시 날짜 변경 가능</p>
       <p>(기준: 당일 이용 2시간 전 기상청 날씨 해당 주소지 기준)</p>
-      <p>Selected filter: {filter.date}</p>
       <div className="apply-button-groups">
-        <button className="back-button" onClick={handlePrevious}>Back</button>
-        <button className="agree-button" onClick={handleAgree}>I Agree</button>
-        {agreed && <p>You have agreed to the refund policy.</p>}
-        <button className="next-button" onClick={handleNext}>Next</button>
+        <button className="back-button" onClick={handlePrevious}>뒤로</button>
+        <button className="agree-button" onClick={handleAgree}>동의</button>
+        {agreed && <p>상기 내용에 전부 동의하셨습니다.</p>}
+        <button className="next-button" onClick={handleNext}>다음</button>
       </div>
     </div>
   );
@@ -164,14 +164,13 @@ const PaymentInfo = ({ filter, onReset , onComplete }) => {
 
   return (
     <div className='step'>
-       <h2 className="notice-write-title">Payment Information</h2>
-      <p>Here is the payment information for the selected value.</p>
-      <p>Selected filter: {filter.date}</p>
+       <h2 className="notice-write-title">지불 방법 안내</h2>
+     
+     
 
-      {/* Added Payment Method Info */}
+    
       <div className='payment-info'>
-        <h3 style={{margin: "40px 0 20px", fontWeight: "bold"}}>지불 방법 안내</h3>
-
+        
         <h4 style={{margin: "40px 0 20px", fontWeight: "bold", color: "#720091"}}>1. 신용카드 / 체크카드 결제</h4>
         <p>웹사이트를 통해 신용카드 또는 체크카드로 바로 결제하실 수 있습니다. 모든 주요 신용카드(Visa, Mastercard, American Express 등)를 통한 결제가 가능합니다.</p>
 
@@ -190,7 +189,7 @@ const PaymentInfo = ({ filter, onReset , onComplete }) => {
         <p>애플 페이, 구글 페이 등의 모바일 결제도 가능합니다. 결제 과정에서 해당 옵션을 선택하신 후, 요구되는 정보를 입력하시면 됩니다.</p>
       </div>
 
-      <button className="complete-button" onClick={onComplete}>Complete Application</button>
+      <button className="complete-button" onClick={onComplete}>신청 완료</button>
     </div>
   );
 };
