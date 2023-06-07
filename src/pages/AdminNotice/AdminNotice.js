@@ -32,7 +32,7 @@ const AdminNotice = () => {
                     console.log(response.data);
                     var returnObj = {}
 
-                    returnObj['postId'] = el.postId;
+                    returnObj['postsId'] = el.postsId;
                     returnObj['title'] = el.title;
                     returnObj['content'] = el.content;
                     returnObj['createdDate'] = el.createdDate;
@@ -55,6 +55,7 @@ const AdminNotice = () => {
 
     /* 공지사항 항목 삭제하기 */
     const deleteNotice = (postId) => {
+        console.log(postId);
         axios.delete(`http://localhost:3000/api/v1/posts/${postId}`)
             .then((result) => {
                 loadNoticeList();
@@ -95,7 +96,7 @@ const AdminNotice = () => {
                                 deleteNotice(item.postId)
                             }
                         }}>삭제</button>
-                        <Link className="notice-update-button" to={{ pathname: `/NoticeUpdate/${item.postId}` }}>수정</Link>
+                        <Link className="notice-update-button" to={{ pathname: `/NoticeUpdate/${item.postsId}` }}>수정</Link>
                     </div>
                 </div>
             </div>
