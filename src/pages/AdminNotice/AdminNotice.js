@@ -49,14 +49,22 @@ const AdminNotice = () => {
     const loadNoticeList = async () => {
 
         await axios.get('http://localhost:3000/api/v1/posts')
-            .then((res) => {
-                console.log("[NoticeList.js] useEffect() 성공");
-                console.log(res.data);
-                setNoticeList(res.data.responseData);
-            })
-            .catch((err) => {
+            .then(function (response) {
+                setNoticeList(response.data.responseData.map(function (el, idx) {
+                    console.log("[NoticeList.js] useEffect() 성공");
+                    console.log(response.data);
+                    var returnObj = {}
+
+                    returnObj['postId'] = el.postId;
+                    returnObj['title'] = el.title;
+                    returnObj['content'] = el.content;
+                    returnObj['createdDate'] = el.createdDate;
+
+                    return returnObj;
+                }));
+            }).catch(function (reason) {
                 console.log("[NoticeList.js] useEffect() 실패");
-                console.log(err);
+                console.log(reason);
             });
     }
 
