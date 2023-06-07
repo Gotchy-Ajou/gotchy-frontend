@@ -14,11 +14,11 @@ function MyLevel() {
         // { hobbyId: 1, hobbyName: "축구", hobbyLevel: "비기너" },
         // { hobbyId: 2, hobbyName: "노래", hobbyLevel: "프로" }
     ]);
-    let userid = localStorage.getItem('userid');
+    let userid = 1
 
     // 기존의 hobby List 가져오기
     const loadHobbyList = async () => {
-        await axios.post('http://localhost:3000/api/v1/hobby/1', { userid })
+        await axios.post('http://localhost:3000/api/v1/hobby', { userid })
             .then(function (response) {
                 setHobbyList(response.data.map(function (el) {
                     console.log(el);
@@ -40,13 +40,13 @@ function MyLevel() {
 
     // hobby 삭제
     const deleteHobby = async (productId) => {
-        // await axios.delete(`http://gotchy.site/HobbyList/${productId}`, { userid }) // usetid 하위의 취미 id 찾아서 삭제하기
-        //     .then((result) => {
-        //         loadHobbyList();
-        //     })
-        //     .catch(() => {
-        //         alert('오류가 발생했습니다!');
-        //     });
+        await axios.delete(`http://localhost:3000/api/v1/hobby/${productId}`, { userid }) // usetid 하위의 취미 id 찾아서 삭제하기
+            .then((result) => {
+                loadHobbyList();
+            })
+            .catch(() => {
+                alert('오류가 발생했습니다!');
+            });
     };
 
     // 모달창에서 편집하기 위함

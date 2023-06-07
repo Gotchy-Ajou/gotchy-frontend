@@ -79,21 +79,21 @@ function NoticeWrite() {
 
             <div class="Write_wrapper">
                 <div class="form_container">
-                    <form>
+                    {/* <form> */}
                         <table>
                             <tbody>
 
                                 <tr>
                                     <th class="Write_header">제목</th>
                                     <td class="Write_input_container">
-                                        <input class="Write_input" type="text" name="title" value={title} onChange={onNoticeChange} size="50px" />
+                                        <input class="Write_input" type="text" name="title" value={title} onChange={e => onNoticeChange(e)} size="50px" />
                                     </td>
                                 </tr>
 
                                 <tr>
                                     <th class="Write_header">내용</th>
                                     <td class="Write_input_container">
-                                        <textarea class="Write_input" name="content" value={content} onChange={onNoticeChange} rows="10"></textarea>
+                                        <textarea class="Write_input" name="content" value={content} onChange={e => onNoticeChange(e)} rows="10"></textarea>
                                     </td>
                                 </tr>
 
@@ -103,7 +103,7 @@ function NoticeWrite() {
                             <button className="Write_submit_button" onClick={() => submitData()}>등록하기</button>
                             {/* <button type="submit" className="Write_submit_button"><i className="fas fa-pen"></i> 등록하기</button> */}
                         </div>
-                    </form>
+                    {/* </form> */}
 
                 </div>
             </div>
