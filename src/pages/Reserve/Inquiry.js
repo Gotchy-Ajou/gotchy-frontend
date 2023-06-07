@@ -14,7 +14,6 @@ const logoStyle = {
 
 const Inquiry = () => {
   const locationList = [
-    '모든 지역',
     '서울',
     '경기',
     '인천',
@@ -32,13 +31,12 @@ const Inquiry = () => {
     '전북',
     '제주',
   ];
-  const hobbyList = ['모든 취미', '축구', '농구', '족구', '탁구', '배드민턴', '테니스', '합주(밴드, 오케스트라)', '노래', '춤', '독서토론', '보드게임'];
-  const genderList = ['성별', '남자', '여자'];
-  const levelList = ['레벨', '비기너', '아마추어', '프로'];
-  const modeList = ['개인 모집 여부', 'YES', 'NO'];
+  const hobbyList = ['축구', '농구', '족구', '탁구', '배드민턴', '테니스', '합주(밴드, 오케스트라)', '노래', '춤', '독서토론', '보드게임'];
+  const genderList = ['남자', '여자'];
+  const levelList = ['비기너', '아마추어', '프로'];
+  const modeList = ['YES', 'NO'];
 
   const today = new Date();
-  const [click, ]
   const [gotchyList, setGotchyList] = useState([])
 
   // 전체 데이터 로드
@@ -83,31 +81,23 @@ const Inquiry = () => {
     setFilter({ ...filter, [e.target.name]: e.target.value });
   };
 
-
-  const buttonClickIsTrue = () => {
-    if
-  };
-  
-  const [replaceData, setReplaceData] = useState([]);
-  
   // 필터링
-  const submitFilter = async (e) => {
+  function submitFilter() {
     console.log(filter);
-    e.preventDefault();
-    axios.post("http://localhost:3000/api/v1/gotchyfilter", { 
-      gotchyDate: filter.gotchyDate,
-      gotchyTime: filter.gotchyTime,
-      location: filter.location,
-      gotchyHobby: filter.gotchyHobby,
-      gender: filter.gender,
-      level: filter.level,
-      mode: filter.mode,
-       })
+    axios.post("http://localhost:3000/api/v1/gotchyfilter", {
+      'gotchyDate': filter.gotchyDate,
+      'gotchyTime': filter.gotchyTime,
+      'location': filter.location,
+      'gotchyHobby': filter.gotchyHobby,
+      'gender': filter.gender,
+      'level': filter.level,
+      'mode': filter.mode
+    })
       .then((response) => {
         console.log("필터링 success");
         console.log(response.data);
 
-        setReplaceData(response.data.responseData.map(function (el) {
+        setGotchyList(response.data.responseData.map(function (el) {
           console.log(el);
 
           var returnObj = {}
@@ -160,9 +150,8 @@ const Inquiry = () => {
             value={gotchyTime}
           />
 
-
           <select name="location" value={location} onChange={e => onFilterChange(e)} required>
-            <option value="" selected>위치</option>
+            <option value="" selected>지역</option>
             {locationList.map((option) => (
               <option
                 key={option}
@@ -173,20 +162,52 @@ const Inquiry = () => {
             ))}
           </select>
 
-          <select name="gotchyHobby" value={gotchyHobby} onChange={(e) => onFilterChange(e)}>
-            <SelectDiv list={hobbyList} />
+          <select name="gotchyHobby" value={gotchyHobby} onChange={(e) => onFilterChange(e)} required>
+            <option value="" selected>취미</option>
+            {hobbyList.map((option) => (
+              <option
+                key={option}
+                value={option}
+              >
+                {option}
+              </option>
+            ))}
           </select>
           <select name="gender" value={gender} onChange={(e) => onFilterChange(e)}>
-            <SelectDiv list={genderList} />
+            <option value="" selected>성별</option>
+            {genderList.map((option) => (
+              <option
+                key={option}
+                value={option}
+              >
+                {option}
+              </option>
+            ))}
           </select>
           <select name="level" value={level} onChange={(e) => onFilterChange(e)}>
-            <SelectDiv list={levelList} />
+            <option value="" selected>레벨</option>
+            {levelList.map((option) => (
+              <option
+                key={option}
+                value={option}
+              >
+                {option}
+              </option>
+            ))}
           </select>
           <select name="mode" value={mode} onChange={(e) => onFilterChange(e)}>
-            <SelectDiv list={modeList} />
+            <option value="" selected>개인모집</option>
+            {modeList.map((option) => (
+              <option
+                key={option}
+                value={option}
+              >
+                {option}
+              </option>
+            ))}
           </select>
 
-          <button onClick={(e) => submitFilter(e)}>조회</button>
+          <button onClick={() => submitFilter()}>조회</button>
         </SelectContainer>
         <br />
         <div>
