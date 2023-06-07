@@ -21,6 +21,7 @@ const MyInfo = () => {
     const loadMyInfo = async () => {
         await axios.get(`http://localhost:3000/api/v1/users/${usersId}`)
             .then(function(response) {
+                console.log("success");
                 console.log(response.data);
                 setUserInfo(response.data.responseData.map(function (el) {
                     console.log(el);
@@ -29,13 +30,14 @@ const MyInfo = () => {
                     returnObj['name'] = el.name;
                     returnObj['age'] = el.age;
                     returnObj['region'] = el.region;
-                    returnObj['hobbyList'] = el.hobbies;
-                    returnObj['gotchyList'] = el.bankAccount;
-                    returnObj['account'] = el.cashBalance;
+                    returnObj['hobbyList'] = el.hobbyList;
+                    returnObj['gotchyList'] = el.gotchyList;
+                    returnObj['account'] = el.account;
 
                     return returnObj;
                 }));
             }).catch(function (reason) {
+                console.log("error");
                 console.log(reason);
             });
     }
