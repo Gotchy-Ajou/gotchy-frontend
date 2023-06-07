@@ -20,7 +20,7 @@ const MyInfo = () => {
 
     const loadMyInfo = async () => {
         await axios.get(`http://localhost:3000/api/v1/users/${usersId}`)
-            .then(function(response) {
+            .then(function (response) {
                 console.log("success");
                 console.log(response.data);
                 setUserInfo(response.data.responseData.map(function (el) {
@@ -30,8 +30,8 @@ const MyInfo = () => {
                     returnObj['name'] = el.name;
                     returnObj['age'] = el.age;
                     returnObj['region'] = el.region;
-                    returnObj['hobbyList'] = el.hobbyList;
-                    returnObj['gotchyList'] = el.gotchyList;
+                    // returnObj['hobbyList'] = el.hobbyList;
+                    // returnObj['gotchyList'] = el.gotchyList;
                     returnObj['account'] = el.account;
 
                     return returnObj;
@@ -136,18 +136,18 @@ const MyInfo = () => {
                             <div class="myPage-input">{userInfo.region}</div>
                         </label>
                     </div>
-                    <div className="form-group">
+                    {/* <div className="form-group">
                         <label>
                             취미:
                             <div class="myPage-input">{userInfo.hobbyList}</div>
                         </label>
-                    </div>
-                    <div className="form-group">
+                    </div> */}
+                    {/* <div className="form-group">
                         <label>
                             신청내역
                             <div class="myPage-input">{userInfo.gotchyList}</div>
                         </label>
-                    </div>
+                    </div> */}
                     <div className="form-group">
                         <label>
                             계좌:
@@ -158,7 +158,7 @@ const MyInfo = () => {
                     <div className="form-group">
                         <label>
                             사진 업로드:
-                            <input class="myPage-input" type="file"/>
+                            <input class="myPage-input" type="file" />
                         </label>
                         {preview && <img src={preview} alt="Preview" className="preview" />}
                         <button class="myPage-button" type="submit">수정하기</button>
