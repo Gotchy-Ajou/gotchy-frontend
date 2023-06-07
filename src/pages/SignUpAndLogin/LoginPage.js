@@ -56,13 +56,6 @@ export const LoginPage = () => {
   };
   const user_option = useSelector((state => state.user_option))
   return (
-    <>
-      {
-        (!user_option) ?
-          <CommonHeader />: null
-      }
-
-
       <div style={{ ...loginFormWrapperStyle, fontFamily: "Eorinai" }} className='login_page'>
         {showSignup ? <div className="blur"></div> : null}
 
@@ -78,6 +71,5 @@ export const LoginPage = () => {
         {showSignup ? <span className="signupClose" onClick={clickClose}>X</span> : null}
         {showSignup ? <SignUpForm option={userOption} /> : null}
       </div>
-    </>
   );
 };

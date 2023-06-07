@@ -1,7 +1,7 @@
 import styled from 'styled-components';
 import axios from "axios";
 import React, { useState, useEffect } from 'react';
-import { Link } from 'react-router-dom';
+import { useNavigate } from "react-router-dom";
 import { NavLink } from "reactstrap";
 import Guide from "./Guide.jpg"
 
@@ -13,6 +13,7 @@ const logoStyle = {
 };
 
 const Inquiry = () => {
+  const navigate = useNavigate();
   const locationList = [
     '서울',
     '경기',
@@ -37,7 +38,28 @@ const Inquiry = () => {
   const modeList = ['YES', 'NO'];
 
   const today = new Date();
-  const [gotchyList, setGotchyList] = useState([])
+  const [gotchyList, setGotchyList] = useState([
+    {
+      gotchyId: 1,
+      gotchyDate: '2023-06-08',
+      gotchyTime: '10:00',
+      location: '수원 아주대',
+      gotchyHobby: '축구',
+      gender: '남자',
+      level: '프로',
+      mode: 'YES'
+    },
+    {
+      gotchyId: 2,
+      gotchyDate: '2023-06-08',
+      gotchyTime: '10:00',
+      location: '수원 아주대',
+      gotchyHobby: '축구',
+      gender: '남자',
+      level: '프로',
+      mode: 'YES'
+    }
+  ])
 
   // 전체 데이터 로드
   const loadFilterData = async () => {
@@ -120,6 +142,27 @@ const Inquiry = () => {
       });
   };
 
+  function submitApply(e, meeting) {
+    console.log(meeting);
+    axios.post("http://localhost:3000/api/v1/users/apply-gotchy", {
+      'usersId': 1,
+      'gotchyId': meeting.gotchyId
+    })
+      .then((response) => {
+        console.log("success");
+        console.log(response.data);
+        navigate("/ApplyPage"); // 신청 약관 페이지로 이동
+      })
+      .catch((err) => {
+        console.log("error");
+        console.log(err);
+      });
+  };
+
+  const navigateToApplyPage = () => {
+    navigate("/ApplyPage");
+  };
+
 
   return (
     <>
@@ -136,6 +179,7 @@ const Inquiry = () => {
           <div>성별</div>
           <div>레벨</div>
           <div>개인 모집 여부</div>
+          <div></div>
         </ListContainer>
         <Hr className="list_container_line" />
         <SelectContainer>
@@ -212,7 +256,8 @@ const Inquiry = () => {
             ))}
           </select>
 
-          <button onClick={() => submitFilter()}>조회</button>
+          <button style={{ backgroundColor: '#12B560', color: '#fff', border: 'none', borderRadius: '5px', padding: '4px', width: '55px' }}
+            onClick={() => submitFilter()}>조회</button>
         </SelectContainer>
         <br />
         <div>
@@ -230,8 +275,12 @@ const Inquiry = () => {
                 <div>{meeting.level}</div>
                 <div>{meeting.mode}</div>
                 <div>
-                  <Link className="notice-update-button" to={{ pathname: `/ApplyPage/${meeting.gotchyId}` }}>수정</Link>
-                  {/* <SubmitButton meetDate={meeting.gotchyDate} href="/ApplyPage">신청</SubmitButton> */}
+                  <button style={{ backgroundColor: 'rgb(70, 0, 87)', color: '#fff', border: 'none', borderRadius: '5px' }}
+                    onClick={(e, meeting) => {
+                      // submitApply(e, meeting);
+                      navigateToApplyPage();
+                    }}
+                  >신청</button>
                 </div>
               </ListContainer>
               <hr className="list_container_title" />
@@ -273,23 +322,24 @@ const SubmitButton = styled(NavLink)`
 
 
 const ListContainer = styled.div`
+margin-left: 45px;
   display: flex;
   margin-top: 20px;
-  width: 980px;
+  width: 1060px;
   justify-content: space-between;
+  text-align: center;
 
   > div {
-    width: 120px;
+    width: 140px;
     font-size: 15px;
     display: flex;
     font-weight: bold;
-    justify-content: space-between;
+    text-align: center;
   }
 `;
 
 const MainDiv = styled.div`
   width: 100%;
-  /* margin-left: 5%; */
   padding-top: 20px;
   display: flex;
   flex-direction: column;
@@ -308,28 +358,34 @@ const MainDiv = styled.div`
   .list_container_line {
     background-color: #8f23c0;
     border: none;
-    width: 990px;
+    width: 1060px;
     height: 3px;
   }
 `;
 
 const SelectContainer = styled.div`
   display: flex;
-  gap: 25px;
+  margin-top: 20px;
+  width: 1020px;
+  justify-content: flex-start;
 
-  > select,
-  > input {
-    width: 120px;
-
-    font-size: 12px;
-    padding: 10px;
-    border: none;
-    outline: none;
-    background-color: #a374db;
-    color: #fff;
-    border-radius: 10px;
-    cursor: pointer;
-  }
+> input,
+> select {
+  width: 110px;
+  font-size: 15px;
+  display: flex;
+  font-weight: bold;
+  // justify-content: flex-start;
+  margin-right: 22px;
+  border: none;
+  outline: none;
+  background-color: #a374db;
+  color: #fff;
+  border-radius: 10px;
+  cursor: pointer;
+  font-size: 12px;
+  padding: 10px;
+}
 `;
 
 export default Inquiry;

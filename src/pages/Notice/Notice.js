@@ -7,24 +7,24 @@ const Notice = () => {
     // DB에 저장되어 있는 공지사항 리스트 가져오기 위한 변수
     const [noticeList, setNoticeList] = useState([
         
-        {
-            postId: 1,
-            title: "Notice 1",
-            content: "Notice 1의 내용입니다.",
-            createdDate: "2022-05-20"
-        },
-        {
-            postId: 2,
-            title: "Notice 2",
-            content: "Notice 2의 내용입니다.",
-            createdDate: "2022-08-20"
-        },
-        {
-            postId: 3,
-            title: "Notice 3",
-            content: "Notice 3의 내용입니다.",
-            createdDate: "2023-05-20"
-        }
+        // {
+        //     postId: 1,
+        //     title: "Notice 1",
+        //     content: "Notice 1의 내용입니다.",
+        //     createdDate: "2022-05-20"
+        // },
+        // {
+        //     postId: 2,
+        //     title: "Notice 2",
+        //     content: "Notice 2의 내용입니다.",
+        //     createdDate: "2022-08-20"
+        // },
+        // {
+        //     postId: 3,
+        //     title: "Notice 3",
+        //     content: "Notice 3의 내용입니다.",
+        //     createdDate: "2023-05-20"
+        // }
     
     ]);
 
