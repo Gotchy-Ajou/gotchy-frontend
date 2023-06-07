@@ -59,6 +59,7 @@ const AdminNotice = () => {
                     returnObj['title'] = el.title;
                     returnObj['content'] = el.content;
                     returnObj['createdDate'] = el.createdDate;
+                    returnObj['show'] = false;
 
                     return returnObj;
                 }));
