@@ -21,19 +21,7 @@ const MyInfo = () => {
             .then(function (response) {
                 console.log("success");
                 console.log(response.data);
-                setUserInfo(response.data.responseData.map(function (el) {
-                    console.log(el);
-
-                    var returnObj = {}
-                    returnObj['name'] = el.name;
-                    returnObj['age'] = el.age;
-                    returnObj['region'] = el.region;
-                    // returnObj['hobbyList'] = el.hobbyList;
-                    // returnObj['gotchyList'] = el.gotchyList;
-                    returnObj['account'] = el.account;
-
-                    return returnObj;
-                }));
+                setUserInfo(response.data.responseData);
             }).catch(function (reason) {
                 console.log("error");
                 console.log(reason);
