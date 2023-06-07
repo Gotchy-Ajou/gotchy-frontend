@@ -20,7 +20,8 @@ const MyInfo = () => {
 
     const loadMyInfo = async () => {
         await axios.get(`http://localhost:3000/api/v1/users/${usersId}`)
-            .then(function (response) {
+            .then(function(response) {
+                console.log(response.data);
                 setUserInfo(response.data.responseData.map(function (el) {
                     console.log(el);
 
