@@ -27,7 +27,9 @@ export default function EditHobby(props) {
         e.preventDefault();
         // e.target.reset();
         console.log(hobby.usersId, hobby.hobbyId)
-        await axios.put(`http://localhost:3000/api/v1/hobby/${hobby.usersId}/${hobby.hobbyId}`);
+        await axios.put(`http://localhost:3000/api/v1/hobby/${hobby.usersId}/${hobby.hobbyId}`, {
+            'hobbyLevel': hobby.hobbyLevel
+        });
         alert('수정되었습니다!');
         window.close(); //클로즈 먼저해야만 새로고침이 되었음
         window.location.reload();
