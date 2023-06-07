@@ -14,16 +14,17 @@ function MyLevel() {
         // { hobbyId: 1, hobbyName: "축구", hobbyLevel: "비기너" },
         // { hobbyId: 2, hobbyName: "노래", hobbyLevel: "프로" }
     ]);
-    let userid = 1
+    let usersId = 1
 
     // 기존의 hobby List 가져오기
     const loadHobbyList = async () => {
-        await axios.get('http://localhost:3000/api/v1/hobby', { userid })
+        await axios.get(`http://localhost:3000/api/v1/hobby/${usersId}`)
             .then(function (response) {
                 setHobbyList(response.data.map(function (el) {
                     console.log(el);
 
                     var returnObj = {}
+                    returnObj['usersId'] = el.usersId;
                     returnObj['hobbyId'] = el.hobbyId;
                     returnObj['hobbyName'] = el.hobbyName;
                     returnObj['hobbyLevel'] = el.hobbyLevel;
@@ -40,7 +41,7 @@ function MyLevel() {
 
     // hobby 삭제
     const deleteHobby = async (productId) => {
-        await axios.delete(`http://localhost:3000/api/v1/hobby/${productId}`, { userid }) // usetid 하위의 취미 id 찾아서 삭제하기
+        await axios.delete(`http://localhost:3000/api/v1/hobby/${productId}`, { usersId }) // usetid 하위의 취미 id 찾아서 삭제하기
             .then((result) => {
                 loadHobbyList();
             })
@@ -52,6 +53,7 @@ function MyLevel() {
     // 모달창에서 편집하기 위함
     const onEdit = (hobby) => {
         let data = {
+            usersId: hobby.usersId,
             hobbyId: hobby.hobbyId,
             hobbyName: hobby.hobbyName,
             hobbyLevel: hobby.hobbyLevel
