@@ -13,18 +13,35 @@ const logoStyle = {
   marginBottom: '20px',
 };
 // const loadFilterData = async () => {
-//   try {
-//     const { data } = await axios.post('http://your_server_endpoint');  
-//     setFilter({
-//       gotchyHobby: data.gotchyHobby,
-//       location: data.location,
-//       gender: data.gender,
-//       level: data.level,
-//       mode: data.mode
+//   await axios.post('http://localhost:3000/api/v1/hobby/1')
+//     .then(function (response) {
+//       setFilter(response.data.responseData.map(function (el) {
+//         console.log(el);
+
+//         var returnObj = {}
+//         returnObj['gotchyHobby'] = el.gotchyHobby;
+//         returnObj['location'] = el.location;
+//         returnObj['gender'] = el.gender;
+//         returnObj['level'] = el.level;
+//         returnObj['mode'] = el.mode;
+
+//         return returnObj;
+//       }));
+//     }).catch(function (reason) {
+//       console.log(reason);
 //     });
-//   } catch (err) {
-//     console.error(err);
-//   }
+// try {
+//   const { data } = await axios.post('http://your_server_endpoint');
+//   setFilter({
+//     gotchyHobby: data.gotchyHobby,
+//     location: data.location,
+//     gender: data.gender,
+//     level: data.level,
+//     mode: data.mode
+//   });
+// } catch (err) {
+//   console.error(err);
+// }
 // };
 
 // useEffect(() => {
@@ -123,6 +140,30 @@ const modeList = async (e) => {
 
 
 const Inquiry = () => {
+  const [filter, setFilter] = useState([])
+  const loadFilterData = async () => {
+    await axios.post('http://localhost:3000/api/v1/hobby/1')
+      .then(function (response) {
+        setFilter(response.data.responseData.map(function (el) {
+          console.log(el);
+
+          var returnObj = {}
+          returnObj['gotchyHobby'] = el.gotchyHobby;
+          returnObj['location'] = el.location;
+          returnObj['gender'] = el.gender;
+          returnObj['level'] = el.level;
+          returnObj['mode'] = el.mode;
+
+          return returnObj;
+        }));
+      }).catch(function (reason) {
+        console.log(reason);
+      });
+  };
+
+  useEffect(() => {
+    loadFilterData();
+  }, []);
   const today = new Date();
   const [meetings, setMeetings] = useState([]);
   const onChangeLocation = e => {
@@ -163,18 +204,18 @@ const Inquiry = () => {
 
 
 
-  const [filter, setFilter] = useState({
-    gotchyHobby: 'any',
-    location: 'any',
-    gender: 'any',
-    level: 'any',
-    mode: 'any',
-    date: `${today.getFullYear()}-${String(today.getMonth() + 1).padStart(
-      2,
-      '0'
-    )}-${String(today.getDate()).padStart(2, '0')}`,
-    time: 'any',
-  });
+  // const [filter, setFilter] = useState({
+  //   gotchyHobby: 'any',
+  //   location: 'any',
+  //   gender: 'any',
+  //   level: 'any',
+  //   mode: 'any',
+  //   date: `${today.getFullYear()}-${String(today.getMonth() + 1).padStart(
+  //     2,
+  //     '0'
+  //   )}-${String(today.getDate()).padStart(2, '0')}`,
+  //   time: 'any',
+  // });
 
   const peKind = ['축구', '농구', '족구', '탁구', '배드민턴', '테니스'];
   const artKind = ['합주(밴드, 오케스트라)', '노래', '춤', '독서토론', '보드게임'];
@@ -248,7 +289,7 @@ const Inquiry = () => {
   return (
     <>
       <div className="hobby-title">가치 조회</div>
-      <div style={{"text-align" : "center"}}>
+      <div style={{ "text-align": "center" }}>
         <img src={Guide} alt="Guide" style={logoStyle} />
       </div>
       <MainDiv>
@@ -360,6 +401,21 @@ const Inquiry = () => {
           ))}
 
           <hr className="list_container_title" />
+
+          {filter.map(meeting => (
+            <ListContainer key={meeting.gotchyHobby}>
+              <div>{meeting.gotchyHobby}</div>
+              <div>{meeting.location}</div>
+              <div>{meeting.gender}</div>
+              <div>{meeting.level}</div>
+              <div>{meeting.mode}</div>
+              <div>{meeting.mode}</div>
+              <div>
+                <TextSpan>{meeting.mode === 'yes' ? 'Yes' : 'No'}</TextSpan>
+                <SubmitButton href="/ApplyPage">신청</SubmitButton>
+              </div>
+            </ListContainer>
+          ))}
           <ListContainer>
             <div>2023-05-29</div>
             <div>12:00</div>

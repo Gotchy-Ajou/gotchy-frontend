@@ -18,7 +18,7 @@ function MyLevel() {
 
     // 기존의 hobby List 가져오기
     const loadHobbyList = async () => {
-        await axios.post('http://8080/api/v1/hobby/1', { userid })
+        await axios.post('http://localhost:3000/api/v1/hobby/1', { userid })
             .then(function (response) {
                 setHobbyList(response.data.map(function (el) {
                     console.log(el);
