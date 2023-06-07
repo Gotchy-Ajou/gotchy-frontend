@@ -140,16 +140,19 @@ const modeList = async (e) => {
 
 
 const Inquiry = () => {
+  const [gotchyList, setGotchyList] = useState([])
   const [filter, setFilter] = useState([])
   const loadFilterData = async () => {
     await axios.post('http://localhost:3000/api/v1/hobby/1')
       .then(function (response) {
-        setFilter(response.data.responseData.map(function (el) {
+        setGotchyList(response.data.responseData.map(function (el) {
           console.log(el);
 
           var returnObj = {}
-          returnObj['gotchyHobby'] = el.gotchyHobby;
+          returnObj['gotchyDate'] = el.gotchyDate;
+          returnObj['gotchyTime'] = el.gotchyTime;
           returnObj['location'] = el.location;
+          returnObj['gotchyHobby'] = el.gotchyHobby;
           returnObj['gender'] = el.gender;
           returnObj['level'] = el.level;
           returnObj['mode'] = el.mode;
@@ -263,7 +266,7 @@ const Inquiry = () => {
   const hobbyList = ['취미', '체육', '예술'];
   const gender = ['성별', '남자', '여자'];
   const level = ['레벨', '비기너', '아마추어', '프로'];
-  const recruit = ['개인 모집 여부', 'Yes', 'No'];
+  const recruit = ['개인 모집 여부', 'YES', 'NO'];
 
   const onChangeFilter = ({ props, e }) => {
     setFilter({ ...filter, [props]: e.target.value });
@@ -384,76 +387,27 @@ const Inquiry = () => {
         <br />
         <div>
           <br />
+          <hr className="list_container_title" />
 
-          {meetings.map(meeting => (
-            <ListContainer key={meeting.id}>
-              <div>{meeting.date}</div>
-              <div>{meeting.time}</div>
-              <div>{meeting.location}</div>
-              <div>{meeting.hobby}</div>
-              <div>{meeting.gender}</div>
-              <div>{meeting.level}</div>
-              <div>
-                <TextSpan>{meeting.mode === 'yes' ? 'Yes' : 'No'}</TextSpan>
-                <SubmitButton href="/ApplyPage">신청</SubmitButton>
-              </div>
-            </ListContainer>
+          {gotchyList.map(meeting => (
+            <>
+              <ListContainer key={meeting.gotchyHobby}>
+                <div>{meeting.gotchyDate}</div>
+                <div>{meeting.gotchyTime}</div>
+                <div>{meeting.location}</div>
+                <div>{meeting.hobby}</div>
+                <div>{meeting.gender}</div>
+                <div>{meeting.level}</div>
+                <div>{meeting.mode}</div>
+                <div>
+                  <TextSpan>{meeting.mode === 'YES' ? 'YES' : 'NO'}</TextSpan>
+                  <SubmitButton href="/ApplyPage">신청</SubmitButton>
+                </div>
+              </ListContainer>
+              <hr className="list_container_title" />
+            </>
           ))}
-
-          <hr className="list_container_title" />
-
-          {filter.map(meeting => (
-            <ListContainer key={meeting.gotchyHobby}>
-              <div>{meeting.gotchyHobby}</div>
-              <div>{meeting.location}</div>
-              <div>{meeting.gender}</div>
-              <div>{meeting.level}</div>
-              <div>{meeting.mode}</div>
-              <div>{meeting.mode}</div>
-              <div>
-                <TextSpan>{meeting.mode === 'yes' ? 'Yes' : 'No'}</TextSpan>
-                <SubmitButton href="/ApplyPage">신청</SubmitButton>
-              </div>
-            </ListContainer>
-          ))}
-          <ListContainer>
-            <div>2023-05-29</div>
-            <div>12:00</div>
-            <div>서울</div>
-            <div>축구</div>
-            <div>여자</div>
-            <div>비기너</div>
-            <div>
-              <TextSpan>No</TextSpan>
-              <SubmitButton href="/ApplyPage">신청</SubmitButton>
-            </div>
-          </ListContainer>
-          <hr className="list_container_title" />
-          <ListContainer>
-            <div>2023-05-29</div>
-            <div>12:00</div>
-            <div>서울</div>
-            <div>농구</div>
-            <div>남자</div>
-            <div>아마추어</div>
-            <div>
-              <TextSpan>Yes</TextSpan>
-              <SubmitButton href="/ApplyPage">신청</SubmitButton>
-            </div>
-          </ListContainer>
-          <hr className="list_container_title" />
-          <ListContainer>
-            <div>2023-05-29</div>
-            <div>12:00</div>
-            <div>인천</div>
-            <div>밴드</div>
-            <div>여자</div>
-            <div>프로</div>
-            <div>
-              <TextSpan>No</TextSpan>
-              <SubmitButton href="/ApplyPage">신청</SubmitButton>
-            </div>
-          </ListContainer>
+          
         </div>
       </MainDiv>
     </>
