@@ -38,6 +38,7 @@ const Inquiry = () => {
   const modeList = ['개인 모집 여부', 'YES', 'NO'];
 
   const today = new Date();
+  const [click, ]
   const [gotchyList, setGotchyList] = useState([])
 
   // 전체 데이터 로드
@@ -82,16 +83,31 @@ const Inquiry = () => {
     setFilter({ ...filter, [e.target.name]: e.target.value });
   };
 
+
+  const buttonClickIsTrue = () => {
+    if
+  };
+  
+  const [replaceData, setReplaceData] = useState([]);
+  
   // 필터링
   const submitFilter = async (e) => {
     console.log(filter);
     e.preventDefault();
-    axios.post("http://localhost:3000/api/v1/gotchyfilter", { filter })
+    axios.post("http://localhost:3000/api/v1/gotchyfilter", { 
+      gotchyDate: filter.gotchyDate,
+      gotchyTime: filter.gotchyTime,
+      location: filter.location,
+      gotchyHobby: filter.gotchyHobby,
+      gender: filter.gender,
+      level: filter.level,
+      mode: filter.mode,
+       })
       .then((response) => {
         console.log("필터링 success");
         console.log(response.data);
 
-        setGotchyList(response.data.responseData.map(function (el) {
+        setReplaceData(response.data.responseData.map(function (el) {
           console.log(el);
 
           var returnObj = {}
@@ -291,4 +307,3 @@ const SelectContainer = styled.div`
 `;
 
 export default Inquiry;
-
