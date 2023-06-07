@@ -5,14 +5,7 @@ import 'react-datepicker/dist/react-datepicker.css';
 import { Axios } from 'axios';
 
 const MyInfo = () => {
-    const [userInfo, setUserInfo] = useState({
-        name: null,
-        age: null,
-        region: null,
-        hobbyList: [],
-        gotchyList: [],
-        account: null,
-    });
+    const [userInfo, setUserInfo] = useState();
 
     let usersId = 1;
     const [preview, setPreview] = useState(null);
