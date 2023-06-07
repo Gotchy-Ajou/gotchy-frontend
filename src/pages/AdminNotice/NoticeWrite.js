@@ -34,7 +34,7 @@ function NoticeWrite() {
     function submitData() {
         console.log(data);
         axios.post("http://localhost:3000/api/v1/posts", {
-            'postId': data.postId,
+            'authonId': 10,
             'title': data.title,
             'content': data.content
         })
