@@ -27,9 +27,9 @@ const tempList = [
 const AdminNotice = () => {
     const [notice, setNotice] = useState({
         postId: 0,
-        title: "",
-        content: "",
-        createdDate: ""
+        title: null,
+        content: null,
+        createdDate: null
     });
 
     const { postId, title, content, createdDate } = notice;
@@ -41,23 +41,23 @@ const AdminNotice = () => {
     let navigate = useNavigate();
 
     // 우선 더미데이터로 들어감 => 백이랑 연동 후, tempList => noticeList
-    const [cardOnOff, setCardOnOff] = useState(tempList);
-    const [showList, setShowList] = useState(tempList);
+    const [cardOnOff, setCardOnOff] = useState([]);
+    const [showList, setShowList] = useState([]);
     showList.sort((a, b) => b.postId - a.postId); // id순 정렬 (생성 날짜순으로 id 생성되므로 내림차순)
 
     /* [POST / notice]: 공지사항 목록 가져오기 */
     const loadNoticeList = async () => {
 
-        // await axios.post('http://gotchy.site/NoticeList')
-        //     .then((res) => {
-        //         console.log("[NoticeList.js] useEffect() 성공");
-        //         console.log(res.data);
-        //         setNoticeList(res.data);
-        //     })
-        //     .catch((err) => {
-        //         console.log("[NoticeList.js] useEffect() 실패");
-        //         console.log(err);
-        //     });
+        await axios.get('http://localhost:3000/api/v1/posts')
+            .then((res) => {
+                console.log("[NoticeList.js] useEffect() 성공");
+                console.log(res.data);
+                setNoticeList(res.data.responseData);
+            })
+            .catch((err) => {
+                console.log("[NoticeList.js] useEffect() 실패");
+                console.log(err);
+            });
     }
 
     useEffect(() => {
@@ -66,13 +66,13 @@ const AdminNotice = () => {
 
     /* 공지사항 항목 삭제하기 */
     const deleteNotice = (postId) => {
-        // axios.delete(`http://gotchy.site/NoticeList/${postId}`)
-        //     .then((result) => {
-        //         loadNoticeList();
-        //     })
-        //     .catch(() => {
-        //         alert('오류가 발생했습니다!');
-        //     });
+        axios.delete(`http://localhost:3000/api/v1/posts/${postId}`)
+            .then((result) => {
+                loadNoticeList();
+            })
+            .catch(() => {
+                alert('오류가 발생했습니다!');
+            });
     };
 
     const getQnACard = (item, index) => {
@@ -91,7 +91,7 @@ const AdminNotice = () => {
                 </div>
                 <div
                     className={
-                        tempList[index].show
+                        noticeList[index].show
                             ? "notice-card-context"
                             : "notice-card-context notice-card-none"
                     }
@@ -114,7 +114,7 @@ const AdminNotice = () => {
     };
 
     useEffect(() => {
-        setShowList(tempList);
+        setShowList(noticeList);
     }, []);
 
     return (
