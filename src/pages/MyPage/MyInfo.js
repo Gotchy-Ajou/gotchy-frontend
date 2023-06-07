@@ -107,19 +107,37 @@ const MyInfo = () => {
                     <div className="form-group">
                         <label>
                             이름:
-                            <div class="myPage-input">{userInfo.name}</div>
+                            <span class="myPage-input">{userInfo.name}</span>
+                        </label>
+                    </div>
+                    <div className="form-group">
+                        <label>
+                            닉네임:
+                            <span class="myPage-input">{userInfo.nickname}</span>
                         </label>
                     </div>
                     <div className="form-group">
                         <label>
                             나이:
-                            <div class="myPage-input">{userInfo.age}</div>
+                            <span class="myPage-input">{userInfo.age}</span>
                         </label>
                     </div>
                     <div className="form-group">
                         <label>
                             지역:
-                            <div class="myPage-input">{userInfo.region}</div>
+                            <span class="myPage-input">{userInfo.region}</span>
+                        </label>
+                    </div>
+                    <div className="form-group">
+                        <label>
+                            연락처:
+                            <span class="myPage-input">{userInfo.phone}</span>
+                        </label>
+                    </div>
+                    <div className="form-group">
+                        <label>
+                            매너:
+                            <span class="myPage-input">{userInfo.manner}</span>
                         </label>
                     </div>
                     {/* <div className="form-group">
@@ -137,7 +155,7 @@ const MyInfo = () => {
                     <div className="form-group">
                         <label>
                             계좌:
-                            <div class="myPage-input">{userInfo.account}</div>
+                            <span class="myPage-input">{userInfo.account}</span>
                         </label>
                         <button class="myPage-button" type="button">충전하기</button>
                     </div>
