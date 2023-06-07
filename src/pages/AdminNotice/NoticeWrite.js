@@ -21,6 +21,7 @@ function NoticeWrite() {
     //     setContent(e.target.value);
     // }
     const [data, setData] = useState({
+        postId: 10,
         title: null,
         content: null,
     });
@@ -33,6 +34,7 @@ function NoticeWrite() {
     function submitData() {
         console.log(data);
         axios.post("http://localhost:3000/api/v1/posts", {
+            'postId': data.postId,
             'title': data.title,
             'content': data.content
         })
