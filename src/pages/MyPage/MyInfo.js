@@ -107,48 +107,48 @@ const MyInfo = () => {
                 <form class="myPage-form" onSubmit={handleSubmit}>
                     <div className="form-group">
                         <label>
-                            Name:
+                            성함:
                             <input class="myPage-input" type="text" name="name" value={name} onChange={handleChange} />
                         </label>
                     </div>
                     <div className="form-group">
                         <label>
-                            Age:
+                            나이:
                             <input class="myPage-input" type="text" name="age" value={age} onChange={handleChange} />
                         </label>
                     </div>
                     <div className="form-group">
                         <label>
-                            Region:
+                            지역:
                             <input class="myPage-input" type="text" name="region" value={region} onChange={handleChange} />
                         </label>
                     </div>
                     <div className="form-group">
                         <label>
-                            Hobbies:
+                            취미:
                             <input class="myPage-input" type="text" name="hobbies" value={hobbies.join(', ')} onChange={handleChange} />
                         </label>
                     </div>
                     <div className="form-group">
                         <label>
-                            Bank Account:
+                            계좌 정보:
                             <input class="myPage-input" type="text" name="bankAccount" value={bankAccount} onChange={handleChange} disabled />
                         </label>
                     </div>
                     <div className="form-group">
                         <label>
-                            Cash Balance:
+                            잔액:
                             <input class="myPage-input" type="text" name="cashBalance" value={cashBalance} onChange={handleChange} disabled />
                         </label>
-                        <button class="myPage-button" type="button" onClick={handleCashCharge}>Charge Cash</button>
+                        <button class="myPage-button" type="button" onClick={handleCashCharge}>충전하기</button>
                     </div>
                     <div className="form-group">
                         <label>
-                            Upload your photo:
+                            사진 업로드:
                             <input class="myPage-input" type="file" onChange={handleFileChange} />
                         </label>
                         {preview && <img src={preview} alt="Preview" className="preview" />}
-                        <button class="myPage-button" type="submit">Update</button>
+                        <button class="myPage-button" type="submit">수정 완료</button>
                     </div>
                 </form>
             </div>
