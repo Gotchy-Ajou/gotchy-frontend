@@ -3,17 +3,7 @@ import axios from 'axios';
 import "./MyHobby.css"
 
 function MyApply() {
-    const [applyList, setApplyList] = useState([
-        // {
-        // gotchyDate: '2023-06-08',
-        // gotchyTime: '10:00',
-        // location: '수원 아주대',
-        // gotchyHobby: '축구',
-        // gender: '남자',
-        // level: '프로',
-        // mode: 'YES'
-        // }
-    ]);
+    const [applyList, setApplyList] = useState([]);
 
     let usersId = 1
 
@@ -28,11 +18,10 @@ function MyApply() {
                     var returnObj = {}
                     returnObj['gotchyDate'] = el.gotchyDate;
                     returnObj['gotchyTime'] = el.gotchyTime;
-                    returnObj['location'] = el.location;
+                    returnObj['gotchyName'] = el.gotchyName;
                     returnObj['gotchyHobby'] = el.gotchyHobby;
-                    returnObj['gender'] = el.gender;
-                    returnObj['level'] = el.level;
-                    returnObj['mode'] = el.mode;
+                    returnObj['location'] = el.location;
+                    returnObj['gotchyMode'] = el.gotchyMode;
                     return returnObj;
                 }));
             }).catch(function (reason) {
@@ -53,10 +42,9 @@ function MyApply() {
                         <tr class="hobbyList">
                             <th class="hobbyList">날짜</th>
                             <th class="hobbyList">시간</th>
-                            <th class="hobbyList">위치</th>
+                            <th class="hobbyList">가치</th>
                             <th class="hobbyList">취미</th>
-                            <th class="hobbyList">성별</th>
-                            <th class="hobbyList">레벨</th>
+                            <th class="hobbyList">위치</th>
                             <th class="hobbyList">개인모집</th>
                         </tr>
                     </thead>
@@ -66,11 +54,10 @@ function MyApply() {
                             <tr class="hobbyList">
                                 <td class="hobbyList">{el.gotchyDate}</td>
                                 <td class="hobbyList">{el.gotchyTime}</td>
-                                <td class="hobbyList">{el.location}</td>
+                                <td class="hobbyList">{el.gotchyName}</td>
                                 <td class="hobbyList">{el.gotchyHobby}</td>
-                                <td class="hobbyList">{el.gender}</td>
-                                <td class="hobbyList">{el.level}</td>
-                                <td class="hobbyList">{el.mode}</td>
+                                <td class="hobbyList">{el.location}</td>
+                                <td class="hobbyList">{el.gotchyMode}</td>
                             </tr>
                         )}
                     </tbody>
