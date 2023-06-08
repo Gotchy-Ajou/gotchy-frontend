@@ -180,13 +180,13 @@ const Inquiry = () => {
           <input
             type="date"
             name="gotchyDate"
-            onChange={onFilterChange}
+            onChange={e => onFilterChange(e)}
             value={gotchyDate}
           />
           <input
             type="time"
             name="gotchyTime"
-            onChange={onFilterChange}
+            onChange={e => onFilterChange(e)}
             value={gotchyTime}
           />
 
