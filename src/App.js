@@ -178,6 +178,11 @@ function App() {
               }
               {
                 (user_option == "1") ?
+                  <Route path="/Guide" element={<Guide />} /> :
+                  <Route path="/Guide" element={<LoginPage />} />
+              }
+              {
+                (user_option == "1") ?
                   <Route path="/Notice" element={<Notice />} /> :
                   <Route path="/Notice" element={<LoginPage />} />
               }
