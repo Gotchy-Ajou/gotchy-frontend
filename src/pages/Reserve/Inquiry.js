@@ -126,7 +126,7 @@ const Inquiry = () => {
   const submitApply = async (productId) => {
     console.log(productId);
     axios.post("http://localhost:3000/api/v1/users/apply-gotchy", {
-      'usersId': 1,
+      'usersId': 40,
       'gotchyId': productId
     })
       .then((response) => {
