@@ -80,7 +80,9 @@ const Inquiry = () => {
   const { gotchyDate, gotchyTime, location, gotchyHobby, gender, level, mode } = filter;
 
   const onFilterChange = e => {
-    setFilter({ ...filter, [e.target.name]: e.target.value });
+    if (e.target.value !== "") {
+      setFilter({ ...filter, [e.target.name]: e.target.value });
+    }
   };
 
   // 필터링
