@@ -55,6 +55,7 @@ function UserManage() {
                                 <td class="admin">{user.nickname}</td>
                                 <td class="admin">{user.gender}</td>
                                 <td class="admin">{user.age}</td>
+                                <td class="admin">{user.phone}</td>
                                 <td class="admin">{user.region}</td>
                             </tr>
                         )}

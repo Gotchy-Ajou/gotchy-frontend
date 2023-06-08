@@ -4,7 +4,7 @@ body {
 }
 
 form.myPage-form {
-    display:inline-block;
+    display: inline-block;
     margin-top: 20px;
     border: none;
     font-size: .9em;
@@ -13,12 +13,15 @@ form.myPage-form {
     border-radius: 20px;
 }
 
-input.myPage-input {
-    width: 500px;
+.myPage-input {
+    display: inline-block;
+    line-height: 20px;
+    vertical-align: middle;
+    width: 600px;
     height: 50px;
     padding: 5px;
     margin-left: 20px;
-    font-size: 16px;
+    font-size: 17px;
     border: 1px solid #dadce0;
     color: #735d6d;
     border-radius: 10px;
@@ -38,7 +41,7 @@ button.myPage-button {
 .preview {
     width: 200px;
     height: 200px;
-  }
+}
 
 .form-group {
     display: flex;

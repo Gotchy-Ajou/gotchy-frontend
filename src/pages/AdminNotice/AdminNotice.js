@@ -14,26 +14,7 @@ const AdminNotice = () => {
     const { postId, title, content, createdDate } = notice;
 
     // DB에 저장되어 있는 공지사항 리스트 가져오기 위한 변수
-    const [noticeList, setNoticeList] = useState([
-        {
-            postId: 1,
-            title: "Notice 1",
-            content: "Notice 1의 내용입니다.",
-            createdDate: "2022-05-20"
-        },
-        {
-            postId: 2,
-            title: "Notice 2",
-            content: "Notice 2의 내용입니다.",
-            createdDate: "2022-08-20"
-        },
-        {
-            postId: 3,
-            title: "Notice 3",
-            content: "Notice 3의 내용입니다.",
-            createdDate: "2023-05-20"
-        }
-    ]);
+    const [noticeList, setNoticeList] = useState([]);
 
     // Link 용 (함수) 
     let navigate = useNavigate();
@@ -51,7 +32,7 @@ const AdminNotice = () => {
                     console.log(response.data);
                     var returnObj = {}
 
-                    returnObj['postId'] = el.postId;
+                    returnObj['postsId'] = el.postsId;
                     returnObj['title'] = el.title;
                     returnObj['content'] = el.content;
                     returnObj['createdDate'] = el.createdDate;
@@ -74,6 +55,7 @@ const AdminNotice = () => {
 
     /* 공지사항 항목 삭제하기 */
     const deleteNotice = (postId) => {
+        console.log(postId);
         axios.delete(`http://localhost:3000/api/v1/posts/${postId}`)
             .then((result) => {
                 loadNoticeList();
@@ -114,7 +96,7 @@ const AdminNotice = () => {
                                 deleteNotice(item.postId)
                             }
                         }}>삭제</button>
-                        <Link className="notice-update-button" to={{ pathname: `/NoticeUpdate/${item.postId}` }}>수정</Link>
+                        <Link className="notice-update-button" to={{ pathname: `/NoticeUpdate/${item.postsId}` }}>수정</Link>
                     </div>
                 </div>
             </div>

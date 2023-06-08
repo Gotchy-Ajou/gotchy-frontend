@@ -9,6 +9,7 @@ export default function EditHobby(props) {
 
     const [edited, setEdited] = useState(props.data); // 선택한 row의 보호자 데이터 불러오기
     const [hobby, setHobby] = useState({
+        usersId: edited.usersId,
         hobbyId: edited.hobbyId,
         hobbyName: edited.hobbyName,
         hobbyLevel: edited.hobbyLevel
@@ -23,13 +24,15 @@ export default function EditHobby(props) {
 
     // form 제출
     const submitHobby = async (e) => {
-        // e.preventDefault();
-        // // e.target.reset();
-
-        // await axios.post("http://gotchy.site/Hobby/Hobby_submit", { userid, hobby });
-        // alert('추가되었습니다!');
-        // window.close(); //클로즈 먼저해야만 새로고침이 되었음
-        // window.location.reload();
+        e.preventDefault();
+        // e.target.reset();
+        console.log(hobby.usersId, hobby.hobbyId)
+        await axios.put(`http://localhost:3000/api/v1/hobby/${hobby.usersId}/${hobby.hobbyId}`, {
+            'hobbyLevel': hobby.hobbyLevel
+        });
+        alert('수정되었습니다!');
+        window.close(); //클로즈 먼저해야만 새로고침이 되었음
+        window.location.reload();
     };
 
     return (

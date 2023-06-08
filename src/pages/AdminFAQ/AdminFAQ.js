@@ -28,43 +28,43 @@ const tempList = [
     {
         faqId: 1,
         category: "category1",
-        question: "what is that ? 1",
-        answer: "this is react. 1",
+        question: "1번 매치 진행 FAQ입니다.",
+        answer: "this is FAQ. 1",
         show: false
     },
     {
         faqId: 2,
         category: "category2",
-        question: "what is that ? 2",
-        answer: "this is react. 2",
+        question: "2번 구장 예약 FAQ입니다.",
+        answer: "this is FAQ. 2",
         show: false
     },
     {
         faqId: 3,
         category: "category3",
-        question: "what is that ? 3",
-        answer: "this is react. 3",
+        question: "3번 캐시 FAQ입니다.",
+        answer: "this is FAQ. 3",
         show: false
     },
     {
         faqId: 4,
         category: "category1",
-        question: "what is that ? 4",
-        answer: "this is react. 4",
+        question: "4번 매치 진행 FAQ입니다.",
+        answer: "this is FAQ. 4",
         show: false
     },
     {
         faqId: 5,
         category: "category2",
-        question: "what is that ? 5",
-        answer: "this is react. 5",
+        question: "5번 구장 예약 FAQ입니다.",
+        answer: "this is FAQ. 5",
         show: false
     },
     {
         faqId: 6,
         category: "category3",
-        question: "what is that ? 6",
-        answer: "this is react. 6",
+        question: "6번 캐시 FAQ입니다.",
+        answer: "this is FAQ. 6",
         show: false
     },
 ];

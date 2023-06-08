@@ -5,15 +5,15 @@ import "./Add.css"
 
 export default function AddHobby() {
     const hobbyKind = ['축구', '농구', '족구', '탁구', '배드민턴', '테니스',
-        '합주(밴드, 오케스트라)', '노래', '춤', '독서토론', '보드게임'];
+        '합주', '노래', '춤', '독서토론', '보드게임'];
     const levelKind = ['비기너', '아마추어', '프로'];
 
     // let userid = localStorage.getItem('userid');
-    let userid = 1;
+    let usersId = 1;
     const [hobby, setHobby] = useState({
         hobbyId: 0,
-        hobbyName: "",
-        hobbyLevel: ""
+        hobbyName: null,
+        hobbyLevel: null
     });
     const { hobbyName, hobbyLevel } = hobby;
 
@@ -25,17 +25,15 @@ export default function AddHobby() {
         e.preventDefault();
         e.target.reset();
         console.log(hobby);
-        await axios.post("http://8080/api/v1/hobby/1", {hobby })
+        await axios.post(`http://localhost:3000/api/v1/hobby/${usersId}`, {
+            'hobbyName': hobby.hobbyName,
+            'hobbyLevel': hobby.hobbyLevel
+        })
             .then(function (response) {
                 console.log(response.data);
-                // if(response.data === "success") {
                 alert('추가되었습니다!');
-                // }
-                // else {
-                //     alert('잘못 입력된 값이 존재합니다!');
-                // }
-
-            }).catch(function (reason) {
+            })
+            .catch(function (reason) {
                 console.log(reason.data);
             });
 
