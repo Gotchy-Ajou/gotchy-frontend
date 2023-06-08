@@ -142,15 +142,14 @@ const Inquiry = () => {
       });
   };
 
-  function submitApply(e, meeting) {
-    console.log(meeting);
+  const submitApply = async (productId) => {
+    console.log(productId);
     axios.post("http://localhost:3000/api/v1/users/apply-gotchy", {
       'usersId': 1,
-      'gotchyId': meeting.gotchyId
+      'gotchyId': productId
     })
       .then((response) => {
         console.log("success");
-        console.log(response.data);
         navigate("/ApplyPage"); // 신청 약관 페이지로 이동
       })
       .catch((err) => {
@@ -276,9 +275,14 @@ const Inquiry = () => {
                 <div>{meeting.mode}</div>
                 <div>
                   <button style={{ backgroundColor: 'rgb(70, 0, 87)', color: '#fff', border: 'none', borderRadius: '5px' }}
-                    onClick={(e, meeting) => {
-                      submitApply(e, meeting);
-                      // navigateToApplyPage();
+                    onClick={() => {
+                      const confirmBox = window.confirm(
+                        "'" + meeting.gotchyDate + ", " + meeting.gotchyTime + ", " + meeting.gotchyHobby + "'" + " 가치를 신청하시겠습니까?"
+                      )
+                      if (confirmBox === true) {
+                        submitApply(meeting.gotchyId);
+                      }
+                      // submitApply(meeting.gotchyId);
                     }}
                   >신청</button>
                 </div>
