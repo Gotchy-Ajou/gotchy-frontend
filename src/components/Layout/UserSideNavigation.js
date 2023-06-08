@@ -32,7 +32,7 @@ const UserSideNavigation = () => {
     // added styles 
     const styles = {
         sideBarHeight: {
-            height: "200vh",
+            height: "230vh",
             bottom: "0",
         },
         menuIcon: {

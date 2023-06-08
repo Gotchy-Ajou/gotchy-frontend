@@ -38,28 +38,7 @@ const Inquiry = () => {
   const modeList = ['YES', 'NO'];
 
   const today = new Date();
-  const [gotchyList, setGotchyList] = useState([
-    {
-      gotchyId: 1,
-      gotchyDate: '2023-06-08',
-      gotchyTime: '10:00',
-      location: '수원 아주대',
-      gotchyHobby: '축구',
-      gender: '남자',
-      level: '프로',
-      mode: 'YES'
-    },
-    {
-      gotchyId: 2,
-      gotchyDate: '2023-06-08',
-      gotchyTime: '10:00',
-      location: '수원 아주대',
-      gotchyHobby: '축구',
-      gender: '남자',
-      level: '프로',
-      mode: 'YES'
-    }
-  ])
+  const [gotchyList, setGotchyList] = useState([])
 
   // 전체 데이터 로드
   const loadFilterData = async () => {
