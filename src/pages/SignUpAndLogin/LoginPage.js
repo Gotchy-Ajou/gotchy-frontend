@@ -10,7 +10,7 @@ import CommonHeader from '../../components/Layout/CommonHeader';
 export const LoginPage = () => {
   const dispatch = useDispatch();
   const showSignup = useSelector((state => state.showSignup))
-  const [userOption, setUserOption] = useState("1");
+  const [userOption, setUserOption] = useState("3");
   const [hovered1, setHovered1] = useState(false);
   const [hovered2, setHovered2] = useState(false);
   const [hovered3, setHovered3] = useState(false);
