@@ -152,9 +152,7 @@ const RefundPolicy = ({ filter, onNextStep, onPreviousStep }) => {
         <button className="back-button" onClick={handlePrevious}>뒤로</button>
         <button className="agree-button" onClick={handleAgree}>동의</button>
         {agreed && <p>상기 내용에 전부 동의하셨습니다.</p>}
-        <button className="next-button" onClick={() => {alert("동의를 눌러주세요!")}
-          // handleNext
-          }>다음</button>
+        <button className="next-button" onClick={handleNext}>다음</button>
       </div>
     </div>
   );
