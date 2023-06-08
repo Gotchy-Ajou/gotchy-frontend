@@ -277,8 +277,8 @@ const Inquiry = () => {
                 <div>
                   <button style={{ backgroundColor: 'rgb(70, 0, 87)', color: '#fff', border: 'none', borderRadius: '5px' }}
                     onClick={(e, meeting) => {
-                      // submitApply(e, meeting);
-                      navigateToApplyPage();
+                      submitApply(e, meeting);
+                      // navigateToApplyPage();
                     }}
                   >신청</button>
                 </div>
