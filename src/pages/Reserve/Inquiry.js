@@ -158,11 +158,6 @@ const Inquiry = () => {
       });
   };
 
-  const navigateToApplyPage = () => {
-    navigate("/ApplyPage");
-  };
-
-
   return (
     <>
       <div className="hobby-title">가치 조회</div>
@@ -282,7 +277,6 @@ const Inquiry = () => {
                       if (confirmBox === true) {
                         submitApply(meeting.gotchyId);
                       }
-                      // submitApply(meeting.gotchyId);
                     }}
                   >신청</button>
                 </div>
