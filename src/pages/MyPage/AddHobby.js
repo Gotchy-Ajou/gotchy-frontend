@@ -9,7 +9,7 @@ export default function AddHobby() {
     const levelKind = ['비기너', '아마추어', '프로'];
 
     // let userid = localStorage.getItem('userid');
-    let usersId = 1;
+    let usersId = 40;
     const [hobby, setHobby] = useState({
         hobbyId: 0,
         hobbyName: null,

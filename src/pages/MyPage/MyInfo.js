@@ -15,7 +15,7 @@ const MyInfo = () => {
         // account: "111-12344-551-25"
     });
 
-    let usersId = 1;
+    let usersId = 40;
     const [preview, setPreview] = useState(null);
     // const { name, age, region, hobbyList, gotchyList, account } = userInfo;
 

@@ -5,7 +5,7 @@ import "./MyHobby.css"
 function MyApply() {
     const [applyList, setApplyList] = useState([]);
 
-    let usersId = 1
+    let usersId = 40
 
     // 기존의 가치 신청 List 가져오기
     const loadApplyList = async () => {

@@ -14,7 +14,7 @@ function MyLevel() {
         // { hobbyId: 1, hobbyName: "축구", hobbyLevel: "비기너" },
         // { hobbyId: 2, hobbyName: "노래", hobbyLevel: "프로" }
     ]);
-    let usersId = 1
+    let usersId = 40
 
     // 기존의 hobby List 가져오기
     const loadHobbyList = async () => {
