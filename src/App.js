@@ -55,61 +55,61 @@ const styles = {
 function App() {
   return (
   // 회원용 웹페이지
-  // <div className="App">
-  //   <Router>
-  //     <Row>
-  //       <Col>
-  //         <UserHeader></UserHeader>
-  //       </Col>
-  //     </Row>
-  //     <div style={styles.contentDiv}>
-  //       <UserSideNavigation></UserSideNavigation>
-  //       <div style={styles.contentMargin}>
-  //         <Routes>
-  //           <Route path="/" element={<Inquiry />} />
-  //           <Route path="/back" element={<Back />} />
-  //           <Route path="/Inquiry" element={<Inquiry />} />
-  //           <Route path="/ApplyPage/:gotchyId" element={<ApplyPage />} />
-  //           <Route path="/ReservePage" element={<ReservePage />} />
-  //           <Route path="/Guide" element={<Guide />} />
-  //           <Route path="/Notice" element={<Notice />} />
-  //           <Route path="/FAQ" element={<FAQ />} />
-  //           <Route path="/MyInfo" element={<MyInfo />} />
-  //           <Route path="/MyHobby" element={<MyHobby />} />
-
-  //         </Routes>
-  //       </div>
-  //     </div>
-  //   </Router >
-  // </div >
-
-  // 관리자용 웹페이지
   <div className="App">
     <Router>
       <Row>
         <Col>
-          <AdminHeader></AdminHeader>
+          <UserHeader></UserHeader>
         </Col>
       </Row>
       <div style={styles.contentDiv}>
-        <AdminSideNavigation></AdminSideNavigation>
+        <UserSideNavigation></UserSideNavigation>
         <div style={styles.contentMargin}>
           <Routes>
-            <Route path="/" element={<UserManage />} />
-            <Route path="/AdminNotice" element={<AdminNotice />} />
-            <Route path="/NoticeWrite" element={<NoticeWrite />} />
-            <Route path="/NoticeUpdate/:postId" element={<NoticeUpdate />} />
-            <Route path="/AdminFAQ" element={<AdminFAQ />} />
-            <Route path="/FAQWrite" element={<FAQWrite />} />
-            <Route path="/FAQUpdate/:faqId" element={<FAQUpdate />} />
-            <Route path="/UserManage" element={<UserManage />} />
-            <Route path="/UserStatistic" element={<UserStatistic />} />
-            <Route path="/PartnerManage" element={<PartnerManage />} />
+            <Route path="/" element={<Inquiry />} />
+            <Route path="/back" element={<Back />} />
+            <Route path="/Inquiry" element={<Inquiry />} />
+            <Route path="/ApplyPage/:gotchyId" element={<ApplyPage />} />
+            <Route path="/ReservePage" element={<ReservePage />} />
+            <Route path="/Guide" element={<Guide />} />
+            <Route path="/Notice" element={<Notice />} />
+            <Route path="/FAQ" element={<FAQ />} />
+            <Route path="/MyInfo" element={<MyInfo />} />
+            <Route path="/MyHobby" element={<MyHobby />} />
+
           </Routes>
         </div>
       </div>
     </Router >
   </div >
+
+  // 관리자용 웹페이지
+  // <div className="App">
+  //   <Router>
+  //     <Row>
+  //       <Col>
+  //         <AdminHeader></AdminHeader>
+  //       </Col>
+  //     </Row>
+  //     <div style={styles.contentDiv}>
+  //       <AdminSideNavigation></AdminSideNavigation>
+  //       <div style={styles.contentMargin}>
+  //         <Routes>
+  //           <Route path="/" element={<UserManage />} />
+  //           <Route path="/AdminNotice" element={<AdminNotice />} />
+  //           <Route path="/NoticeWrite" element={<NoticeWrite />} />
+  //           <Route path="/NoticeUpdate/:postId" element={<NoticeUpdate />} />
+  //           <Route path="/AdminFAQ" element={<AdminFAQ />} />
+  //           <Route path="/FAQWrite" element={<FAQWrite />} />
+  //           <Route path="/FAQUpdate/:faqId" element={<FAQUpdate />} />
+  //           <Route path="/UserManage" element={<UserManage />} />
+  //           <Route path="/UserStatistic" element={<UserStatistic />} />
+  //           <Route path="/PartnerManage" element={<PartnerManage />} />
+  //         </Routes>
+  //       </div>
+  //     </div>
+  //   </Router >
+  // </div >
     );
   }
   export default App;

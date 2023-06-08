@@ -1,6 +1,8 @@
 import styled from 'styled-components';
-import { useState, useEffect } from 'react';
-import axios from 'axios';
+import axios from "axios";
+import React, { useState, useEffect } from 'react';
+import { Link } from 'react-router-dom';
+import { NavLink } from "reactstrap";
 import Guide from "./Guide.jpg"
 
 const logoStyle = {
@@ -20,17 +22,18 @@ const ReservePage = () => {
   const hobbyList = [
     '축구',
     '농구',
+    '야구',
     '족구',
     '탁구',
     '배드민턴',
     '테니스',
-    '합주(밴드, 오케스트라)',
+    '합주',
     '노래',
     '춤',
     '독서토론',
     '보드게임'
   ];
-  const location = [
+  const locationList = [
     '서울',
     '경기',
     '인천',
@@ -48,144 +51,219 @@ const ReservePage = () => {
     '전북',
     '제주'
   ];
-  const gender = ['남자', '여자'];
-  const level = ['비기너', '아마추어', '프로'];
+  const genderList = ['남자', '여자'];
+  const levelList = ['비기너', '아마추어', '프로'];
 
   const [data, setData] = useState({
     gotchyId: `${Math.floor(Math.random() * 100000) + 100000}`,
-    location: '서울',
-    gotchyHobby: '축구',
-    gender: '남자',
-    level: '비기너',
-    mode: 'Yes',
-    photoUrl: '',
+    location: null,
+    gotchyHobby: null,
+    gender: null,
+    level: null,
+    mode: "YES",
+    photoUrl: null,
+    gotchyName: "뿡뿡",
     price: null,
     headcount: null,
     useTime: null,
     modifiedDate: TODAY,
     createdDate: TODAY,
-    date: TODAY
+    gotchyDate: null,
+    gotchyTime: null,
   });
+  const { gotchyDate, gotchyTime, location, gotchyName,gotchyHobby, gender, headcount, useTime, price, level } = data;
 
-  //axios 
-  //   const postData = async (data) => {
-  //     try {
-  //       await axios.post('http://your_server_endpoint', data); 
-  //       alert('등록 되었습니다.');
-  //       window.location.href = '/guide';
-  //     } catch (err) {
-  //       console.error(err);
-  //       alert('등록에 실패했습니다.');
-  //     }
-  //   };
+  //axios
+  function ReserveDataSubmit() {
+    console.log('1',data);
+    axios.post('http://localhost:3000/api/v1/gotchy',
+    {
+      'gotchyDate': data.gotchyDate,
+      'gotchyTime': data.gotchyTime,
+      'location':data.location,
+      'gotchyHobby': data.gotchyHobby,
+      'gender':data.gender,
+      'level':data.level,
+      'headcount':data.headcount,
+      'price':data.price,
+      'gotchyName':data.gotchyName,
+      "mode":data.mode,
+      "useTime":data.useTime
+    })
+      .catch((err) => {
+        console.log("등록 error");
+        console.log(err);
+    });
+  };
+    function postData()  {
+         axios.post('http://localhost:3000/api/v1/gotchy',
+            {
+          'gotchyDate': data.gotchyDate,
+              'gotchyTime': data.gotchyTime,
+              'location':data.location,
+              'gotchyHobby': data.gotchyHobby,
+              'gender':data.gender,
+              'level':data.level,
+              'headcount':data.headcount,
+              'price':data.price,
+              'gotchyName':data.gotchyName,
+              "mode":data.mode,
+              "useTime":data.useTime
+        });
+        
+      
+    };
 
 
-  // const requestInput = async (e) => {
-  //   e.preventDefault();
-  //
-  //   axios.get("", {
-  //     headers: {
-  //       "Content-Type": "multipart/form-data",
-  //     }
-  //   })
-  //     .then((resp) => {
-  //
-  //     })
-  //     .catch((err) => {
-  //
-  //       console.log(err);
-  //     });
-  // }
-
-  const onChangeData = ({ props, e }) => {
-    setData({ ...data, [props]: e.target.value });
+  const onReserveData = e => {
+    setData({ ...data, [e.target.name]: e.target.value });
   };
 
   return (
-    <>
-      <div className="notice-write-title">새로운 가치를 등록해주세요!</div>
-      <div style={{ "text-align": "center" }}>
-        <img src={Guide} alt="Guide" style={logoStyle} />
-      </div>
-      <MainDiv>
-        <InputContainer>
-          <label>취미</label>
-          <select
-            onChange={(e) => onChangeData({ props: 'gotchyHobby', e: e })}
-          >
-            {hobbyList.map((e) => (
-              <option>{e}</option>
-            ))}
-          </select>
-          <label>날짜</label>
+      <>
+        <div className="notice-write-title">새로운 가치를 등록해주세요!</div>
+        <div style={{ "text-align": "center" }}>
+          <img src={Guide} alt="Guide" style={logoStyle} />
+        </div>
+        <MainDiv>
+
+          <SelectContainer>
+            <label>취미</label>
+            <select name="gotchyHobby" value={gotchyHobby} onChange={(e) => onReserveData(e)} required>
+              <option value="" selected>취미</option>
+              {hobbyList.map((option) => (
+                  <option
+                      key={option}
+                      value={option}
+                  >
+                    {option}
+                  </option>
+              ))}
+            </select>
+
+            <label>날짜</label>
+            <input
+                type="date"
+                name="gotchyDate"
+                onChange={onReserveData}
+                value={gotchyDate}
+            />
+
+            {/* <label>시작 시간</label>
+            <input
+                type="text"
+                name="gotchyTime"
+                placeholder="시작 시간을 입력해주세요."
+                value={gotchyTime}
+                onChange={onReserveData}
+
+            /> */}
+          
+          <label>시작 시간</label>
           <input
-            type={'date'}
-            onChange={(e) => onChangeData({ props: 'date', e: e })}
-            value={data.date}
+            type="time"
+            name="gotchyTime"
+            onChange={onReserveData}
+            value={gotchyTime}
           />
-          <label>위치</label>
-          <select onChange={(e) => onChangeData({ props: 'location', e: e })}>
-            {location.map((e) => (
-              <option>{e}</option>
+
+
+            <label>위치</label>
+            <select name="location" value={location} onChange={e => onReserveData(e)} required>
+              <option value="" selected>위치</option>
+              {locationList.map((option) => (
+                  <option
+                      key={option}
+                      value={option}
+                  >
+                    {option}
+                  </option>
+              ))}
+            </select>
+
+
+
+            <label>인원 수</label>
+            <input
+                type="number"
+                name="headcount"
+                placeholder="인원 수를 입력해주세요."
+                onChange={onReserveData}
+                value={headcount}
+            />
+
+
+
+
+            <label>이용시간</label>
+            <input
+                type="text"
+                name="useTime"
+                placeholder="이용시간을 입력해주세요."
+                value={useTime}
+                onChange={onReserveData}
+            />
+
+
+
+            <label>성별</label>
+            <select name="gender" value={gender} onChange={(e) => onReserveData(e)}>
+              <option value="" selected>성별</option>
+              {genderList.map((option) => (
+                  <option
+                      key={option}
+                      value={option}
+                  >
+                    {option}
+                  </option>
+              ))}
+            </select>
+
+
+          <label>레벨</label>
+          <select name="level" value={level} onChange={(e) => onReserveData(e)}>
+            <option value="" selected>레벨</option>
+            {levelList.map((option) => (
+                <option
+                    key={option}
+                    value={option}
+                >
+                  {option}
+                </option>
             ))}
           </select>
-          <label>인원 수</label>
-          <input
-            onChange={(e) => onChangeData({ props: 'headcount', e: e })}
-            placeholder="인원 수를 입력해주세요."
-            type="number"
-            value={data.headcount}
-          />
-          <label>이용시간</label>
-          <input
-            onChange={(e) => onChangeData({ props: 'useTime', e: e })}
-            placeholder="이용시간을 입력해주세요."
-            type={'number'}
-            value={data.useTime}
-          />
-          <label>성별</label>
-          <select onChange={(e) => onChangeData({ props: 'gender', e: e })}>
-            {gender.map((e) => (
-              <option>{e}</option>
-            ))}
-          </select>
-          <label>레밸</label>
-          <select onChange={(e) => onChangeData({ props: 'level', e: e })}>
-            {level.map((e) => (
-              <option>{e}</option>
-            ))}
-          </select>
+
+
           <label>보증금</label>
           <input
-            onChange={(e) => onChangeData({ props: 'price', e: e })}
-            placeholder="보증금을 입력해주세요."
-            type="number"
-            value={data.price}
+              type="number"
+              name="price"
+              placeholder="보증금을 입력해주세요."
+              onChange={onReserveData}
+              value={price}
           />
           <ButtonWrapper>
-            <button
-              onClick={() => {
-                if (Object.values(data).includes(null))
-                  alert('내용을 모두 입력해주세요..');
-                else {
-                  // api 요청.then (() => {
-                  alert('등록 되었습니다.');
-                  window.location.href = '/guide';
-                  //})
-                }
-              }}
-            >
-              등록하기
-            </button>
+          <button onClick={() => {
+            if (!gotchyDate ||  !gotchyTime || !location || !gotchyHobby || !gender || !headcount || !useTime || !price || !level)
+              alert('내용을 모두 입력해주세요..');
+            else {
+              // api 요청.then (() => {
+              // alert('등록 L.');
+              postData()
+              window.location.href = '/guide';
+              //})
+            }
+          }}>등록</button>
           </ButtonWrapper>
-        </InputContainer>
+        </SelectContainer>
       </MainDiv>
     </>
   );
 };
+
 export default ReservePage;
 
-const InputContainer = styled.div`
+const SelectContainer = styled.div`
   margin-top: 50px;
   width: 60%;
   /* height: 500px; */
@@ -227,7 +305,7 @@ const ButtonWrapper = styled.div`
 
   > button {
     margin-top: 20px;
-    margin-bottom: 30px;
+    margin-bottom: 250px;
     width: 250px;
     height: 50px;
     background-color: #8f23c0;
