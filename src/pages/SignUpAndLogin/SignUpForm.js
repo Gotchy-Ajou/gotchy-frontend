@@ -60,6 +60,7 @@ export const SignUpForm = (props) => {
   };
 
   const register = () => {
+    alert("성공적으로 회원가입이 완료되었습니다!");
     // axios.post("http://gotchy.site/signup", {
     //   "name": name,
     //   "phone": phone,
