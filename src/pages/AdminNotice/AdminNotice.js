@@ -58,6 +58,7 @@ const AdminNotice = () => {
         console.log(postId);
         axios.delete(`http://localhost:3000/api/v1/posts/${postId}`)
             .then((result) => {
+                alert('삭제되었습니다!');
                 loadNoticeList();
             })
             .catch(() => {
