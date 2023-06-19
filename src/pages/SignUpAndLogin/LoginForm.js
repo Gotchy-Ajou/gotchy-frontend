@@ -38,7 +38,7 @@ export const LoginForm = (props) => {
             props.setUserOption(props.option);
             localStorage.setItem('useroption', (props.option - 0));
             dispatch(setUserOption((props.option - 0)));
-            alert("로그인되었습니다.");
+            alert("유효하지 않은 ID/비밀번호입니다!");
             console.log("hi");
             navigate('/Inquiry');
         }
@@ -46,7 +46,7 @@ export const LoginForm = (props) => {
             props.setUserOption(props.option);
             localStorage.setItem('useroption', (props.option - 0));
             dispatch(setUserOption((props.option - 0)));
-            alert("로그인되었습니다.");
+            alert("유효하지 않은 ID/비밀번호입니다!");
             console.log("hi");
             navigate('/UserManage');
         }

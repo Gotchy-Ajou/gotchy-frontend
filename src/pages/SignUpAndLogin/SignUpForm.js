@@ -60,8 +60,8 @@ export const SignUpForm = (props) => {
   };
 
   const register = () => {
-    alert("이미 등록된 사용자입니다!");
-    // alert("성공적으로 회원가입이 완료되었습니다!");
+    // alert("이미 등록된 사용자입니다!");
+    alert("성공적으로 회원가입이 완료되었습니다!");
     // axios.post("http://gotchy.site/signup", {
     //   "name": name,
     //   "phone": phone,
