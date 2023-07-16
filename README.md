@@ -10,7 +10,7 @@
 
 
 # 전체 프로젝트 구조
-
+![스크린샷(602)](https://github.com/Gotchy-Ajou/gotchy-frontend/assets/114344394/6fc804c4-a514-433a-a3f2-1475e82183ac)
  
  
 # 팀원 구성
